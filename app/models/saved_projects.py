@@ -14,7 +14,7 @@ class Saved_Project(db.Model):
 
 
     user = relationship("User", back_populates='saved_projects')
-    project = relationship('Project', back_populates='projects')
+    project = relationship('Project', back_populates='saved_projects')
 
 
     def to_dict(self):

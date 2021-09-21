@@ -23,7 +23,7 @@ class Project(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False)
 
     owner = relationship("User", back_populates='projects')
-    comment = relationship("User", back_populates='comments')
+    comment = relationship("User", back_populates='projects')
 
     def to_dict(self):
         return {

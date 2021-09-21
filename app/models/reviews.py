@@ -17,7 +17,7 @@ class Review(db.Model):
 
 
     project = relationship('Project', back_populates='reviews')
-    user = relationship('User', back_populates='users')
+    user = relationship('User', back_populates='reviews')
 
 
     def to_dict(self):
