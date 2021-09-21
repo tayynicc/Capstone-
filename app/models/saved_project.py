@@ -14,8 +14,8 @@ class Saved_Project(db.Model):
     project_id = db.Column(db.Integer, ForeignKey('projects.id'), nullable=False)
 
 
-    users = relationship("User", back_populates='saved_projects')
-    projects = relationship('Project', back_populates='saved_projects')
+    # users = relationship("User", back_populates='saved_projects')
+    # projects = relationship('Project', back_populates='saved_projects')
 
 
     def to_dict(self):
