@@ -18,14 +18,12 @@ class Project(db.Model):
     duration = db.Column(db.Integer, nullable=False)
     action = db.Column(db.String, nullable=False)
     type = db.Column(db.String, nullable=False)
-    comment_id = db.Column(db.Integer, ForeignKey('comments.id'), nullable=False)
     image_url = db.Column(db.String, nullable=False)
     live_links = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
     owners = relationship("User", back_populates='projects')
-    comments = relationship("Comment", back_populates='projects')
 
     def to_dict(self):
         return {
@@ -38,7 +36,6 @@ class Project(db.Model):
             'duration': self.duration, 
             'action' : self.action,
             'type': self.type,
-            'comment_id' : self.comment_id,
             'image_url' : self.image_url,
             'live_links' : self.live_links,
             'created_at' : self.created_at,

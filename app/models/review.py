@@ -3,12 +3,12 @@ from .db import db
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.schema import Column, ForeignKey
 from sqlalchemy.types import Integer, String, Numeric, DateTime
-# from .project import Project
+from .project import Project
 from .user import User 
 
 
-class Comment(db.Model):
-    __tablename__ = 'comments'
+class Review(db.Model):
+    __tablename__ = 'reviews'
 
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, ForeignKey('projects.id'), nullable=False)
@@ -18,8 +18,9 @@ class Comment(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False)
 
 
-    owners = relationship('User', back_populates='comments')
-    projects = relationship('Projects', back_populates='comments')
+    owners = relationship('User', back_populates='reviews')
+    projects = relationship('Project', back_populates='reviews')
+
 
 
     def to_dict(self):
