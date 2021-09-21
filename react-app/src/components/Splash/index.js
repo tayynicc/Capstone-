@@ -12,6 +12,12 @@ function Splash(){
             
             <div className='splash__bkg-circle'></div>
 
+
+            <div className='splash__about-container'>
+                <h1></h1>
+
+            </div>
+
             
         </div>
         </>
