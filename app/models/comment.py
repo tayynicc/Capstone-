@@ -3,21 +3,23 @@ from .db import db
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.schema import Column, ForeignKey
 from sqlalchemy.types import Integer, String, Numeric, DateTime
+# from .project import Project
+from .user import User 
 
 
-class Review(db.Model):
-    __tablename__ = 'reviews'
+class Comment(db.Model):
+    __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key=True)
-    project_id = db.Column(db.Integer, ForeignKey('projects.id'),nullable=False)
+    project_id = db.Column(db.Integer, ForeignKey('projects.id'), nullable=False)
     user_id = db.Column(db.Integer, ForeignKey('users.id'), nullable=False)
     body = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
-    updated_at = db.Column(db.DateTime, nullable=Flase)
+    updated_at = db.Column(db.DateTime, nullable=False)
 
 
-    project = relationship('Project', back_populates='reviews')
-    user = relationship('User', back_populates='reviews')
+    owners = relationship('User', back_populates='comments')
+    projects = relationship('Projects', back_populates='comments')
 
 
     def to_dict(self):

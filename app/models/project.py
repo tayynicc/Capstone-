@@ -3,6 +3,8 @@ from .db import db
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.schema import Column, ForeignKey
 from sqlalchemy.types import Integer, String, Numeric, DateTime
+from .user import User
+# from .comment import Comment
 
 class Project(db.Model):
     __tablename__ = 'projects'
@@ -16,19 +18,19 @@ class Project(db.Model):
     duration = db.Column(db.Integer, nullable=False)
     action = db.Column(db.String, nullable=False)
     type = db.Column(db.String, nullable=False)
-    comment_id = db.Column(db.Integer, ForeignKey('comments.id'),nullable=False)
+    comment_id = db.Column(db.Integer, ForeignKey('comments.id'), nullable=False)
     image_url = db.Column(db.String, nullable=False)
     live_links = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
-    owner = relationship("User", back_populates='projects')
-    comment = relationship("User", back_populates='projects')
+    owners = relationship("User", back_populates='projects')
+    comments = relationship("Comment", back_populates='projects')
 
     def to_dict(self):
         return {
             'id' : self.id,
-            'user_id' : self.user_id,
+            'user_id':self.user_id,
             'title': self.title, 
             'instruction' : self.instruction,
             'supplies': self.supplies, 
