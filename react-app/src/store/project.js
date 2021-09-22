@@ -1,4 +1,4 @@
-const LOAD_PROJECTS = 'project/LOAD'
+const LOAD_PROJECTS = 'projects/LOAD'
 const ADD_PROJECTS = 'projects/ADD'
 const EDIT_PROJECT = 'projects/EDIT'
 const REMOVE_PROJECTS = 'projects/REMOVE'
@@ -118,9 +118,9 @@ export default function projectReducer(state={}, action){
                     ...state[action.project.id]
                 }
             }
-            case REMOVE_PORTFOLIO:
+            case REMOVE_PROJECTS:
                 let newState = { ...state }
-                delete newState[action.portfolioId]
+                delete newState[action.project]
                 return newState
 
             case EDIT_PROJECT:
@@ -128,7 +128,6 @@ export default function projectReducer(state={}, action){
                     ...state,
                     [action.project.id] : action.project
                 }
-    
         default:
             return state
     }

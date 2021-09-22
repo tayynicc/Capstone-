@@ -1,0 +1,107 @@
+const LOAD_PROJECTS = 'saved_projects/LOAD'
+const ADD_PROJECTS = 'saved_projects/ADD'
+const REMOVE_PROJECTS = 'saved_projects/REMOVE'
+
+
+const loadSavedProjects = (saved_projects) => ({
+    type: LOAD_PROJECTS,
+    saved_projects
+})
+
+
+const addSavedProject = (saved_projects) => ({
+    type: ADD_saved_projects,
+    saved_projects
+})
+
+const remove = (saved_projects) => ({
+    type: REMOVE_PROJECTS,
+    saved_projects
+})
+
+
+// get all saved projects 
+export const getSavedProjects = () => async(dispatch) => {
+    const res = await fetch(`/api/saved`);
+    const projects = await res.json()
+    dispatch(loadSavedProjects(projects))
+}
+
+
+export const addProject = (payload) => async dispatch => {
+    const {
+        user_id, 
+        title, 
+        instruction, 
+        supplies,
+        cost,
+        duration,
+        action,
+        type,
+        image_url,
+        live_links,
+        created_at,
+        updated_at
+    } = payload
+
+    const res = await fetch(`/api/saved`, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({user_id, title, instruction, supplies,cost, duration, action, type, image_url, live_links, created_at, updated_at})
+    });
+
+    let newSavedProject;
+    if(res.ok) {
+        newProject = await res.json();
+        diapatch(addSavedProject(newSavedProject))
+    }
+
+    return newSavedProject
+}
+
+
+// delete a project 
+export const deleteSavedProject = projectId => async dispatch => {
+    const res = await fetch(`/api/saved/${projectId}`, {
+        method: 'DELETE'
+    })
+
+    if (res.ok) { 
+        dispatch(remove(projectId))
+    }
+}
+
+
+
+export default function savedProjectReducer(state={}, action){
+    switch (action.type) {
+        case LOAD_PROJECTS:
+            const newSavedProjects = {}
+            action['savedProjects'].savedProjects.forEach(project => {
+                newProjects[project.id] = project;
+            })
+            return {
+                ...state,
+                ...newProjects
+            }
+        case ADD_PROJECTS:
+            if(!state[action.savedProject.id]) {
+                return {
+                    ...state,
+                    [action.savedProject.id] : action.savedProject
+                }
+            }
+            return {
+                ...state,
+                [action.savedProject.id] : {
+                    ...state[action.savedProject.id]
+                }
+            }
+        case REMOVE_PROJECTS:
+            let newState = { ...state }
+            delete newState[action.savedProject]
+            return newState
+        default:
+            return state
+    }
+}
