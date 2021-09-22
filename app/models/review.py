@@ -1,4 +1,4 @@
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, relationships
 from .db import db
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.schema import Column, ForeignKey
@@ -17,10 +17,8 @@ class Review(db.Model):
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
-
-    # owners = relationship('User', back_populates='reviews')
-    # projects = relationship('Project', back_populates='reviews')
-
+    user = relationship('User', back_populates='reviews')
+    project = relationship('Project', back_populates='projects')
 
 
     def to_dict(self):
