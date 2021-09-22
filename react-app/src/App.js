@@ -45,6 +45,9 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <Splash />
         </ProtectedRoute>
+        <Route path ='/test'>
+
+        </Route>
       </Switch>
     </BrowserRouter>
   );

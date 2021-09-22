@@ -1,4 +1,4 @@
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relation, relationship
 from .db import db
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.schema import Column, ForeignKey
@@ -14,9 +14,8 @@ class Saved_Project(db.Model):
     project_id = db.Column(db.Integer, ForeignKey('projects.id'), nullable=False)
 
 
-    # users = relationship("User", back_populates='saved_projects')
-    # projects = relationship('Project', back_populates='saved_projects')
-
+    user = relationship('User', back_populates='saved')
+    project = relationship('Project', back_populates='saved_projects')
 
     def to_dict(self):
         return {
