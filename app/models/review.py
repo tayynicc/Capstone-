@@ -18,8 +18,8 @@ class Review(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False)
 
 
-    owners = relationship('User', back_populates='reviews')
-    projects = relationship('Project', back_populates='reviews')
+    # owners = relationship('User', back_populates='reviews')
+    # projects = relationship('Project', back_populates='reviews')
 
 
 

@@ -1,0 +1,47 @@
+.splash__bkg-container{
+    height: 2000px;
+
+}
+
+.splash__bkg-left{
+    border: 3px solid red; 
+    width:55%;
+    height:100vh;
+    position: absolute; 
+    top: 0;
+    left:-100px;
+    transform: skew(-10deg);
+    
+}
+
+.splash__bkg-right{
+    border: 3px solid green; 
+    width:55%;
+    height:100vh;
+    position: absolute; 
+    top: 0;
+    right:-100px;
+    transform: skew(-10deg);
+}
+
+
+.splash__bkg-circle{
+    border: 3px solid purple;
+    height:450px;
+    width:450px;
+    border-radius:50%;
+    position: absolute;
+    top:30%;
+    left:40%;
+    background-color: blue;
+}
+
+
+.splash__about-container{
+    position: relative; 
+    border: 3px solid green; 
+    top:1100px;
+    width:75%;
+    left: 200px;
+    height:300px;
+}
