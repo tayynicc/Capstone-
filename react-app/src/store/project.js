@@ -59,7 +59,7 @@ export const createOneProject = (payload) => async dispatch => {
     let newProject;
     if(res.ok) {
         newProject = await res.json();
-        diapatch(addOneProject(newProject))
+        dispatch(addOneProject(newProject))
     }
 
     return newProject

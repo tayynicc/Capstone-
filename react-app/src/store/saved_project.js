@@ -10,7 +10,7 @@ const loadSavedProjects = (saved_projects) => ({
 
 
 const addSavedProject = (saved_projects) => ({
-    type: ADD_saved_projects,
+    type: ADD_PROJECTS,
     saved_projects
 })
 
@@ -52,8 +52,8 @@ export const addProject = (payload) => async dispatch => {
 
     let newSavedProject;
     if(res.ok) {
-        newProject = await res.json();
-        diapatch(addSavedProject(newSavedProject))
+        newSavedProject = await res.json();
+        dispatch(addSavedProject(newSavedProject))
     }
 
     return newSavedProject
@@ -78,11 +78,11 @@ export default function savedProjectReducer(state={}, action){
         case LOAD_PROJECTS:
             const newSavedProjects = {}
             action['savedProjects'].savedProjects.forEach(project => {
-                newProjects[project.id] = project;
+                newSavedProjects[project.id] = project;
             })
             return {
                 ...state,
-                ...newProjects
+                ...newSavedProjects
             }
         case ADD_PROJECTS:
             if(!state[action.savedProject.id]) {
