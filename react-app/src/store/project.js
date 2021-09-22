@@ -68,7 +68,7 @@ export const createOneProject = (payload) => async dispatch => {
 
 // update a project 
 export const editProject = project => async dispatch => {
-    const res = await fetch(`/api/project/${project.id}`, {
+    const res = await fetch(`/api/projects/${project.id}`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(project)
@@ -103,7 +103,7 @@ export default function projectReducer(state={}, action){
             })
             return {
                 ...state,
-                ...newprojects
+                ...newProjects
             }
         case ADD_PROJECTS:
             if(!state[action.project.id]) {
@@ -112,7 +112,6 @@ export default function projectReducer(state={}, action){
                     [action.project.id] : action.project
                 }
             }
-    
             return {
                 ...state,
                 [action.project.id] : {
@@ -123,7 +122,7 @@ export default function projectReducer(state={}, action){
                 let newState = { ...state }
                 delete newState[action.portfolioId]
                 return newState
-                
+
             case EDIT_PROJECT:
                 return {
                     ...state,
