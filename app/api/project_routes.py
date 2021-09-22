@@ -30,25 +30,60 @@ def projects():
 
 
 # post a project
-# @project_routes.route('', methods=['POST'])
-# def new_project():
+@project_routes.route('', methods=['POST'])
+def new_project():
+    project = Project ( 
+        user_id = int(request.json['user_id']),
+        title = request.json['title'],
+        instruction = request.json['instruction'],
+        supplies = request.json['supplies'],
+        cost = request.json['cost'],
+        duration = request.json['duration'],
+        action = request.json['action'],
+        type = request.json['type'],
+        image_url = request.json['image_url'],
+        live_links = request.json['live_links'],
+        created_at = request.json['created_at'],
+        updated_at = request.json['updated_at']
+        )
 
-#     project = Project ( 
-#         user_id = int(request.json['user_id']),
-#         title = request.json['title'],
-#         instruction = request.json['instruction'],
-#         supplies = request.json['supplies'],
-#         cost = request.json['cost'],
-#         duration = request.json['duration'],
-#         action = request.jon['action'],
-#         type = request.json['type'],
-#         image_url = request.json['image_url'],
-#         live_links = request.json['live_links'],
-#         created_at = request.json['created_at'],
-#         updated_at = request.json['updated_at']
-#         )
+    db.session.add(project)
+    db.session.commit()
 
-#     db.session.add(project)
-#     db.session.commit()
+    return project.to_dict()
 
-#     return project.to_dict()
+
+#  update a project 
+@project_routes.route('/<int:id>', methods=['PUT'])
+def edit_project(id):
+    project = Project.query.get(id)
+
+    project.user_id = int(request.json['user_id'])
+    project.title = request.json['title']
+    project.instruction = request.json['instruction']
+    project.supplies = request.json['supplies']
+    project.cost = request.json['cost']
+    project.duration = request.json['duration']
+    project.action = request.json['action']
+    project.type = request.json['type']
+    project.image_url = request.json['image_url']
+    project.live_links = request.json['live_links']
+    project.created_at = request.json['created_at']
+    project.updates_at = request.json['updated_at']
+
+
+    db.session.add(project)
+    db.session.commit()
+    
+    return project.to_dict()
+
+
+# Delete a project 
+@project_routes.route('/<int:id>', methods=['DELETE'])
+def delete_projects(id):
+    project = Project.query.get(id)
+
+    db.session.delete(project)
+    db.session.commit()
+
+    return {}

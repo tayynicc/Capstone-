@@ -38,3 +38,32 @@ def new_review():
     db.session.commit()
 
     return review.to_dict()
+
+# update a review
+@review_routes.route('/<int:id>', methods=['PUT'])
+def edit_review(id):
+    review = Review.query.get(id)
+
+    review.project_id = int(request.json['project_id'])
+    review.user_id = int(request.json['user_id'])
+    review.body = request.json['body']
+    review.created_at = request.json['created_at']
+    review.updated_at = request.json['updated_at']
+    
+
+    db.session.add(review)
+    db.session.commit()
+    
+    return review.to_dict()
+
+
+
+# Delete a review
+@review_routes.route('/<int:id>', methods=['DELETE'])
+def delete_review(id):
+    review = Review.query.get(id)
+
+    db.session.delete(review)
+    db.session.commit()
+
+    return {}
