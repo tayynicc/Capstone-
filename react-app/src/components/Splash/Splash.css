@@ -45,3 +45,28 @@
     left: 200px;
     height:300px;
 }
+
+
+.splash__highlights-container{
+    position: relative; 
+    border: 3px solid green; 
+    top:1300px;
+    width:75%;
+    left: 200px;
+    height:300px;
+}
+
+
+.footer__container{
+    position: relative; 
+    /* border: 3px solid blue;  */
+    top:1400px;
+    width:110%;
+    /* left: 200px; */
+    height:55px;
+    margin-left:-50px;
+    background-color:darkgrey;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

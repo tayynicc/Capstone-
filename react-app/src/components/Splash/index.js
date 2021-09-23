@@ -1,5 +1,7 @@
 import './Splash.css'
 
+import Footer from '../Footer'
+
 
 function Splash(){
 
@@ -18,7 +20,14 @@ function Splash(){
 
             </div>
 
-            
+            <div className='splash__highlights-container'>
+                <h1></h1>
+
+            </div>
+
+            <div className='footer__container'>
+                <Footer />
+            </div>
         </div>
         </>
     )
