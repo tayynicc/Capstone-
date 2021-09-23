@@ -46,7 +46,7 @@ function App() {
           <Splash />
         </ProtectedRoute>
         <Route path ='/test'>
-
+            <NavBar />
         </Route>
       </Switch>
     </BrowserRouter>
