@@ -77,7 +77,7 @@ export default function savedProjectReducer(state={}, action){
     switch (action.type) {
         case LOAD_PROJECTS:
             const newSavedProjects = {}
-            action['savedProjects'].savedProjects.forEach(project => {
+            action['saved_projects'].saved_projects.forEach(project => {
                 newSavedProjects[project.id] = project;
             })
             return {
@@ -85,21 +85,21 @@ export default function savedProjectReducer(state={}, action){
                 ...newSavedProjects
             }
         case ADD_PROJECTS:
-            if(!state[action.savedProject.id]) {
+            if(!state[action.saved_projects.id]) {
                 return {
                     ...state,
-                    [action.savedProject.id] : action.savedProject
+                    [action.saved_projects.id] : action.saved_projects
                 }
             }
             return {
                 ...state,
-                [action.savedProject.id] : {
-                    ...state[action.savedProject.id]
+                [action.saved_projects.id] : {
+                    ...state[action.saved_projects.id]
                 }
             }
         case REMOVE_PROJECTS:
             let newState = { ...state }
-            delete newState[action.savedProject]
+            delete newState[action.saved_projects]
             return newState
         default:
             return state
