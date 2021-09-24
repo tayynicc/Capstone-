@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProjects } from '../../store/project';
 
 import Footer from '../Footer'
+import Header from '../Header';
 
 
 import './Home.css'
@@ -34,10 +35,7 @@ function Home(){
 
     return(
         <div>
-           <div className='header__container'>
-
-           </div>
-
+           <Header />
 
 
 
