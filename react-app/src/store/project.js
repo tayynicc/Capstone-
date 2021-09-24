@@ -2,6 +2,7 @@ const LOAD_PROJECTS = 'projects/LOAD'
 const ADD_PROJECTS = 'projects/ADD'
 const EDIT_PROJECT = 'projects/EDIT'
 const REMOVE_PROJECTS = 'projects/REMOVE'
+// const SHOW_ONE = 'projects/SHOW'
 
 
 const loadProjects = (projects) => ({
@@ -10,9 +11,9 @@ const loadProjects = (projects) => ({
 })
 
 
-const addOneProject = (projects) => ({
+const addOneProject = (project) => ({
     type: ADD_PROJECTS,
-    projects
+    project
 })
 
 const remove = (project) => ({
@@ -25,6 +26,12 @@ const update = (project) => ({
     project
 })
 
+// const oneProject = (project) => ({
+//     type: SHOW_ONE,
+//     project,
+// });
+
+
 // get all projects 
 export const getProjects = () => async(dispatch) => {
     const res = await fetch(`/api/projects`);
@@ -35,6 +42,7 @@ export const getProjects = () => async(dispatch) => {
 
 // add a new project 
 export const createOneProject = (payload) => async dispatch => {
+    console.log(`route payload`,payload)
     const {
         user_id, 
         title, 
@@ -65,6 +73,15 @@ export const createOneProject = (payload) => async dispatch => {
     return newProject
 }
 
+//get one project
+// export const getOneProject = (id) => async (dispatch) => {
+// 	const response = await fetch(`/api/projects/${id}`);
+
+// 	if (response.ok) {
+// 		const project= await response.json();
+// 		dispatch(oneProject(project));
+// 	}
+// };
 
 // update a project 
 export const editProject = project => async dispatch => {
@@ -105,28 +122,34 @@ export default function projectReducer(state={}, action){
                 ...state,
                 ...newProjects
             }
+        // case SHOW_ONE:
+        //     const newState = {
+        //         ...state,
+        //         [action.projects.id]: action.projects,
+        //     }
+        //     return newState;
         case ADD_PROJECTS:
-            if(!state[action.project.id]) {
+            if(!state[action.projects.id]) {
                 return {
                     ...state,
-                    [action.project.id] : action.project
+                    [action.projects.id] : action.projects
                 }
             }
             return {
                 ...state,
                 [action.project.id] : {
-                    ...state[action.project.id]
+                    ...state[action.projects.id]
                 }
             }
             case REMOVE_PROJECTS:
                 let newState = { ...state }
-                delete newState[action.project]
+                delete newState[action.projects]
                 return newState
 
             case EDIT_PROJECT:
                 return {
                     ...state,
-                    [action.project.id] : action.project
+                    [action.projects.id] : action.projects
                 }
         default:
             return state

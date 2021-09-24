@@ -1,0 +1,43 @@
+.project__image-container{
+    border: 3px solid blue;
+    height:min-content;
+    width: fit-content;
+    margin-left: 35%;
+    margin-top: 20px;
+}
+
+
+.project__instructions-container{
+    border: 3px solid yellow;
+    height: fit-content;
+    width:50%;
+    margin-left: 23%;
+    margin-top: 100px;
+    font-size: larger;
+    line-height:200%;
+    padding-top:10px;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+
+.project__durationCost-container{
+    border: 3px solid green;
+    height: 400px;
+    width: 15%;
+    position:absolute;
+    top:50%;
+    margin-left: 3%
+}
+
+
+.project__supplies-container{
+    border: 3px solid green;
+    height: 400px;
+    width: 15%;
+    position:absolute;
+    top:50%;
+    right:0;
+
+    margin-right: 3%
+}

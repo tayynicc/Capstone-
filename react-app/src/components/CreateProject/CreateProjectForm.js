@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
+import { createOneProject } from '../../store/project'
+
 
 import './CreateProject.css'
 
@@ -18,8 +20,8 @@ function CreateProjectForm(){
     const [ supplies, setSupplies ] = useState('');
     const [ cost, setCost ] = useState(0);
     const [ duration, setDuration ] = useState(0);
-    const [ action, setAction ] = useState('');
-    const [ type, setType ] = useState('');
+    const [ action, setAction ] = useState('DIY');
+    const [ type, setType ] = useState('Cleaning');
     const [ image, setImage ] = useState('');
     const [ links, setLinks ] = useState('');
 
@@ -35,15 +37,38 @@ function CreateProjectForm(){
     const updateLinks = (e) => setLinks(e.target.value);
 
 
-    const handleSubmit = () => {
+    console.log(typeof user.id)
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    }
+        const payload = {
+            user_id: +user.id,
+            title, 
+            instruction:instructions,
+            supplies,
+            cost,
+            duration,
+            action,
+            type,
+            image_url: image,
+            live_links: links, 
+            created_at: new Date(),
+            updated_at: new Date()
+        };
+
+        const project = await dispatch(createOneProject(payload))
+
+        console.log(project)
+            if (project) {
+                history.push(`/projects/${project.id}`)
+            }
+    };
 
 
     return (
         <>
             <h1>Create a New Project</h1>
-            <form onSubmit={handleSubmit}>
+            <form >
                 <label>Title</label>
                 <input value={title} onChange={updateTitle} placeholder='Title'></input>
 
@@ -54,10 +79,10 @@ function CreateProjectForm(){
                 <textarea value={supplies} onChange={updateSupplies} placeholder='Supplies'></textarea>
 
                 <label>Cost</label>
-                <input type='number' placeholder='Cost, must be numerical value'></input>
+                <input value={cost} onChange={updateCost}  type='number' placeholder='Cost, must be numerical value'></input>
 
                 <label>Duration</label>
-                <input placeholder='ex: 30 min or 1 hour'></input>
+                <input placeholder='ex: 30 min or 1 hour' value={duration} onChange={updateDuration}></input>
 
                 <label>Action</label>
                 <select placeholder='What are we getting into?' onChange={updateAction}>
@@ -69,18 +94,24 @@ function CreateProjectForm(){
                 </select>
 
                 <label>Type</label>
-                <select>
+                <select onChange={updateType}>
                     <option value='Cleaning'> Cleaning </option>
                     <option value='Orginization'> Orginization </option>
                     <option value='Decor'> Decor </option>
                 </select>
 
                 <label>Image Url</label>
-                <input type='url' ></input>
+                <input type='url' placeholder='Image Url' value={image} onChange={updateImage}></input>
 
                 <label>Live Links</label>
-                <input></input>
+                <input value={links} onChange={updateLinks}></input>
+
+                <button type='submit' onClick={handleSubmit} >Submit</button>
             </form>
+
+            <div className='image__preview'>
+                <img alt='Insert Image' className='create__image'src={image}></img>
+            </div>
 
         </>
 
