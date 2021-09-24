@@ -58,7 +58,7 @@ def new_project():
 def edit_project(id):
     project = Project.query.get(id)
 
-    project.user_id = int(request.json['user_id'])
+    project.user_id = request.json['user_id']
     project.title = request.json['title']
     project.instruction = request.json['instruction']
     project.supplies = request.json['supplies']

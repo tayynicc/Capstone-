@@ -11,14 +11,14 @@ const loadProjects = (projects) => ({
 })
 
 
-const addOneProject = (project) => ({
+const addOneProject = (projects) => ({
     type: ADD_PROJECTS,
-    project
+    projects
 })
 
-const remove = (project) => ({
+const remove = (projectId) => ({
     type: REMOVE_PROJECTS,
-    project
+    projectId
 })
 
 const update = (project) => ({
@@ -26,10 +26,6 @@ const update = (project) => ({
     project
 })
 
-// const oneProject = (project) => ({
-//     type: SHOW_ONE,
-//     project,
-// });
 
 
 // get all projects 
@@ -91,10 +87,13 @@ export const editProject = project => async dispatch => {
         body: JSON.stringify(project)
     })
 
+    let project
     if (res.ok) {
-        const project = await res.json()
+        project = await res.json()
         dispatch(update(project))
     }
+
+    return project
 }
 
 
@@ -137,13 +136,13 @@ export default function projectReducer(state={}, action){
             }
             return {
                 ...state,
-                [action.project.id] : {
+                [action.projects.id] : {
                     ...state[action.projects.id]
                 }
             }
             case REMOVE_PROJECTS:
                 let newState = { ...state }
-                delete newState[action.projects]
+                delete newState[action.projectId]
                 return newState
 
             case EDIT_PROJECT:
