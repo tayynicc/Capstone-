@@ -1,5 +1,5 @@
-.users__projects-container{
-    height: 450px;
+.users__projects-container-account{
+    height: 350px;
     /* border: 3px solid red; */
     display:flex;
     flex-direction: row;
@@ -15,7 +15,7 @@
 
 
 .users__savedProjects-container{
-    height: 450px;
+    height: 350px;
     border: 3px solid red;
     display:flex;
     flex-direction: row;
@@ -45,14 +45,14 @@
 }
 
 .UI__container-outter{
-    border-right: 3px solid grey; 
-    border-left: 3px solid grey; 
+    border: 3px solid grey; 
     width: 500px;
-    height: 100vh;
+    height: 86vh;
     position: fixed; 
-    top:71px;
+    top:90px;
     background-color:white;
     z-index:-1;
+    border-radius:30px;
 
 }
 
@@ -104,4 +104,22 @@
     justify-content: center;
     border:3px solid orange;
     width:50%
+}
+
+
+.tile__containers-account{
+    border: 3px solid purple;
+    width: 400px;
+    height:300px;
+    margin-left:20px;
+    /* margin-top: 10px; */
+    
+    
+}
+
+
+.tile-image-account{
+    height: 215px;
+    border: 3px solid red;
+    width: 395px;
 }

@@ -55,7 +55,7 @@ function Account(){
                 <div className='UI__default-pfp'></div>
                 <div className='user__information-container'>
                     <div className='user__information-content'>
-                        
+
                         <div className='info__field-username '>
                            <h2>{user.username}</h2> 
                         </div>
@@ -74,11 +74,11 @@ function Account(){
             </div>
             
 
-            <div className='users__projects-container'>
+            <div className='users__projects-container-account'>
             {usersProjects?.map((project) => (
-                        <div className='tile__containers'>
+                        <div className='tile__containers-account'>
                             <div>
-                                <img className='tile-image' src={project.image_url}></img>
+                                <img className='tile-image-account' src={project.image_url}></img>
                             </div>
                             <div className='tile-title-account'>
                                 <p>{project.title}</p>
