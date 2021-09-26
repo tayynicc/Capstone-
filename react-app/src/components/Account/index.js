@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProjects, deleteProject } from '../../store/project';
 import { getSavedProjects } from '../../store/saved_project'
 
-
+import Header from '../Header'
 
 import './Account.css'
 
@@ -19,7 +19,7 @@ function Account(){
     const savedProjects = useSelector((state) => Object.values(state.savedProject))
     const usersProjects = projects?.filter((project) => project.user_id === user.id)
 
-   
+   console.log(user.username)
 
     // console.log(`user state`, user.id)
 
@@ -49,7 +49,30 @@ function Account(){
 
     return (
         <>
-            <h1>Account page</h1>
+            <Header /> 
+
+            <div className='UI__container-outter'>
+                <div className='UI__default-pfp'></div>
+                <div className='user__information-container'>
+                    <div className='user__information-content'>
+                        
+                        <div className='info__field-username '>
+                           <h2>{user.username}</h2> 
+                        </div>
+
+                        <div className='info__field-username '>
+                            <h3>{`${user.first_name} ${user.last_name}`}</h3>
+                        </div>
+
+                        
+                        
+                       
+                    </div>
+                </div>
+
+            
+            </div>
+            
 
             <div className='users__projects-container'>
             {usersProjects?.map((project) => (

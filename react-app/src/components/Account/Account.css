@@ -1,9 +1,16 @@
 .users__projects-container{
     height: 450px;
-    border: 3px solid red;
+    /* border: 3px solid red; */
     display:flex;
     flex-direction: row;
     overflow-y: auto;
+    position: relative; 
+    left: 30%;
+    margin-top:3%;
+    z-index: -2;
+    background-color:white;
+    align-items: center;
+    /* padding-bottom:15px; */
 }
 
 
@@ -12,6 +19,10 @@
     border: 3px solid red;
     display:flex;
     flex-direction: row;
+    position: relative; 
+    left: 30%;
+    margin-top:3%;
+    background-color:white;
 }
 
 
@@ -31,4 +42,66 @@
     font-size:22px;
     color:black;
     padding: 0 10px 0 10px;
+}
+
+.UI__container-outter{
+    border-right: 3px solid grey; 
+    border-left: 3px solid grey; 
+    width: 500px;
+    height: 100vh;
+    position: fixed; 
+    top:71px;
+    background-color:white;
+    z-index:-1;
+
+}
+
+.user__information-container{
+    border: 3px solid black; 
+    width: 400px;
+    height: 400px;
+    position: fixed; 
+    left: 2.5%;
+    top:50%;
+    z-index: -1;
+    border-radius:30px;
+    display:flex;
+    /* flex-direction:column; */
+    align-items: center;
+    justify-content: center;
+
+}
+
+.UI__default-pfp{
+    /* border:3px solid rgb(28, 28, 58); */
+    height: 400px;
+    width:400px;
+    border-radius: 50%;
+    position: fixed; 
+    left: 2.5%;
+    top:20%;
+    background-image: url('userDefault-1.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 5px 5px grey;
+    
+}
+
+.user__information-content{
+    /* border: 3px solid purple; */
+    width:80%;
+    display: flex;
+    justify-content: center;
+    padding:10px;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.info__field{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border:3px solid orange;
+    width:50%
 }
