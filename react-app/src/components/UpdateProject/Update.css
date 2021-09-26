@@ -1,0 +1,16 @@
+.update__project-form{
+    border: 3px solid green;
+    width:500px;
+    height:100vh;
+}
+
+.update__page-container{
+    border: 3px solid red;
+    display:flex;
+
+}
+.previous__project-container{
+    border: 3px solid purple;
+    width:100%;
+    
+}

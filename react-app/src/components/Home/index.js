@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProjects } from '../../store/project';
 
 import Footer from '../Footer'
+import Header from '../Header';
 
 
 import './Home.css'
@@ -34,10 +35,7 @@ function Home(){
 
     return(
         <div>
-           <div className='header__container'>
-
-           </div>
-
+           <Header />
 
 
 
@@ -46,11 +44,11 @@ function Home(){
 
            <div className='container-labels'>
                 <h1>Cleaning</h1>
-            </div>
+           </div>
 
            <div className='first__outter-container'>
                     {cleaningProjects.map((project) => (
-                    <a className='anchor' href={`/project/${project.id}`}>
+                    <a className='anchor' href={`/projects/${project.id}`}>
                         <div className='tile__containers'>
                             <div>
                                 <img className='tile-image' src={project.image_url}></img>
@@ -59,7 +57,6 @@ function Home(){
                                 <p>{project.title}</p>
                             </div>
                         </div></a>
-
                     ))}
            </div>
 

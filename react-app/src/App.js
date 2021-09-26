@@ -13,6 +13,9 @@ import { authenticate } from './store/session';
 import Splash from './components/Splash';
 import Home from './components/Home'
 import Account from './components/Account'
+import CreateProject from './components/CreateProject';
+import Project from './components/Projects';
+import UpdateProjectForm from './components/UpdateProject';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,6 +57,15 @@ function App() {
         <ProtectedRoute path='/account' >
             <Account />
         </ProtectedRoute>
+        <ProtectedRoute path='/create-project'>
+            <CreateProject />
+        </ProtectedRoute>
+        <ProtectedRoute path='/projects/:id'>
+            <Project />
+        </ProtectedRoute>
+        <ProtectedRoute path='/update/:id'>
+            <UpdateProjectForm />
+        </ProtectedRoute >
         <Route path ='/test'>
             <NavBar />?
             
