@@ -18,16 +18,31 @@
     padding-top:10px;
     padding-left:20px;
     padding-right:20px;
+    border-radius:30px;
 }
 
 
 .project__durationCost-container{
-    border: 3px solid green;
+    /* border: 3px solid green; */
     height: 400px;
-    width: 15%;
+    width: 18%;
     position:absolute;
     top:50%;
-    margin-left: 3%
+    background-color:white;
+    
+    /* margin-left: 3% */
+}
+
+.duration{
+    display:flex;
+    flex-direction: column;
+    align-items: center;  
+    border-bottom:3px solid grey;
+    height:50%;
+    justify-content: center;
+    margin:5px;
+
+
 }
 
 
@@ -40,4 +55,57 @@
     right:0;
 
     margin-right: 3%
+}
+
+
+.project__title-container{
+    border: 3px solid blue;
+    display:flex;
+    justify-content:center;
+    font-weight:bold;
+    /* color:white; */
+}
+
+
+.project-body{
+    background-color: tan;
+    background-size: 400% 400%;
+    height: 100%;
+    width:110%;
+    margin-left: -6px;
+  
+}
+.project__externalLinks-container{
+    border: 3px solid red;
+    padding:30px;
+    font-size:large;
+    display:flex;
+    justify-content: space-around;
+    width:49%;
+    align-items: center;
+    margin-left:23%;
+}
+
+.save-project-tile{
+    /* border: 3px solid purple; */
+    height:30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:30px;
+
+}
+
+.save__button{
+    display:flex;
+    align-items: center;
+    width: 40%;
+    font-size: large;
+    height: 50px;
+    border:2px solid black;
+    border-radius:30px;
+}
+
+.saved{
+    background-color: red;
 }
