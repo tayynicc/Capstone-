@@ -55,7 +55,8 @@ function App() {
             <Account />
         </ProtectedRoute>
         <Route path ='/test'>
-            <NavBar />
+            <NavBar />?
+            
         </Route>
       </Switch>
     </BrowserRouter>
