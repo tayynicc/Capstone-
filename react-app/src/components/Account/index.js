@@ -83,8 +83,12 @@ function Account(){
                             <div className='tile-title-account'>
                                 <p>{project.title}</p>
                                 {/* <UpdateFormModal /> */}
+
                                 <a href={`/update/${project.id}`}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></a>
-                                <button className='project__delete-btn' onClick={() => handleDelete(project.id)}><img src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/></button>
+
+                                <a href={`/update/${project.id}`}>Edit</a>
+
+                                <button className='project__delete-btn' onClick={() => handleDelete(project.id)}><img src="https://img.icons8.com/fluency/48/000000/delete-sign.png" type='submit' /></button>
 
                                 
                             </div>

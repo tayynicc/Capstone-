@@ -5,7 +5,26 @@
     position: relative;
     top:-10px;
     left:-10px;
-    width: 102%;
+    width: 100%;
     border:3px solid red;
+    display:flex;
+    align-items:center;
+    padding-left:20px;
+    justify-content: space-between;
     
+}
+
+.logo__container{
+    border: 3px solid red;
+    width:200px;
+    height:60px;
+    background-image: url('./renew.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+
+.nav__links{
+    border: 3px solid blue;
+    margin-right:300px;
 }

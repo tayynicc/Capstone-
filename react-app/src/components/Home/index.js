@@ -34,7 +34,7 @@ function Home(){
     }, [dispatch])
 
     return(
-        <div>
+        <body className='home__body'>
            <Header />
 
 
@@ -101,7 +101,7 @@ function Home(){
            </div>
 
             <Footer />
-        </div>
+        </body>
         
     )
 }

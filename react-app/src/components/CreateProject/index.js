@@ -2,14 +2,24 @@
 
 import './CreateProject.css'
 import CreateProjectForm from './CreateProjectForm'
+import Footer from '../Footer'
 
 
 function CreateProject(){
 
     return(
         <>
-            <h1>Create a new project</h1>
-            <CreateProjectForm />
+
+            <div className='create__form-container'>
+                <CreateProjectForm />
+            </div>
+
+            <div className='bgk__image-container'>
+                <h1 className='page__lable'> Create New Project </h1>
+            </div>
+
+            <Footer />
+            
         </>
     )
 }

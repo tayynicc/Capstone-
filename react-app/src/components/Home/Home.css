@@ -1,8 +1,19 @@
+.home__body{
+    background-color:burlywood;
+    position: absolute; 
+    left:-10px;
+    right:-10px;
+    top:0px;
+}
+
+
+
 .first__outter-container{
     border: 3px solid green;
     height: 500px;
     display:flex;
     flex-direction: row;
+    align-items: center;
     margin-left:100px;
     margin-right:100px;
     background-color:white;
@@ -75,20 +86,3 @@
     display:flex;
     flex-direction: row;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

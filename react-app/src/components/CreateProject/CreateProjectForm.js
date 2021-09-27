@@ -67,25 +67,40 @@ function CreateProjectForm(){
 
     return (
         <>
-            <h1>Create a New Project</h1>
-            <form >
-                <label>Title</label>
-                <input value={title} onChange={updateTitle} placeholder='Title'></input>
+           
+            <form className='create__form'>
+                <div className='create__form-label-container'>
+                    <label className='create__form-label'>Title</label>
+                </div>
 
-                <label>Instructions</label>
-                <textarea value={instructions} onChange={updateInstructions} placeholder='Instructions'></textarea>
+                <input className='create__form-input' value={title} onChange={updateTitle} placeholder='Title'></input>
 
-                <label>Supplies</label>
-                <textarea value={supplies} onChange={updateSupplies} placeholder='Supplies'></textarea>
+                <div className='create__form-label-container'>
+                    <label className='create__form-label'>Instructions</label>
+                </div>
 
-                <label>Cost</label>
-                <input value={cost} onChange={updateCost}  type='number' placeholder='Cost, must be numerical value'></input>
+                <textarea className='create__form-input' value={instructions} onChange={updateInstructions} placeholder='Instructions'></textarea>
 
-                <label>Duration</label>
-                <input placeholder='ex: 30 min or 1 hour' value={duration} onChange={updateDuration}></input>
+                <div className='create__form-label-container'>
+                    <label className='create__form-label'>Supplies</label>
+                </div>
+                <textarea className='create__form-input' value={supplies} onChange={updateSupplies} placeholder='Supplies'></textarea>
 
-                <label>Action</label>
-                <select placeholder='What are we getting into?' onChange={updateAction}>
+                <div className='create__form-label-container'>
+                    <label className='create__form-label'>Cost</label>
+                </div>
+                <input  className='create__form-input' value={cost} onChange={updateCost}  type='number' placeholder='Cost, must be numerical value'></input>
+
+                <div className='create__form-label-container'>
+                    <label className='create__form-label'>Duration</label>
+                </div>
+                <input placeholder='ex: 30 min or 1 hour' className='create__form-input' value={duration} onChange={updateDuration}></input>
+
+                <div className='create__form-label-container'>
+                    <label className='create__form-label'>Action</label>
+                </div>
+
+                <select className='create__form-input' placeholder='What are we getting into?' onChange={updateAction}>
                     <option value='DIY' >DIY</option>
                     <option value='Tidy up' >Tidy Up</option>
                     <option value='Deep Clean' >Deep Clean</option>
@@ -93,18 +108,25 @@ function CreateProjectForm(){
                     <option value='Decorate' >Decorate</option>
                 </select>
 
-                <label>Type</label>
-                <select onChange={updateType}>
+                <div className='create__form-label-container'>
+                    <label className='create__form-label'>Type</label>
+                </div>
+
+                <select className='create__form-input' onChange={updateType}>
                     <option value='Cleaning'> Cleaning </option>
                     <option value='Orginization'> Orginization </option>
                     <option value='Decor'> Decor </option>
                 </select>
 
-                <label>Image Url</label>
-                <input type='url' placeholder='Image Url' value={image} onChange={updateImage}></input>
+                <div className='create__form-label-container'>
+                    <label className='create__form-label'>Image Url</label>
+                </div>
+                <input className='create__form-input' type='url' placeholder='Image Url' value={image} onChange={updateImage}></input>
 
-                <label>Live Links</label>
-                <input value={links} onChange={updateLinks}></input>
+                <div className='create__form-label-container'>
+                    <label className='create__form-label'>Live Links</label>
+                </div>
+                <input className='create__form-input' value={links} onChange={updateLinks}></input>
 
                 <button type='submit' onClick={handleSubmit} >Submit</button>
             </form>
