@@ -99,10 +99,10 @@ export default function reviewReducer(state={}, action){
                 ...newReviews
             }
         case ADD_REVIEW:
-            if(!state[action.review.id]) {
+            if(!state[action.reviews.id]) {
                 return {
                     ...state,
-                    [action.review.id] : action.review
+                    [action.reviews.id] : action.reviews
                 }
             }
             return {
