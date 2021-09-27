@@ -144,8 +144,11 @@
 }
 
 .review__outter-container{
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     width:70%;
     margin-left: 210px; 
-    height:1000px;
+    height:970px;
+    background-color: white;
+    border-radius: 30px;
+    /* overflow: hidden; */
 }

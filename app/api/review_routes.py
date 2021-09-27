@@ -28,7 +28,7 @@ def review():
 def new_review():
     review = Review ( 
         project_id = int(request.json['project_id']),
-        user_id = int(request.json['user_id']),
+        user_id = request.json['user_id'],
         body = request.json['body'],
         created_at = request.json['created_at'],
         updated_at = request.json['updated_at']

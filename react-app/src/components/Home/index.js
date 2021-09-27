@@ -67,7 +67,7 @@ function Home(){
 
            <div className='second__outter-container'>
                 {orgProjects.map((project) => (
-                    <a className='anchor' href={`/project/${project.id}`}>
+                    <a className='anchor' href={`/projects/${project.id}`}>
                         <div className='tile__containers'>
                             <div>
                                 <img className='tile-image' src={project.image_url}></img>
@@ -86,7 +86,7 @@ function Home(){
 
            <div className='third__outter-container'>
                 {decorProjects.map((project) => (
-                    <a className='anchor' href={`/project/${project.id}`}>
+                    <a className='anchor' href={`/projects/${project.id}`}>
                         <div className='tile__containers'>
                             <div>
                                 <img className='tile-image' src={project.image_url}></img>
