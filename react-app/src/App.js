@@ -67,7 +67,8 @@ function App() {
             <UpdateProjectForm />
         </ProtectedRoute >
         <Route path ='/test'>
-            <NavBar />
+            <NavBar />?
+            
         </Route>
       </Switch>
     </BrowserRouter>

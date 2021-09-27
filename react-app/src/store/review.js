@@ -1,22 +1,22 @@
-const LOAD_REVIEWS = 'review/LOAD'
-const ADD_REVIEW = 'review/ADD'
-const EDIT_REVIEW = 'review/EDIT'
-const REMOVE_REVIEW = 'review/REMOVE'
+const LOAD_REVIEWS = 'reviews/LOAD'
+const ADD_REVIEW = 'reviews/ADD'
+const EDIT_REVIEW = 'reviews/EDIT'
+const REMOVE_REVIEW = 'reviews/REMOVE'
 
 
-const loadReviews = (review) => ({
+const loadReviews = (reviews) => ({
     type: LOAD_REVIEWS,
-    review
+    reviews
 })
 
-const addOneReview = (review) => ({
+const addOneReview = (reviews) => ({
     type: ADD_REVIEW,
-    review
+    reviews
 })
 
-const remove = (review) => ({
+const remove = (reviewId) => ({
     type: REMOVE_REVIEW,
-    review
+    reviewId
 })
 
 const update = (review) => ({

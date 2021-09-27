@@ -1,0 +1,92 @@
+/* body {
+	background: linear-gradient(-45deg,  #461E52, #DD517F, #E68E36, #556DC8, #7998EEl);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+} */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+.login__form-outer{
+	border: 3px solid black;
+	width:350px;
+	height:500px;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items:center;
+	border-radius: 30px;
+	background-color: aliceblue;
+
+}
+
+.form__header-contianer{
+	position:fixed;
+	top:-20px;
+	left:20px;
+	/* border: 3px solid green; */
+	font-family: Ephesis;
+	font-size:33px;
+	transform: skew(-15deg);
+	font-weight:bold;
+	
+}
+
+.form__label-input{
+	/* border:3px solid red; */
+	display:flex;
+	flex-direction: column;
+	width:300px;
+	margin-top:40px;
+}
+
+.login__label{
+	display:flex;
+	/* border:3px solid purple; */
+	justify-content: center;
+	font-size:25px;
+	margin-bottom:10px;
+}
+
+.login__input{
+	padding:10px;
+	margin-bottom:20px;
+}
+
+.login__button{
+	padding:10px;
+	font-size:17px;
+	border-radius:30px;
+	font-weight:bold;
+	background-color:rgb(30, 30, 54);
+	color:white;
+}
+
+.redirect__container{
+	margin-top:20px;
+}
+
+
+.form__login{
+	/* border: 3px solid red; */
+	margin-top:90px;
+}
+
+.login__form-err{
+	color:red;
+}
