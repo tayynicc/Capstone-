@@ -8,6 +8,7 @@ import { getProjects } from '../../store/project'
 
 import Header from '../Header'
 import Footer from '../Footer'
+import Comments from '../Comments'
 
 
 function Project(){
@@ -54,7 +55,12 @@ function Project(){
                         <h1>{pro.title}</h1>
                     </div>
                     
-                    <div className='project__image-container'><img className ='product__image' src={pro.image_url}></img></div>
+                    <div className='project__image-outterContainer'>
+                        <div className='project__image-innerContainer'>
+                            <img className ='product__image' src={pro.image_url}></img>
+                        </div> 
+                    </div>
+                    
 
                     <div className='project__instructions-container'><p>{pro.instruction}</p></div>
 
@@ -73,14 +79,21 @@ function Project(){
                     </div>
 
                     <div className='project__supplies-container'>
-                        <h1>Supply list</h1>
-                        <ul>
-                        {splitSupplies(pro.supplies).map((itm) => (
-                            <li>{itm}</li> 
-                        ))} 
-                        </ul>
-                        <h1>Estimated Cost</h1>
-                        <h3>$ {pro.cost}</h3>
+                        <div className='supply-list'>
+                            <h1>Supply list</h1>
+                            <ul>
+                            {splitSupplies(pro.supplies).map((itm) => (
+                                <li>{itm}</li> 
+                            ))} 
+                            </ul>
+                        </div>
+                        
+                        <div className='cost-container'>
+                          <h1>Estimated Cost: </h1>
+                        <h3>$ {pro.cost}</h3>  
+                        </div>
+                        
+                        
                     </div>
 
                     <div className='project__externalLinks-container'>
@@ -89,6 +102,10 @@ function Project(){
                     </div>
                 </>
             ))}
+
+            <div className='review__outter-container'>
+                <Comments />
+            </div>
 
             <Footer />
             
