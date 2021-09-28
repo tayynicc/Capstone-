@@ -6,8 +6,10 @@
     overflow-y: auto;
     position: relative; 
     left: 50%;
-    margin-top:1.5%;
-    z-index: -2;
+    top:-840px;
+    right:30%;
+    /* margin-top:1.5%; */
+    /* z-index: -2; */
     background-color:white;
     align-items: center;
     width:45.5%;
@@ -23,7 +25,8 @@
     flex-direction: row;
     position: relative; 
     left: 50%;
-    margin-top:1.5%;
+    top:-810px;
+    /* margin-top:1.5%; */
     background-color:white;
     width:45.5%;
     background-color:lightgrey;
@@ -53,12 +56,14 @@
     border: 3px solid #72739f; 
     width: 500px;
     height: 86vh;
-    position: absolute; 
-    top:90px;
-    left:200px;
+    margin-left:10%;
+    margin-top:1%;
     background-color:lightgray;
-    z-index:-1;
     border-radius:30px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -66,13 +71,9 @@
     border: 3px solid grey; 
     width: 400px;
     height: 400px;
-    position: absolute; 
-    left: 50px;
-    top:50%;
-    z-index: -1;
     border-radius:30px;
     display:flex;
-    /* flex-direction:column; */
+    margin-bottom:20%;
     align-items: center;
     justify-content: center;
     background-color: white;
@@ -80,22 +81,20 @@
 }
 
 .UI__default-pfp{
-    /* border:3px solid rgb(28, 28, 58); */
+
     height: 400px;
     width:400px;
     border-radius: 50%;
-    position: absolute; 
-    left: 50px;
-    top:15%;
+    position: relative; 
     background-image: url('userDefault-1.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     box-shadow: 0 0 5px 5px grey;
+    top:10%;
     
 }
 
 .user__information-content{
-    /* border: 3px solid purple; */
     width:80%;
     display: flex;
     justify-content: center;
@@ -119,9 +118,6 @@
     width: 400px;
     height:350px;
     margin-left:20px;
-    /* margin-top: 10px; */
-    
-    
 }
 
 

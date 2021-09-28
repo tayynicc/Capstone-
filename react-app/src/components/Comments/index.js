@@ -54,7 +54,7 @@ function Comments(){
 
         const [ usr ] = user
        
-        return usr.username
+        return usr?.username
     }
 
 

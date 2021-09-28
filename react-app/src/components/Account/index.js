@@ -18,9 +18,10 @@ function Account(){
     const projects = useSelector((state) => Object.values(state.project))
 
     const savedProjects = useSelector((state) => Object.values(state.savedProject))
+
+    
     const usersProjects = projects?.filter((project) => project.user_id === user.id)
 
-   console.log(user.username)
 
     // console.log(`user state`, user.id)
 
@@ -47,6 +48,10 @@ function Account(){
         dispatch(getProjects());
         dispatch(getSavedProjects())
     }, [dispatch])
+
+    const click = () => {
+        console.log(`clicked button`)
+    }
 
     return (
         <>
@@ -80,6 +85,7 @@ function Account(){
             
 
             <div className='users__projects-container-account'>
+            {/* <button type='submit' onClick={() => click()}> Click me </button> */}
             {usersProjects?.map((project) => (
                         <div className='tile__containers-account'>
                             <div>
@@ -87,15 +93,15 @@ function Account(){
                             </div>
                             <div className='tile-title-account'>
                                 <p>{project.title}</p>
-                                {/* <UpdateFormModal /> */}
                                 <a href={`/update/${project.id}`}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></a>
                                 <button className='project__delete-btn' onClick={() => handleDelete(project.id)}><img src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/></button>
 
                                 
                             </div>
+                            {/* <button type='submit' onClick={() => click()}>Click me </button> */}
                         </div>
 
-                    ))}
+                    )).reverse()}
 
             </div>
 
