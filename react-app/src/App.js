@@ -16,6 +16,7 @@ import Account from './components/Account'
 import CreateProject from './components/CreateProject';
 import Project from './components/Projects';
 import UpdateProjectForm from './components/UpdateProject';
+import SlideMenu from './components/SlideMenu';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -67,7 +68,8 @@ function App() {
             <UpdateProjectForm />
         </ProtectedRoute >
         <Route path ='/test'>
-            <NavBar />?
+            {/* <NavBar /> */}
+            <SlideMenu />
             
         </Route>
       </Switch>

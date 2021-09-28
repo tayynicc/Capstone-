@@ -40,9 +40,13 @@
     border-radius: 30px;
     border:2px solid black;
     background-color:white;
+    background-color: green;
     
 }
 
+.comment__submitButton:hover{
+    cursor: pointer;
+}
 .comments__container{
     /* border: 3px solid red;  */
     margin-top:30px;
@@ -67,6 +71,7 @@
     height: fit-content;
     margin-top:10px;
     /* border-radius: 30px; */
+    width:100%;
     background-color:whitesmoke;
 }
 

@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProjects, deleteProject } from '../../store/project';
 import { getSavedProjects } from '../../store/saved_project'
 
-import Header from '../Header'
+import SlideMenu from '../SlideMenu';
+import Footer from '../Footer';
 
 import './Account.css'
 
@@ -49,7 +50,11 @@ function Account(){
 
     return (
         <>
-            <Header /> 
+            <SlideMenu />
+
+            <div className='top__logo-div'>
+                <h1 className='logo'>ReNew Me</h1>
+           </div>
 
             <div className='UI__container-outter'>
                 <div className='UI__default-pfp'></div>
@@ -108,6 +113,7 @@ function Account(){
                 ))} */}
 
             </div>
+            <Footer />
         </>
         
     )

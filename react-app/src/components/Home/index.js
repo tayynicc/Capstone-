@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProjects } from '../../store/project';
 
 import Footer from '../Footer'
-import Header from '../Header';
+// import Header from '../Header';
+import SlideMenu from '../SlideMenu';
 
 
 import './Home.css'
@@ -35,7 +36,11 @@ function Home(){
 
     return(
         <div>
-           <Header />
+           <SlideMenu />
+
+           <div className='top__logo-div'>
+                <h1 className='logo'>ReNew Me</h1>
+           </div>
 
 
 

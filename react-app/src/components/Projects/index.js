@@ -9,6 +9,7 @@ import { getProjects } from '../../store/project'
 import Header from '../Header'
 import Footer from '../Footer'
 import Comments from '../Comments'
+import SlideMenu from '../SlideMenu'
 
 
 function Project(){
@@ -48,7 +49,8 @@ function Project(){
 
     return (
         <body className='project-body'>
-            <Header /> 
+            {/* <Header />  */}
+            <SlideMenu />
             {project.map((pro) => (
                 <>
                     <div className='project__title-container'>
@@ -56,27 +58,31 @@ function Project(){
                     </div>
                     
                     <div className='project__image-outterContainer'>
+                        {/* <img className='cleaning__bkg-img' src='https://cdn2.hubspot.net/hubfs/2731727/Imported_Blog_Media/cleaning-essentials.jpg'></img>  */}
                         <div className='project__image-innerContainer'>
                             <img className ='product__image' src={pro.image_url}></img>
-                        </div> 
-                    </div>
-                    
+                        </div>  
 
-                    <div className='project__instructions-container'><p>{pro.instruction}</p></div>
-
-                    <div className='project__durationCost-container'>
-                        <div className='duration'>
-                           <h2>Estimated Time to Complete: </h2>
-                            {pro.duration} Minutes
-                        </div>
-                        
                         <div className='save-project-tile'>
                             <button id='save-button'  onClick={() => save(pro.id)} className='save__button'>Save This Project! <img src="https://img.icons8.com/ios-glyphs/30/000000/like--v2.png"/></button>
                             
                             
                         </div>
 
+                        <div className='duration'>
+                           <h2>Estimated Time to Complete: </h2>
+                            {pro.duration} Minutes
+                        </div>
+
                     </div>
+                    
+                    <h1 className='project__inst-label'>Instructions</h1>
+
+                    <div className='project__instructions-container'>
+                        <p>{pro.instruction}</p>
+                    </div>
+
+                
 
                     <div className='project__supplies-container'>
                         <div className='supply-list'>
