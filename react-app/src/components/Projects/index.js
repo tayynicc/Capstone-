@@ -9,6 +9,7 @@ import { getProjects } from '../../store/project'
 import Header from '../Header'
 import Footer from '../Footer'
 import Comments from '../Comments'
+import SlideMenu from '../SlideMenu'
 
 
 function Project(){
@@ -49,6 +50,7 @@ function Project(){
     return (
         <body className='project-body'>
             {/* <Header />  */}
+            <SlideMenu />
             {project.map((pro) => (
                 <>
                     <div className='project__title-container'>
@@ -111,7 +113,7 @@ function Project(){
                 <Comments />
             </div>
 
-            {/* <Footer /> */}
+            <Footer />
             
         </body>
     )

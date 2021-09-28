@@ -1,14 +1,23 @@
 .footer__content{
-    width: 30%;
+    width: 90%;
+    height:30px;
+    border-top:3px solid black;
     display:flex;
     flex-direction: row;
-    display:flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    background-color: darkgray;
+    position:relative;
+    bottom:-26px;
 }
 
 
 .footer__name{
     font-weight: bold; 
-    font-size:25px;
+    font-size:20px;
 }
+.icon{
+    width:29px;
+    margin-left:10px;
+}
+

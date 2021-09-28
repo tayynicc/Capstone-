@@ -1,5 +1,5 @@
 .project__image-innerContainer{
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     height:min-content;
     width: max-content;
     padding:50px;
@@ -31,8 +31,12 @@
 }
 
 .project__inst-label{
+    /* border: 3px solid red; */
+    width:fit-content;
     display:flex;
     justify-content: center;
+    position: relative;
+    left: 40%;
 }
 
 .project__instructions-container{
@@ -153,7 +157,7 @@
     /* width: 40%; */
     font-size: large;
     height: 50px;
-    border:2px solid black;
+    border:none;
     border-radius:30px;
     /* position: absolute; */
 }
