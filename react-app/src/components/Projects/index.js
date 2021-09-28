@@ -40,25 +40,7 @@ function Project(){
     }
 
     const saveProject = async (project) => {
-        console.log(`!!`, project)
-
-        const {
-            action, 
-            cost, 
-            created_at,
-            duration,
-            id,
-            image_url,
-            instruction,
-            live_links,
-            supplies,
-            title,
-            type,
-            updated_at 
-        } = project
-
-        console.log(user.id)
-
+   
         const payload = {
             user_id: +user.id, 
             project_id: id,
@@ -66,8 +48,6 @@ function Project(){
         }
 
         await dispatch(addProject(payload))
-        save(project.id)
-
     }
 
     const save = (id) => {

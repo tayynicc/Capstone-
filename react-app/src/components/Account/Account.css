@@ -27,9 +27,11 @@
     left: 50%;
     top:-810px;
     /* margin-top:1.5%; */
-    background-color:white;
+    /* background-color:white; */
     width:45.5%;
     background-color:lightgrey;
+    overflow: auto;
+    align-items: center;
 }
 
 

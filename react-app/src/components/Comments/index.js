@@ -163,6 +163,9 @@ function Comments(){
             <h1>Leave A Comment</h1>
         </div>
         <div className='comments__input-field'>
+            
+            <li>{errors}</li>
+            
             <div className='comment__input-innerContainer'>
               <textarea onChange={updateReview} placeholder='Share Your Thoughts!' className='comment-field'></textarea>  
             </div>
