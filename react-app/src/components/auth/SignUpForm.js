@@ -24,28 +24,85 @@ const SignUpForm = () => {
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
+    let tempErrors = {...errors}
+
+    if(!username.length){
+        tempErrors.username = 'Please provide a valid username'
+        setErrors(tempErrors)
+    }else {
+        delete tempErrors.username
+        setErrors(tempErrors)
+    }
   };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
-  };
+    let tempErrors = {...errors}
+    let charsPresent = []
+    const splitEmail = email.split('')
+
+    for(let chars in splitEmail){
+        let char = splitEmail[chars] 
+
+        if(char === '@'){
+            charsPresent.push(true)
+        }if(char === '.'){
+            charsPresent.push(true)
+        }
+    }
+
+    if(charsPresent.length < 2){
+        tempErrors.email = 'Please provide a valid email.'
+        setErrors(tempErrors)
+    } else if (charsPresent.length === 2){
+        delete tempErrors.email
+        setErrors(tempErrors)
+    }
+};    
 
   const updatePassword = (e) => {
     setPassword(e.target.value);
+    let tempErrors = {...errors}
+
+    if(!password.length){
+        tempErrors.password = 'Please provide password.'
+        setErrors(tempErrors)
+    } else {
+        delete tempErrors.password 
+        setErrors(tempErrors)
+    }
   };
 
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
+    let tempErrors = {...errors}
+
+    if(!repeatPassword.length){
+        tempErrors.repeatPassword = 'Please repeat your password.'
+        setErrors(tempErrors)
+    }else if (repeatPassword.length){
+        delete tempErrors.repeatPassword
+        setErrors(tempErrors)
+    }if(password !== repeatPassword){
+        tempErrors.checkPassword = 'Passwords do not match.'
+        setErrors(tempErrors)
+    }else if (password === repeatPassword){
+        delete tempErrors.checkPassword
+        setErrors(tempErrors)
+    }
+
   };
 
   if (user) {
     return <Redirect to='/' />;
   }
 
+  const currentErrors = Object.values(errors)
+
   return (
     <form onSubmit={onSignUp}>
       <div>
-        {errors.map((error, ind) => (
+        {currentErrors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>

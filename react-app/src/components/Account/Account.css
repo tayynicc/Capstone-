@@ -128,3 +128,25 @@
     border: 3px solid red;
     width: 395px;
 }
+
+
+.container__labels{
+    /* border: 3px solid red; */
+    /* width:100%; */
+    position:absolute;
+    top:25%;
+    left:38%;
+    height:55%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+
+
+}
+
+.rotated__label{
+    transform: rotate(-30deg);
+    color:#72739f;
+}

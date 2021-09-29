@@ -96,9 +96,14 @@ function Account(){
             
             </div>
             
+            <div className='container__labels'>
+                <h2 className='rotated__label'>My Projects</h2>
+                <h2 className='rotated__label'>My Saved Projects</h2>
+            </div>
 
             <div className='users__projects-container-account'>
-            {/* <button type='submit' onClick={() => click()}> Click me </button> */}
+            
+            
             {usersProjects?.map((project) => (
                         <div className='tile__containers-account'>
                             <div>

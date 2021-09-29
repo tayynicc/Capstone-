@@ -32,13 +32,13 @@ function UpdateProjectForm(){
 
     const [ title, setTitle ] = useState(prevProject[0]?.title);
     const [ instructions, setInstructions ] = useState(prevProject[0]?.instruction);
-    const [ supplies, setSupplies ] = useState(prevProject[0]?.suppplies);
+    const [ supplies, setSupplies ] = useState(prevProject[0]?.supplies);
     const [ cost, setCost ] = useState(prevProject[0]?.cost);
     const [ duration, setDuration ] = useState(prevProject[0]?.duration);
     const [ action, setAction ] = useState(prevProject[0]?.action);
     const [ type, setType ] = useState(prevProject[0]?.type);
     const [ image, setImage ] = useState(prevProject[0]?.image_url);
-    const [ links, setLinks ] = useState(prevProject[0]?.links);
+    const [ links, setLinks ] = useState(prevProject[0]?.live_links);
 
 
     const updateTitle = (e) => setTitle(e.target.value);
@@ -76,11 +76,12 @@ function UpdateProjectForm(){
         const project = await dispatch(editProject(payload))
 
         console.log(project)
-            // if (project) {
-            //     history.push(`/projects/${project.id}`)
-            // }
+            if (project) {
+                history.push(`/projects/${project.id}`)
+            }
     };
 
+    
     useEffect(() => {
         dispatch(getProjects());
     }, [dispatch])

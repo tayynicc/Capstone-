@@ -21,7 +21,7 @@ function Comments(){
 
     const updateReview = (e) => {
         setReview(e.target.value)
-        if(review.length <= 0 ){
+        if(e.target.value.length <= 0 ){
             setErrors("Input area has no content")
         }
         if (review.length > 0){
@@ -114,7 +114,6 @@ function Comments(){
     }
 
     const updated = () => {
-        console.log(`triggered`)
         const p = document.getElementById('prev__comment')
         const body = document.getElementById('comment__text')
         const done = document.getElementById('done__btn')
@@ -128,7 +127,6 @@ function Comments(){
     }
 
     const handleUpdate = async (newReview) => {
-        console.log(`handling update`, newReview)
 
         
 
@@ -164,10 +162,10 @@ function Comments(){
         </div>
         <div className='comments__input-field'>
             
-            <li>{errors}</li>
+            <li className='comment__error-msg'>{errors}</li>
             
             <div className='comment__input-innerContainer'>
-              <textarea onChange={updateReview} placeholder='Share Your Thoughts!' className='comment-field'></textarea>  
+              <textarea value={review} onChange={updateReview} placeholder='Share Your Thoughts!' className='comment-field'></textarea>  
             </div>
             
             <div className='comment__input-submitButton'>
