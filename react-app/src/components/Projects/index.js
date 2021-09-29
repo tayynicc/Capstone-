@@ -6,6 +6,8 @@ import { useParams } from 'react-router'
 
 import { getProjects } from '../../store/project'
 
+import { addProject } from '../../store/saved_project' 
+
 import Header from '../Header'
 import Footer from '../Footer'
 import Comments from '../Comments'
@@ -17,10 +19,14 @@ function Project(){
     const dispatch = useDispatch();
 
     const projects = useSelector((state) => Object.values(state.project)) 
+    const user = useSelector((state) => state.session.user)
+
+
+
 
     const project = projects.filter((singleProject) => singleProject.id === +id)
 
-    console.log(`single`, project)
+
 
     useEffect(() => {
         // dispatch(getOneProject(id));
@@ -31,6 +37,17 @@ function Project(){
         let items = str.split(',')
         return items
 
+    }
+
+    const saveProject = async (project) => {
+   
+        const payload = {
+            user_id: +user.id, 
+            project_id: id,
+         
+        }
+
+        await dispatch(addProject(payload))
     }
 
     const save = (id) => {
@@ -64,7 +81,7 @@ function Project(){
                         </div>  
 
                         <div className='save-project-tile'>
-                            <button id='save-button'  onClick={() => save(pro.id)} className='save__button'>Save This Project! <img src="https://img.icons8.com/ios-glyphs/30/000000/like--v2.png"/></button>
+                            <button id='save-button'  onClick={() => saveProject(pro)} className='save__button' >Save This Project! <img src="https://img.icons8.com/ios-glyphs/30/000000/like--v2.png"/></button>
                             
                             
                         </div>

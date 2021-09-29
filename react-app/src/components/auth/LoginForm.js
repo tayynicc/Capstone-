@@ -4,9 +4,11 @@ import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 
 const LoginForm = () => {
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -18,8 +20,32 @@ const LoginForm = () => {
     }
   };
 
+  
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
+    let tempErrors = {...errors}
+    let charsPresent = []
+    const splitEmail = email.split('')
+
+    for(let chars in splitEmail){
+        let char = splitEmail[chars] 
+
+        if(char === '@'){
+            charsPresent.push(true)
+        }if(char === '.'){
+            charsPresent.push(true)
+        }
+    }
+
+    if(!charsPresent.length < 2){
+        tempErrors.email = 'Please provide a valid email.'
+        setErrors(tempErrors)
+    } else if (charsPresent.length === 2){
+        delete tempErrors.email
+        setErrors(tempErrors)
+    }
+    
   };
 
   const updatePassword = (e) => {
@@ -30,11 +56,13 @@ const LoginForm = () => {
     return <Redirect to='/' />;
   }
 
+  const currentErrors = Object.values(errors)
+  console.log(`login errors`, errors)
   return (
     <form onSubmit={onLogin}>
       <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+        {currentErrors.map((err) => (
+            <p>{err}</p>
         ))}
       </div>
       <div>

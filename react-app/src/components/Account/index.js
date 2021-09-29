@@ -18,11 +18,13 @@ function Account(){
     const projects = useSelector((state) => Object.values(state.project))
 
     const savedProjects = useSelector((state) => Object.values(state.savedProject))
+
+
+    
     const usersProjects = projects?.filter((project) => project.user_id === user.id)
 
-   console.log(user.username)
 
-    // console.log(`user state`, user.id)
+    console.log(`user proj`, savedProjects)
 
     // const populatedSavedProjects = (userId) => {
     //     console.log(`id`, userId)
@@ -36,11 +38,27 @@ function Account(){
     //     return res
     // }
 
+
     // populatedSavedProjects(user.id)
+
+    const getProject = (id) => {
+        const project = projects.filter((project) => project.id === id)
+
+        console.log(`!!`,project)
+
+        const [ proj ] = project
+        return proj
+    }
+
+    
+
+
+
 
 
     const handleDelete = (id) => {
-        dispatch(deleteProject(id))
+        console.log(`id`, id)
+        dispatch(deleteProject(+id))
     }
 
     useEffect(() => {
@@ -80,6 +98,7 @@ function Account(){
             
 
             <div className='users__projects-container-account'>
+            {/* <button type='submit' onClick={() => click()}> Click me </button> */}
             {usersProjects?.map((project) => (
                         <div className='tile__containers-account'>
                             <div>
@@ -87,30 +106,31 @@ function Account(){
                             </div>
                             <div className='tile-title-account'>
                                 <p>{project.title}</p>
-                                {/* <UpdateFormModal /> */}
                                 <a href={`/update/${project.id}`}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></a>
                                 <button className='project__delete-btn' onClick={() => handleDelete(project.id)}><img src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/></button>
 
                                 
                             </div>
+                            {/* <button type='submit' onClick={() => click()}>Click me </button> */}
                         </div>
 
-                    ))}
+                    )).reverse()}
 
             </div>
 
             <div className='users__savedProjects-container'>
-                {/* {populatedSavedProjects(user.id).map((project) => (
-                    <a className='anchor' href={`/project/${project.id}`}>
-                    <div className='tile__containers'>
+                {savedProjects.map((project) => (
+                   
+                    <a className='anchor' href={`/projects/${project.project_id}`}>
+                    <div className='tile__containers-account'>
                         <div>
-                            <img className='tile-image' src={project.image_url}></img>
+                            <img className='tile-image-account' src={getProject(project.project_id)?.image_url}></img>
                         </div>
-                        <div className='tile-title'>
-                            <p>{project.title}</p>
+                        <div className='tile-title-account'>
+                            <p>{getProject(project.project_id)?.title}</p>
                         </div>
                     </div></a>
-                ))} */}
+                )).reverse()}
 
             </div>
             <Footer />

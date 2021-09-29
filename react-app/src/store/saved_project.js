@@ -31,23 +31,14 @@ export const getSavedProjects = () => async(dispatch) => {
 export const addProject = (payload) => async dispatch => {
     const {
         user_id, 
-        title, 
-        instruction, 
-        supplies,
-        cost,
-        duration,
-        action,
-        type,
-        image_url,
-        live_links,
-        created_at,
-        updated_at
+        project_id,
+
     } = payload
 
     const res = await fetch(`/api/saved`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({user_id, title, instruction, supplies,cost, duration, action, type, image_url, live_links, created_at, updated_at})
+        body: JSON.stringify({user_id, project_id})
     });
 
     let newSavedProject;
