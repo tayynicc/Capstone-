@@ -3,10 +3,32 @@ import './Splash.css'
 import Footer from '../Footer'
 
 
+import { login } from '../../store/session';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
+
 function Splash(){
+
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.session.user);
+
+    const demo = ( ) => {
+        dispatch(login('demo@aa.io', 'password'));
+    }
+
+    if (user) {
+        return <Redirect to='/home' />;
+      }
+    
 
     return(
         <>
+        <div className='button__container'>
+            <a href='/sign-up'><button>Create an Account</button></a>
+            <a href='/login'><button>Log in</button></a>
+            <button onClick={(() => demo())}>Demo Login</button>
+        </div>
         <div className='splash__bkg-container'>
             <div className='splash__bkg-left '>
                 <div className='roller__container roll'>
