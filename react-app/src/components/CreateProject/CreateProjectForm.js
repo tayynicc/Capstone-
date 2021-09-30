@@ -35,23 +35,26 @@ function CreateProjectForm(){
     
     const updateTitle = (e) => {
         setTitle(e.target.value); 
-         let tempErrors = {...errors}
-        if(!title.length ){
+        let tempErrors = {...errors}
+
+        console.log(`title`,e.target.value.length)
+        if(!e.target.value.length){
           tempErrors.title = 'Title must be longer than 5 characters.'
           setErrors(tempErrors)
-        } else if(title.length > 5) {
+        } else if(e.target.value.length >= 5) {
             delete tempErrors.title
             setErrors(tempErrors)
         }
     }
 
     const updateInstructions = (e) => {
+        console.log(`inst`,instructions.length)
         setInstructions(e.target.value); 
          let tempErrors = {...errors}
         if(instructions.length < 50){
           tempErrors.instructions = 'Instructions must be longer than 50 characters.'
           setErrors(tempErrors)
-        } else if(instructions.length < 50) {
+        } else if(instructions.length >= 50) {
             delete tempErrors.instructions
             setErrors(tempErrors)
         }
@@ -60,13 +63,13 @@ function CreateProjectForm(){
     const updateSupplies = (e) => {
         setSupplies(e.target.value); 
 
-        const splitSupplies = supplies.split('')
+        const splitSupplies = e.target.value.split('')
         let tempErrors = {...errors}
 
-        if(supplies.length < 5){
+        if(e.target.value.length < 5){
           tempErrors.suppliesLength = 'Supply list must contain one item.'
           setErrors(tempErrors)
-        }else if(supplies.length >= 5){
+        }else if(e.target.value.length >= 5){
             delete tempErrors.suppliesLength
             setErrors(tempErrors)
         }
@@ -85,11 +88,11 @@ function CreateProjectForm(){
 
         let tempErrors = {...errors}
 
-        if(cost < 1){
-            tempErrors.cost = 'Cost must be more than 1.'
+        if(e.target.value < 1){
+            tempErrors.cost = 'Cost must be more than 0.'
             tempErrors.costNegitive = 'Cost can not be a negitive number.'
             setErrors(tempErrors)
-        }else if (cost > 1 ){
+        }else if (e.target.value >= 1 ){
             delete tempErrors.cost
             delete tempErrors.costNegitive
             setErrors(tempErrors)
@@ -99,16 +102,17 @@ function CreateProjectForm(){
     const updateDuration = (e) => {
         setDuration(e.target.value); 
          let tempErrors = {...errors}
-        if(!duration.length || duration === 0){
+         console.log(`dur`,e.target.value.length)
+        if(!e.target.value.length || e.target.value === 0){
           tempErrors.duration = 'Must provide Duration'
           setErrors(tempErrors)
-        }else if(duration > 59) {
+        }else if(e.target.value > 59) {
             tempErrors.durationHours = 'If project excedes 60 minutes please enter an hour value'
             setErrors(tempErrors)
-        }if (duration.length){
+        }if (e.target.value.length){
             delete tempErrors.duration
             setErrors(tempErrors)
-        }else if (duration < 59){
+        }else if (e.target.value < 59){
             delete tempErrors.durationHours
             setErrors(tempErrors)
         }
@@ -195,10 +199,10 @@ function CreateProjectForm(){
                 <textarea value={supplies} onChange={updateSupplies} placeholder='Supplies'></textarea>
 
                 <label>Cost</label>
-                <input value={cost} onChange={updateCost}  type='number' placeholder='Cost, must be numerical value'></input>
+                <input value={cost} onChange={updateCost}  min='0' max='1000' type='number' placeholder='Cost, must be numerical value'></input>
 
                 <label>Duration</label>
-                <input placeholder='ex: 30 min or 1 hour' value={duration} onChange={updateDuration}></input>
+                <input placeholder='ex: 30 min or 1 hour' min='0' max='59' type='number' value={duration} onChange={updateDuration}></input>
 
                 <label>Action</label>
                 <select placeholder='What are we getting into?' onChange={updateAction}>
