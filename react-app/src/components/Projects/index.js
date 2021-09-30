@@ -26,10 +26,9 @@ function Project(){
 
     const project = projects.filter((singleProject) => singleProject.id === +id)
 
-
+  
 
     useEffect(() => {
-        // dispatch(getOneProject(id));
         dispatch(getProjects())
     }, [dispatch, id])
 
@@ -60,22 +59,22 @@ function Project(){
            button.classList.add('saved')
         }
         
-        // console.log(`saving`, button.innerHTML)
     }
-    
+
 
     return (
-        <body className='project-body'>
+        <>
             {/* <Header />  */}
             <SlideMenu />
             {project.map((pro) => (
                 <>
+
                     <div className='project__title-container'>
                         <h1>{pro.title}</h1>
                     </div>
                     
-                    <div className='project__image-outterContainer'>
-                        {/* <img className='cleaning__bkg-img' src='https://cdn2.hubspot.net/hubfs/2731727/Imported_Blog_Media/cleaning-essentials.jpg'></img>  */}
+                    <div className='project__image-outterContainer' id='project-background-div'>
+                        
                         <div className='project__image-innerContainer'>
                             <img className ='product__image' src={pro.image_url}></img>
                         </div>  
@@ -84,7 +83,7 @@ function Project(){
                             <button id='save-button'  onClick={() => saveProject(pro)} className='save__button' >Save This Project! <img src="https://img.icons8.com/ios-glyphs/30/000000/like--v2.png"/></button>
                             
                             
-                        </div>
+                        </div> 
 
                         <div className='duration'>
                            <h2>Estimated Time to Complete: </h2>
@@ -132,7 +131,7 @@ function Project(){
 
             <Footer />
             
-        </body>
+        </>
     )
 }
 

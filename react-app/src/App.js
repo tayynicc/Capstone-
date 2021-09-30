@@ -17,6 +17,7 @@ import CreateProject from './components/CreateProject';
 import Project from './components/Projects';
 import UpdateProjectForm from './components/UpdateProject';
 import SlideMenu from './components/SlideMenu';
+import UpdateProjectNew from './components/UpdateProject-New';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,7 +36,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {/* <NavBar /> */}
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -67,9 +68,10 @@ function App() {
         <ProtectedRoute path='/update/:id'>
             <UpdateProjectForm />
         </ProtectedRoute >
-        <Route path ='/test'>
+        <Route path ='/test/:id'>
             {/* <NavBar /> */}
             <SlideMenu />
+            <UpdateProjectNew />
             
         </Route>
       </Switch>

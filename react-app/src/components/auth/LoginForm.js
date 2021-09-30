@@ -38,7 +38,7 @@ const LoginForm = () => {
         }
     }
 
-    if(!charsPresent.length < 2){
+    if(charsPresent.length < 2){
         tempErrors.email = 'Please provide a valid email.'
         setErrors(tempErrors)
     } else if (charsPresent.length === 2){
@@ -53,7 +53,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/home' />;
   }
 
   const currentErrors = Object.values(errors)

@@ -1,0 +1,117 @@
+.edit__title-field{
+    border: 3px solid red;
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+    
+}
+
+.edit__title-input{
+    height:45px;
+    width:300px;
+    margin-top:15px;
+}
+
+.edit__button-container{
+    margin-top:7px;
+    /* border: 3px solid blue; */
+    display:flex;
+    justify-content: space-between;
+}
+
+.edit__title-btn{
+    position: absolute;
+    right:32%;
+    top:4%;
+    /* left:2% */
+    
+}
+
+.edit__duration-field{
+    border: 3px solid purple;
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    top:58%
+
+}
+
+.time{
+    margin-top:3px;
+}
+
+.edit__duration-btn{
+    position: absolute;
+    right:7%;
+    bottom:20%;
+}
+.btns{
+    background:transparent;
+    border:none;
+}
+
+.btns:hover{
+    cursor: pointer;
+}
+.edit__cancel-btn{
+    border: 30px;
+    background-color: red;
+    border: 2px solid red;
+    font-weight: bold;;
+}
+
+
+
+
+.edit__image-container{
+    border: 3px solid green;
+    position:absolute;
+    bottom:-7%;
+    width:20%;
+    left:35%;
+    display:flex;
+    justify-content: space-between;
+}
+
+.edit__imag-btn{
+    position:absolute; 
+    bottom:-8%;
+    left:58%;
+}
+
+.edit__supplyList-field{
+    border:3px solid purple;
+    position:absolute;
+    top:10%;
+    left:27%
+
+}
+
+.edit__supplyList-input{
+    height:100px;
+
+    width:200px;
+}
+
+.edit__supplies-btn{
+    position:absolute;
+    top:5%;
+    right:12%
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hidden{
+    display: none;
+}

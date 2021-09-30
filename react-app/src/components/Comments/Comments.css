@@ -143,3 +143,13 @@
  display: flex;
  align-items: center;   
 }
+
+
+.comment__error-msg{
+    /* border: 3px solid blue; */
+    display:flex;
+    justify-content: center;
+    color: red;
+    font-weight: bold;
+
+}

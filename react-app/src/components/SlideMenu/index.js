@@ -36,6 +36,7 @@ function SlideMenu(){
         <ul className="menu-bar" id='menu-bar'>
             <li><a href="#" className="menu-button">Menu</a></li>
             <li><a href="/create-project">New Project</a></li>
+            <li><a href="/account">Saved Projects</a></li>
             <li><a href="/create-project">Logout</a></li>
         </ul>
     </>
