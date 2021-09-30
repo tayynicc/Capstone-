@@ -10,6 +10,7 @@
     background-color:lightgrey;
     align-items: center;
     border-radius:0 0 30px 30px ;
+    overflow:auto;
     
 }
 
@@ -23,6 +24,7 @@
     align-items: center;
     border-radius:0 0 30px 30px ;
     background-color:lightgrey;
+    overflow:auto;
 }
 
 .third__outter-container{
@@ -35,6 +37,7 @@
     align-items: center;
     border-radius:0 0 30px 30px ;
     background-color:lightgrey;
+    overflow:auto;
 }
 
 .container-labels{
@@ -125,13 +128,3 @@
     /* color:orange; */
 
 }
-
-
-
-
-
-
-
-
-
-

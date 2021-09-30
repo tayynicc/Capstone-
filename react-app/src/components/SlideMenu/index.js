@@ -1,15 +1,18 @@
 import'./SlideMenu.css'
 
+
+import React from 'react';
+import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/session';
+
+
+
+
 function SlideMenu(){
-
-    // $(document).ready(function(){
-    //     $(".menu-button").click(function(){
-    //     $(".menu-bar").toggleclassName( "open" );
-    //     })
-    //     })
-
+    const dispatch = useDispatch()
+ 
     const open = ( ) => {
-        console.log(`triggered`)
         const menuBar = document.getElementById('menu-bar')
 
         if(menuBar.classList.contains('open')){
@@ -20,24 +23,27 @@ function SlideMenu(){
         
     }
 
+    
+    const onLogout = async (e) => {
+      await dispatch(logout());
+      <Redirect to='/home' />;
+    };
+
     return (
         <>
             <ul className="menu">
 
-        <li title="home"><a href="#" id='menu-button' onClick={() => open()}className="menu-button home">menu</a></li>
-        
-        {/* <li title="search"><a href="#" className="search">search</a></li> */}
-        {/* <li title="pencil"><a href="/create-project" className="pencil">pencil</a></li> */}
-        <li title="account"><a href="/account" className="active about">about</a></li>
-        <li title="home"><a href="/home" className="archive">Home</a></li>
-        {/* <li title="contact"><a href="#" className="contact">contact</a></li> */}
-        </ul>
+                <li title="home"><a href="#" id='menu-button' onClick={() => open()}className="menu-button home">menu</a></li>
+            
+                <li title="account"><a href="/account" className="active about">about</a></li>
+                <li title="home"><a href="/home" className="archive">Home</a></li>
+            </ul>
         
         <ul className="menu-bar" id='menu-bar'>
             <li><a href="#" className="menu-button">Menu</a></li>
             <li><a href="/create-project">New Project</a></li>
             <li><a href="/account">Saved Projects</a></li>
-            <li><a href="/create-project">Logout</a></li>
+            <li><a href="#"><button onClick={onLogout}>Logout</button></a></li>
         </ul>
     </>
     )
