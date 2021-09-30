@@ -24,8 +24,8 @@ class Project(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False)
 
     user = relationship('User', back_populates='projects')
-    projects = relationship('Review', back_populates='project')
-    saved_projects = relationship('Saved_Project', back_populates='project')
+    projects = relationship('Review', back_populates='project', cascade='all, delete')
+    saved_projects = relationship('Saved_Project', back_populates='project', cascade='all, delete')
 
 
     def to_dict(self):
