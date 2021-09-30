@@ -6,8 +6,8 @@ import { signUp } from '../../store/session';
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [last_name, setLastName] = useState('');
+  const [first_name, setFirst_Name] = useState('');
+  const [last_name, setLast_Name] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -17,7 +17,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, firstName, last_name, email, password, ));
+      const data = await dispatch(signUp(username, first_name, last_name, email, password, ));
       if (data) {
         setErrors(data)
       }
@@ -29,7 +29,7 @@ const SignUpForm = () => {
     let tempErrors = {...errors}
 
     if(!username.length){
-        tempErrors.username = 'Please provide a valid username'
+        tempErrors.username = 'Please provide a username'
         setErrors(tempErrors)
     }else {
         delete tempErrors.username
@@ -54,7 +54,7 @@ const SignUpForm = () => {
     }
 
     if(charsPresent.length < 2){
-        tempErrors.email = 'Please provide a valid email.'
+        tempErrors.email = 'Please provide a valid email. Example: demo@demo.io'
         setErrors(tempErrors)
     } else if (charsPresent.length === 2){
         delete tempErrors.email
@@ -95,14 +95,14 @@ const SignUpForm = () => {
   }
 
   const updateFirstName = (e) => {
-    setFirstName(e.target.value);
+    setFirst_Name(e.target.value);
     let tempErrors = {...errors}
 
 
   }
 
   const updateLastName = (e) => {
-    setLastName(e.target.value);
+    setLast_Name(e.target.value);
     let tempErrors = {...errors}
 
 
@@ -135,7 +135,7 @@ const SignUpForm = () => {
           type='text'
           name='first_name'
           onChange={updateFirstName}
-          value={firstName}
+          value={first_name}
         ></input>
       </div>
       <div>

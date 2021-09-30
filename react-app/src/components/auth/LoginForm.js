@@ -39,7 +39,7 @@ const LoginForm = () => {
     }
 
     if(charsPresent.length < 2){
-        tempErrors.email = 'Please provide a valid email.'
+        tempErrors.email = 'Please provide a valid email. Must include @ and a domain'
         setErrors(tempErrors)
     } else if (charsPresent.length === 2){
         delete tempErrors.email
@@ -50,6 +50,14 @@ const LoginForm = () => {
 
   const updatePassword = (e) => {
     setPassword(e.target.value);
+    let tempErrors = {...errors}
+    if(e.target.value.length < 1){
+        tempErrors.password = 'Please provide password'
+        setErrors(tempErrors)
+    } else if(e.target.value.length){
+        delete tempErrors.password
+        setErrors(tempErrors)
+    }
   };
 
   if (user) {
