@@ -51,10 +51,10 @@ function CreateProjectForm(){
         console.log(`inst`,instructions.length)
         setInstructions(e.target.value); 
          let tempErrors = {...errors}
-        if(instructions.length < 50){
-          tempErrors.instructions = 'Instructions must be longer than 50 characters.'
+        if(!e.target.value.length){
+          tempErrors.instructions = 'Please Provide Instructions'
           setErrors(tempErrors)
-        } else if(instructions.length >= 50) {
+        } else if(e.target.value.length) {
             delete tempErrors.instructions
             setErrors(tempErrors)
         }
