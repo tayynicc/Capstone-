@@ -66,11 +66,12 @@ function App() {
             <Project />
         </ProtectedRoute>
         <ProtectedRoute path='/update/:id'>
-            {/* <UpdateProjectForm /> */}
+            
             <UpdateProjectNew />
         </ProtectedRoute >
         <Route path ='/test/:id'>
             {/* <NavBar /> */}
+            <UpdateProjectForm />
             <SlideMenu />
             
             

@@ -143,7 +143,7 @@ function Comments(){
 
         if(review.length !== 0){
             await dispatch(editReview(payload))
-            setReview('')
+            // setReview('')
         }
 
         updated(newReview.id)
