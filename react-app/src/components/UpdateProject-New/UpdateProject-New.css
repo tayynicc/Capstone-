@@ -82,8 +82,8 @@
 .edit__supplyList-field{
     border:3px solid purple;
     position:absolute;
-    top:15%;
-    left:15%
+    top:10%;
+    left:27%
 
 }
 
@@ -102,7 +102,7 @@
 
 
 .instructions__outter-container{
-    /* border: 3px solid red; */
+    border: 3px solid red;
     height:fit-content;
     display:flex;
     justify-content:center;
@@ -134,10 +134,10 @@
 .project__supplies-container-update{
     border: 3px solid green;
     height: 400px;
-    width: 15%;
+    width: 18%;
     position:absolute;
-    top:115%;
-    left:9%;
+    top:113%;
+    left:10%;
     background-color:white;
     padding-top:-5px;
 
@@ -146,7 +146,7 @@
 
 
 .instructions__input-field{
-    /* border: 3px solid red; */
+    border: 3px solid blue;
     width:51%;
     position:absolute;
     top:135%;
@@ -173,64 +173,6 @@
 }
 
 
-.edit__inst-btn{
-    /* position: absolute;  */
-    /* border: 3px solid purple; */
-
-}
-
-.inst__label-container{
-    /* border: 3px solid blue; */
-    display:flex;
-    flex-direction: column;
-}
-
-
-.edit__links-btn{
-    position:absolute;
-    left:12%;
-}
-
-.edit-links-input-field{
-    position: absolute;
-    left:19.5%;
-    margin-top:4%;
-    width:70%
-
-}
-
-.links{
-    position: absolute;
-    left:9%;
-    margin-top:6%;
-    /* border: 3px solid green; */
-    width: 8%
-}
-
-
-.supply-list-update{
-    border-bottom: 3px solid grey;
-    border:3px solid red;
-    height:fit-content;
-    min-height:60%;
-    
-    /* margin:5px; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.supply__list-label{
-    position:absolute;
-    top:-3%;
-    border: 3px solid green;
-}
-
-.supply__list-update{
-   margin-top: 15% ;
-   border:3px solid purple;
-}
 .hidden{
     display: none;
 }
