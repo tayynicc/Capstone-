@@ -114,7 +114,6 @@ function Comments(){
     }
 
     const updated = (id) => {
-        console.log(`comment update`,id)
         const p = document.getElementById('prev__comment')
         const body = document.getElementById(`comment__text-${id}`)
         const done = document.getElementById(`done__btn-${id}`)
@@ -140,8 +139,7 @@ function Comments(){
             updated_at: new Date()
             
         }
-        console.log(`review`, newReview)
-        
+        console.log(`review`, review)
 
         if(review.length !== 0){
             await dispatch(editReview(payload))
