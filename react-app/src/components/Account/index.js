@@ -107,12 +107,12 @@ function Account(){
             {usersProjects?.map((project) => (
                         <div className='tile__containers-account'>
                             <div>
-                                <img className='tile-image-account' src={project.image_url}></img>
+                                <img alt='project image' className='tile-image-account' src={project.image_url}></img>
                             </div>
                             <div className='tile-title-account'>
                                 <p>{project.title}</p>
-                                <a href={`/update/${project.id}`}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></a>
-                                <button className='project__delete-btn' onClick={() => handleDelete(project.id)}><img src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/></button>
+                                <a href={`/update/${project.id}`}><img alt='edit icon' src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></a>
+                                <button className='project__delete-btn' onClick={() => handleDelete(project.id)}><img alt='edit icons' src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/></button>
 
                                 
                             </div>

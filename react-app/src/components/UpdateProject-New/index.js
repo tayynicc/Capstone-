@@ -376,10 +376,10 @@ function UpdateProjectNew (){
         };
 
         
-
+        console.log('11',payload)
         const project = await dispatch(editProject(payload))
 
-        console.log(project)
+        // console.log(project)
             // if (project) {
             //     history.push(`/projects/${project.id}`)
             // }
