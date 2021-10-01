@@ -101,15 +101,76 @@
 
 
 
+.instructions__outter-container{
+    border: 3px solid red;
+    height:fit-content;
+    display:flex;
+    justify-content:center;
+}
 
 
+.project__instructions-container-update{
+    border: 3px solid purple;
+    border-right:3px solid grey;
+    border-left:3px solid grey;
+    height: fit-content;
+    /* width:60%; */
+    /* margin-left: 25%; */
+    width:47%;
+    margin-top: 100px;
+    margin-bottom: 300px;
+    font-size: larger;
+    line-height:200%;
+    padding-top:10px;
+    padding-left:20px;
+    padding-right:20px;
+    /* border-radius:30px; */
+    background-color:white;
+    
+
+}
 
 
+.project__supplies-container-update{
+    border: 3px solid green;
+    height: 400px;
+    width: 18%;
+    position:absolute;
+    top:113%;
+    left:10%;
+    background-color:white;
+    padding-top:-5px;
+
+    /* margin-right: 3% */
+}
 
 
+.instructions__input-field{
+    border: 3px solid blue;
+    width:51%;
+    position:absolute;
+    top:135%;
+    left:29%;
+    
+    height:40%
+}
 
 
+.instructions__edit-buttons{
+    position:absolute;
+    margin-top:2%;
+}
 
+.inst{
+    /* border:3px solid red; */
+    width:120%
+}
+
+.done__edit{
+    background:green;
+    border:green;
+    font-weight:bold;
+}
 
 
 .hidden{
