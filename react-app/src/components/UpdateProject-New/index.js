@@ -6,8 +6,9 @@ import './UpdateProject-New.css'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import { useHistory } from 'react-router-dom'
 
-import { getProjects } from '../../store/project'
+import { getProjects, editProject } from '../../store/project'
 
 import Header from '../Header'
 import Footer from '../Footer'
@@ -19,20 +20,32 @@ import SlideMenu from '../SlideMenu'
 function UpdateProjectNew (){
     const { id } = useParams()
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const projects = useSelector((state) => Object.values(state.project)) 
     const user = useSelector((state) => state.session.user)
 
+    const currentproject = projects.filter((project) => project.id === +id)
+
+    const [ stateProject ] = currentproject
+
+    console.log(`current`,stateProject?.title)
+
+    // const supplyArr = Object.values(stateProject?.supplies)
+
+
     const [ title, setTitle ] = useState('');
-    const [ instructions, setInstructions ] = useState('');
+    const [ instructions, setInstructions ] = useState(stateProject?.instruction);
     const [ supplies, setSupplies ] = useState('');
-    const [ cost, setCost ] = useState(0);
-    const [ duration, setDuration ] = useState(0);
-    const [ action, setAction ] = useState('DIY');
-    const [ type, setType ] = useState('Cleaning');
-    const [ image, setImage ] = useState('');
-    const [ links, setLinks ] = useState('');
+    const [ cost, setCost ] = useState(stateProject?.cost);
+    const [ duration, setDuration ] = useState(stateProject?.duration);
+    const [ action, setAction ] = useState(stateProject?.action);
+    const [ type, setType ] = useState(stateProject?.type);
+    const [ image, setImage ] = useState(stateProject?.image);
+    const [ links, setLinks ] = useState(stateProject?.links);
     const [errors, setErrors] = useState({});
+
+    const updateLinks = (e) => setLinks(e.target.value);
 
 
     const updateTitle = (e) => {
@@ -90,6 +103,46 @@ function UpdateProjectNew (){
         
     }
 
+    const updateInstructions = (e) => {
+        setInstructions(e.target.value); 
+         let tempErrors = {...errors}
+        if(!e.target.value.length){
+          tempErrors.instructions = 'Please Provide Instructions'
+          setErrors(tempErrors)
+        } else if(e.target.value.length) {
+            delete tempErrors.instructions
+            setErrors(tempErrors)
+        }
+    }
+
+    const updateCost = (e) => {
+        setCost(e.target.value); 
+
+        let tempErrors = {...errors}
+
+        if(e.target.value < 1){
+            tempErrors.cost = 'Cost must be more than 0.'
+            tempErrors.costNegitive = 'Cost can not be a negitive number.'
+            setErrors(tempErrors)
+        }else if (e.target.value >= 1 ){
+            delete tempErrors.cost
+            delete tempErrors.costNegitive
+            setErrors(tempErrors)
+        }
+    }
+
+
+    const splitSuppliesEdit = (str) => {
+        console.log(`supplies intake`,str)
+        let items = str.split(',')
+        console.log(`returned`, items)
+        // reflectUpdate('supplies')
+        // console.log(`state`, supplies)
+        return items
+
+    }
+
+
     const project = projects.filter((singleProject) => singleProject.id === +id)
 
 
@@ -100,6 +153,7 @@ function UpdateProjectNew (){
     }, [dispatch, id])
 
     const splitSupplies = (str) => {
+
         let items = str.split(',')
         return items
 
@@ -145,6 +199,17 @@ function UpdateProjectNew (){
         const editSuppliesBtn = document.getElementById('edit-supplies-btn')
         const supplyDisplay= document.getElementById('supply-list')
 
+        const editInst = document.getElementById('edit-inst-container')
+        const editInstBtn = document.getElementById('edit-inst-btn')
+        const editInstToggleBtn = document.getElementById('inst-btns')
+
+        const editLinks = document.getElementById('edit-links-field')
+        const editLinksBtn = document.getElementById('edit-links-btn')
+        const editLinksToggleBtn = document.getElementById('links-btns')
+
+        const editCostBtn = document.getElementById('edit-cost-btn')
+        const editCost = document.getElementById('edit-cost-field')
+
         if(field === 'title'){
             editTitle.classList.remove('hidden')
             editTitleBtn.classList.add('hidden')
@@ -159,6 +224,19 @@ function UpdateProjectNew (){
             editSupplies.classList.remove('hidden')
             editSuppliesBtn.classList.add('hidden')
             supplyDisplay.innerHTML = ''
+        }if(field === 'inst'){
+            editInst.classList.remove('hidden')
+            editInstBtn.classList.add('hidden')
+            editInstToggleBtn.classList.remove('hidden')
+        }if(field === 'links'){
+            editLinks.classList.remove('hidden')
+            editLinksBtn.classList.add('hidden')
+            editLinksToggleBtn.classList.remove('hidden')
+        }
+        if(field === 'cost'){
+            editCost.classList.remove('hidden')
+            editCostBtn.classList.add('hidden')
+            // editLinksToggleBtn.classList.remove('hidden')
         }
     }
 
@@ -177,14 +255,16 @@ function UpdateProjectNew (){
         const editSuppliesBtn = document.getElementById('edit-supplies-btn')
         const supplyDisplay= document.getElementById('supply-list')
 
-        const editInst = document.getElementById('close-inst-edit')
-        const editInstBtn = document.getElementById('edit-inst-button')
+        const editInst = document.getElementById('inst-btns')
+        const editInstBtn = document.getElementById('edit-inst-btn')
+        const editInstDisplay = document.getElementById('edit-inst-container')
         
-        const editCost = document.getElementById('close-cost-edit')
-        const editCostBtn = document.getElementById('edit-cost-button')
+        const editCostBtn = document.getElementById('edit-cost-btn')
+        const editCost = document.getElementById('edit-cost-field')
         
-        const editLinks = document.getElementById('close-links-edit')
-        const editLinksBtn = document.getElementById('edit-links-button')
+        const editLinks = document.getElementById('edit-links-field')
+        const editLinksBtn = document.getElementById('edit-links-btn')
+        const editLinksToggleBtn = document.getElementById('links-btns')
 
 
         if(field === 'title'){
@@ -203,6 +283,7 @@ function UpdateProjectNew (){
         }if(field === 'inst'){
             editInst.classList.add('hidden')
             editInstBtn.classList.remove('hidden')
+            editInstDisplay.classList.add('hidden')
         }if(field === 'cost'){
             editCost.classList.add('hidden')
             editCostBtn.classList.remove('hidden')
@@ -210,11 +291,14 @@ function UpdateProjectNew (){
         if(field === 'links'){
             editLinks.classList.add('hidden')
             editLinksBtn.classList.remove('hidden')
+            editLinksToggleBtn.classList.add('hidden')
         }
         
     }
 
     const reflectUpdate = (field) => {
+
+        console.log('reflect', field)
 
         const editTitle = document.getElementById('edit-title')
         const editTitleBtn = document.getElementById('edit-title-btn')
@@ -230,6 +314,17 @@ function UpdateProjectNew (){
         const editSupplies = document.getElementById('edit-supplies')
         const editSuppliesBtn = document.getElementById('edit-supplies-btn')
         const supplyDisplay= document.getElementById('supply-list')
+        const updatedDisplay = document.getElementById('supply-list-updated')
+
+        const editInst = document.getElementById('inst-btns')
+        const editInstBtn = document.getElementById('edit-inst-btn')
+        const editInstDisplay = document.getElementById('edit-inst-container')
+        const instDisplay = document.getElementById('inst-display')
+
+        const editLinks = document.getElementById('edit-links-field')
+        const editLinksBtn = document.getElementById('edit-links-btn')
+        const editLinksToggleBtn = document.getElementById('links-btns')
+        const linksDisplay = document.getElementById('links-display')
 
         if(field === 'title'){
             titleDisplay.innerHTML = title
@@ -244,12 +339,51 @@ function UpdateProjectNew (){
             editImage.classList.add('hidden')
             editImageBtn.classList.remove('hidden')
         }if(field === 'supplies'){
-            supplyDisplay.innerHTML = supplies
+            // supplyDisplay.innerHTML = supplies
             editSupplies.classList.add('hidden')
             editSuppliesBtn.classList.remove('hidden')
+            updatedDisplay.classList.remove('hidden')
+        }if(field === 'inst'){
+            instDisplay.innerHTML = instructions
+            editInstBtn.classList.remove('hidden')
+            editInstDisplay .classList.add('hidden')
+            editInst.classList.add('hidden')
+        }if(field === 'links'){
+            linksDisplay.innerHTML = links
+            editLinksBtn.classList.remove('hidden')
+            editLinksToggleBtn.classList.add('hidden')
+            editLinks.classList.add('hidden')
         }
         
     }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const payload = {
+            user_id: +user.id,
+            title, 
+            instruction:instructions,
+            supplies,
+            cost,
+            duration,
+            action,
+            type,
+            image_url: image,
+            live_links: links, 
+            created_at: new Date(),
+            updated_at: new Date()
+        };
+
+        
+
+        const project = await dispatch(editProject(payload))
+
+        console.log(project)
+            // if (project) {
+            //     history.push(`/projects/${project.id}`)
+            // }
+    };
 
     
 
@@ -257,13 +391,15 @@ function UpdateProjectNew (){
         <body className='project-body'>
             {/* <Header />  */}
             <SlideMenu />
+
+            <button onClick={handleSubmit} >Submit Edits</button>
             {project.map((pro) => (
                 <>
                     <div className='project__title-container'>
                         <h1 id='title-display' >{pro.title}</h1>
                         <div className='edit__title-field hidden' id='edit-title'>
                             
-                            <input  className='edit__title-input' placeholder='Update Title Here!' values={title} onChange={updateTitle}></input>
+                            <input  className='edit__title-input' placeholder='update title here' values={title} onChange={updateTitle}></input>
                             
                             <div className='edit__button-container'>
                                 <button id='cancel-edit-btn' className='edit__cancel-btn' onClick={(() => closeEdit('title'))}>Cancel</button>
@@ -307,7 +443,7 @@ function UpdateProjectNew (){
                            <h2>Estimated Time to Complete: </h2>
                             <h4 id='duration-display'>{pro.duration} Minutes</h4> 
                             <div className='edit__duration-field hidden' id='edit-duraiton'>
-                                <input className='' placeholder='Edit Duration Here!' values={duration} onChange={updateDuration}></input>
+                                <input className='' placeholder={duration} values={duration} onChange={updateDuration}></input>
 
                                 <div className='edit__button-container time'>
                                    <button id='cancel-edit-btn' className='edit__cancel-btn' onClick={(() => closeEdit('duration'))}>Cancel</button>
@@ -330,11 +466,13 @@ function UpdateProjectNew (){
 
 
 
-
+                    <div className='inst__label-container'>
                     <h1 className='project__inst-label'>Instructions</h1>
+                    <button className='edit__inst-btn btns' id='edit-inst-btn' onClick={(() => showEdit('inst'))}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
+                    </div>
 
                     <div className='instructions__outter-container'>
-                        <div className='project__instructions-container-update'>
+                        <div className='project__instructions-container-update' id='inst-display'>
                             <p>{pro.instruction}</p>
 
 
@@ -344,58 +482,81 @@ function UpdateProjectNew (){
                         </div>
                         <div className='instructions__edit-buttons '>
 
-                            <div className='edit__button-container inst' id='edit-inst'>
+                            <div className='edit__button-container hidden' id='inst-btns'>
                                 <button id='done-editing' className='done__edit' onClick={(() => reflectUpdate('inst'))}>Done</button> 
                                 <button id='close-inst-edit' className='edit__cancel-btn' onClick={(() => closeEdit('inst'))}>Cancel</button>
                             </div>
                         </div>        
 
                         <div className='inner__edit-input'>
-                            <textarea placeholder='Update Instructions Here!' className='instructions__input-field'></textarea>
+                        <textarea placeholder={instructions} className='instructions__input-field hidden' id='edit-inst-container' values={instructions} onChange={updateInstructions}></textarea>
                         </div>
                     </div>
                 
 
-                    {/* <div className='project__supplies-container-update'>
-                        <div className='supply-list'>
-                            <h1>Supply list</h1>
-                            <ul id='supply-list'>
+                <div className='project__supplies-container-update'>
+                <div className='supply-list-update'>
+                            <h1 className='supply__list-label' >Supply list</h1>
+                            <ul className='supply__list-update' id='supply-list'>
                             {splitSupplies(pro.supplies).map((itm) => (
                                 <li>{itm}</li> 
                             ))} 
                             </ul>
                             <div id='edit-supplies' className='edit__supplyList-field hidden'>
-                              <textarea  className='edit__supplyList-input' placeholder='Edit Supply List Here!' values={supplies} onChange={updateSupplies}></textarea>
+                              <textarea  className='edit__supplyList-input' placeholder={supplies} values={supplies} onChange={updateSupplies}></textarea>
 
                                 <div className='edit__button-container'>
                                     <button id='cancel-edit-btn' className='edit__cancel-btn' onClick={(() => closeEdit('supplies'))}>Cancel</button>
-                                    <button id='done-editing' onClick={(() => reflectUpdate('supplies'))}>Done</button>
+                                    <button id='done-editing' className='done__edit' onClick={(() => reflectUpdate('supplies'))}>Done</button>
                                 </div>  
                             </div>
+
+                            <ul className='supply__list-update-edit hidden' id='supply-list-updated'>
+                            {splitSuppliesEdit(supplies).map((itm) => (
+                                <li>{itm}</li> 
+                            ))} 
+                            </ul>
 
                             <button className='edit__supplies-btn btns' id='edit-supplies-btn' onClick={(() => showEdit('supplies'))}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
                             
                         </div>
-                        
-                        <div className='cost-container'>
+                         
+                        <div className='cost-container-update'>
                             <h1>Estimated Cost: </h1>
                             <h3>$ {pro.cost}</h3>  
 
-                            {/* <input placeholder='Update Cost Here!'></input>
-                            <button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
-                            <button><img src="https://img.icons8.com/color/48/000000/cancel--v1.png"/></button> */}
-                        {/* </div>
+                            <button className='edit__cost-btn btns' id='edit-cost-btn' onClick={(() => showEdit('cost'))}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button> 
+
+                            <div className='edit__cost-container hidden' id='edit-cost-field'>
+                                <input value={cost} onChange={updateCost} placeholder={cost}></input>
+
+                                <div className='updateCost-btns'>
+                                    <button id='cancel-edit-btn' className='edit__cancel-btn' onClick={(() => closeEdit('cost'))}>Cancel</button>
+                                    <button id='done-editing' className='done__edit' onClick={(() => reflectUpdate('cost'))}>Done</button>
+                                </div>
+                            </div>
+
+                           
+                        </div>
+                         
                         
-                        
-                    </div> */} 
+                    </div> 
 
                     <div className='project__externalLinks-container'>
                         <h2>External Resources: </h2>
-                        <a href={pro.live_links}>{pro.live_links}</a>
+                        <a id='links-display' href={links}>{pro.live_links}</a>
 
-                        <input placeholder='Edit Live Links Here!'></input>
-                        <button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
-                        <button><img src="https://img.icons8.com/color/48/000000/cancel--v1.png"/></button>
+
+
+                        <button className='edit__links-btn btns' id='edit-links-btn' onClick={(() => showEdit('links'))}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
+
+
+                        <input id='edit-links-field' className='edit-links-input-field hidden' values={links} onChange={updateLinks} placeholder={links} type='url'></input>
+
+                        <div className='edit__button-container links hidden' id='links-btns'>
+                                <button id='done-editing' className='done__edit' onClick={(() => reflectUpdate('links'))}>Done</button> 
+                                <button id='close-links-edit' className='edit__cancel-btn' onClick={(() => closeEdit('links'))}>Cancel</button>
+                        </div>
                     </div>
                 </>
             ))}
