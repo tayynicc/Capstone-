@@ -34,6 +34,8 @@ function UpdateProjectNew (){
     const [ links, setLinks ] = useState('');
     const [errors, setErrors] = useState({});
 
+    const updateLinks = (e) => setLinks(e.target.value);
+
 
     const updateTitle = (e) => {
         console.log()
@@ -90,6 +92,19 @@ function UpdateProjectNew (){
         
     }
 
+    const updateInstructions = (e) => {
+        setInstructions(e.target.value); 
+         let tempErrors = {...errors}
+        if(!e.target.value.length){
+          tempErrors.instructions = 'Please Provide Instructions'
+          setErrors(tempErrors)
+        } else if(e.target.value.length) {
+            delete tempErrors.instructions
+            setErrors(tempErrors)
+        }
+    }
+
+
     const project = projects.filter((singleProject) => singleProject.id === +id)
 
 
@@ -129,6 +144,14 @@ function UpdateProjectNew (){
         // console.log(`saving`, button.innerHTML)
     }
 
+    const splitSuppliesEdit = (str) => {
+        console.log(`supplies`)
+        let items = str.split(',')
+        reflectUpdate('supplies')
+        return items
+
+    }
+
     const showEdit = (field) => {
         
 
@@ -145,6 +168,14 @@ function UpdateProjectNew (){
         const editSuppliesBtn = document.getElementById('edit-supplies-btn')
         const supplyDisplay= document.getElementById('supply-list')
 
+        const editInst = document.getElementById('edit-inst-container')
+        const editInstBtn = document.getElementById('edit-inst-btn')
+        const editInstToggleBtn = document.getElementById('inst-btns')
+
+        const editLinks = document.getElementById('edit-links-field')
+        const editLinksBtn = document.getElementById('edit-links-btn')
+        const editLinksToggleBtn = document.getElementById('links-btns')
+
         if(field === 'title'){
             editTitle.classList.remove('hidden')
             editTitleBtn.classList.add('hidden')
@@ -159,7 +190,16 @@ function UpdateProjectNew (){
             editSupplies.classList.remove('hidden')
             editSuppliesBtn.classList.add('hidden')
             supplyDisplay.innerHTML = ''
-        }
+        }if(field === 'inst'){
+            editInst.classList.remove('hidden')
+            editInstBtn.classList.add('hidden')
+            editInstToggleBtn.classList.remove('hidden')
+        }if(field === 'links'){
+            editLinks.classList.remove('hidden')
+            editLinksBtn.classList.add('hidden')
+            editLinksToggleBtn.classList.remove('hidden')
+        } 
+
     }
 
     const closeEdit = (field) => {
@@ -177,14 +217,16 @@ function UpdateProjectNew (){
         const editSuppliesBtn = document.getElementById('edit-supplies-btn')
         const supplyDisplay= document.getElementById('supply-list')
 
-        const editInst = document.getElementById('close-inst-edit')
-        const editInstBtn = document.getElementById('edit-inst-button')
+        const editInst = document.getElementById('inst-btns')
+        const editInstBtn = document.getElementById('edit-inst-btn')
+        const editInstDisplay = document.getElementById('edit-inst-container')
         
         const editCost = document.getElementById('close-cost-edit')
         const editCostBtn = document.getElementById('edit-cost-button')
         
-        const editLinks = document.getElementById('close-links-edit')
-        const editLinksBtn = document.getElementById('edit-links-button')
+        const editLinks = document.getElementById('edit-links-field')
+        const editLinksBtn = document.getElementById('edit-links-btn')
+        const editLinksToggleBtn = document.getElementById('links-btns')
 
 
         if(field === 'title'){
@@ -203,6 +245,7 @@ function UpdateProjectNew (){
         }if(field === 'inst'){
             editInst.classList.add('hidden')
             editInstBtn.classList.remove('hidden')
+            editInstDisplay.classList.add('hidden')
         }if(field === 'cost'){
             editCost.classList.add('hidden')
             editCostBtn.classList.remove('hidden')
@@ -210,6 +253,7 @@ function UpdateProjectNew (){
         if(field === 'links'){
             editLinks.classList.add('hidden')
             editLinksBtn.classList.remove('hidden')
+            editLinksToggleBtn.classList.add('hidden')
         }
         
     }
@@ -230,6 +274,17 @@ function UpdateProjectNew (){
         const editSupplies = document.getElementById('edit-supplies')
         const editSuppliesBtn = document.getElementById('edit-supplies-btn')
         const supplyDisplay= document.getElementById('supply-list')
+        const updatedDisplay = document.getElementById('supply-list-updated')
+
+        const editInst = document.getElementById('inst-btns')
+        const editInstBtn = document.getElementById('edit-inst-btn')
+        const editInstDisplay = document.getElementById('edit-inst-container')
+        const instDisplay = document.getElementById('inst-display')
+
+        const editLinks = document.getElementById('edit-links-field')
+        const editLinksBtn = document.getElementById('edit-links-btn')
+        const editLinksToggleBtn = document.getElementById('links-btns')
+        const linksDisplay = document.getElementById('links-display')
 
         if(field === 'title'){
             titleDisplay.innerHTML = title
@@ -244,9 +299,19 @@ function UpdateProjectNew (){
             editImage.classList.add('hidden')
             editImageBtn.classList.remove('hidden')
         }if(field === 'supplies'){
-            supplyDisplay.innerHTML = supplies
-            editSupplies.classList.add('hidden')
-            editSuppliesBtn.classList.remove('hidden')
+            // supplyDisplay.innerHTML = supplies
+            // editSupplies.classList.add('hidden')
+            // editSuppliesBtn.classList.remove('hidden')
+        }if(field === 'inst'){
+            instDisplay.innerHTML = instructions
+            editInstBtn.classList.remove('hidden')
+            editInstDisplay .classList.add('hidden')
+            editInst.classList.add('hidden')
+        }if(field === 'links'){
+            linksDisplay.innerHTML = links
+            editLinksBtn.classList.remove('hidden')
+            editLinksToggleBtn.classList.add('hidden')
+            editLinks.classList.add('hidden')
         }
         
     }
@@ -255,7 +320,7 @@ function UpdateProjectNew (){
 
     return (
         <body className='project-body'>
-            {/* <Header />  */}
+          
             <SlideMenu />
             {project.map((pro) => (
                 <>
@@ -330,11 +395,15 @@ function UpdateProjectNew (){
 
 
 
+                    <div className='inst__label-container'>
 
-                    <h1 className='project__inst-label'>Instructions</h1>
+                        <h1 className='project__inst-label'>Instructions</h1>
+                        
+                        <button className='edit__inst-btn btns' id='edit-inst-btn' onClick={(() => showEdit('inst'))}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
 
+                    </div>
                     <div className='instructions__outter-container'>
-                        <div className='project__instructions-container-update'>
+                        <div className='project__instructions-container-update' id='inst-display'>
                             <p>{pro.instruction}</p>
 
 
@@ -342,24 +411,28 @@ function UpdateProjectNew (){
                             {/* <button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button> */}
                             {/* <button><img src="https://img.icons8.com/color/48/000000/cancel--v1.png"/></button> */}
                         </div>
-                        <div className='instructions__edit-buttons '>
 
-                            <div className='edit__button-container inst' id='edit-inst'>
+                        
+
+
+                        <div className='instructions__edit-buttons ' >
+
+                            <div className='edit__button-container inst hidden' id='inst-btns'>
                                 <button id='done-editing' className='done__edit' onClick={(() => reflectUpdate('inst'))}>Done</button> 
                                 <button id='close-inst-edit' className='edit__cancel-btn' onClick={(() => closeEdit('inst'))}>Cancel</button>
                             </div>
                         </div>        
 
                         <div className='inner__edit-input'>
-                            <textarea placeholder='Update Instructions Here!' className='instructions__input-field'></textarea>
+                            <textarea placeholder='Update Instructions Here!' className='instructions__input-field hidden' id='edit-inst-container' values={instructions} onChange={updateInstructions}></textarea>
                         </div>
                     </div>
                 
 
-                    {/* <div className='project__supplies-container-update'>
-                        <div className='supply-list'>
-                            <h1>Supply list</h1>
-                            <ul id='supply-list'>
+                    <div className='project__supplies-container-update'>
+                        <div className='supply-list-update'>
+                            <h1 className='supply__list-label' >Supply list</h1>
+                            <ul className='supply__list-update' id='supply-list'>
                             {splitSupplies(pro.supplies).map((itm) => (
                                 <li>{itm}</li> 
                             ))} 
@@ -369,33 +442,53 @@ function UpdateProjectNew (){
 
                                 <div className='edit__button-container'>
                                     <button id='cancel-edit-btn' className='edit__cancel-btn' onClick={(() => closeEdit('supplies'))}>Cancel</button>
-                                    <button id='done-editing' onClick={(() => reflectUpdate('supplies'))}>Done</button>
+                                    <button id='done-editing' className='done__edit' onClick={(() => splitSuppliesEdit(supplies))}>Done</button>
                                 </div>  
                             </div>
+
+                            <ul className='supply__list-update hidden' id='supply-list-updated'>
+                            {splitSuppliesEdit(supplies).map((itm) => (
+                                <li>{itm}</li> 
+                            ))} 
+                            </ul>
 
                             <button className='edit__supplies-btn btns' id='edit-supplies-btn' onClick={(() => showEdit('supplies'))}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
                             
                         </div>
-                        
+{/*                         
                         <div className='cost-container'>
                             <h1>Estimated Cost: </h1>
                             <h3>$ {pro.cost}</h3>  
 
-                            {/* <input placeholder='Update Cost Here!'></input>
+                            <input placeholder='Update Cost Here!'></input>
                             <button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
-                            <button><img src="https://img.icons8.com/color/48/000000/cancel--v1.png"/></button> */}
-                        {/* </div>
+                            <button><img src="https://img.icons8.com/color/48/000000/cancel--v1.png"/></button> 
+                        </div>
+                         */}
                         
-                        
-                    </div> */} */}
+                    </div> 
 
                     <div className='project__externalLinks-container'>
-                        <h2>External Resources: </h2>
-                        <a href={pro.live_links}>{pro.live_links}</a>
 
-                        <input placeholder='Edit Live Links Here!'></input>
-                        <button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
-                        <button><img src="https://img.icons8.com/color/48/000000/cancel--v1.png"/></button>
+
+                        <h2>External Resources: </h2>
+                        <a id='links-display' href={links}>{pro.live_links}</a>
+
+
+
+                        <button className='edit__links-btn btns' id='edit-links-btn' onClick={(() => showEdit('links'))}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
+
+
+                        <input id='edit-links-field' className='edit-links-input-field hidden' values={links} onChange={updateLinks}placeholder='Edit Live Links Here!' type='url'></input>
+
+                        <div className='edit__button-container links hidden' id='links-btns'>
+                                <button id='done-editing' className='done__edit' onClick={(() => reflectUpdate('links'))}>Done</button> 
+                                <button id='close-links-edit' className='edit__cancel-btn' onClick={(() => closeEdit('links'))}>Cancel</button>
+                        </div>
+                       
+
+
+
                     </div>
                 </>
             ))}
