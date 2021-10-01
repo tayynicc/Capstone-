@@ -96,8 +96,8 @@ function Comments(){
         console.log(`button click`)
 
         const p = document.getElementById('prev__comment')
-        const body = document.getElementById('comment__text')
-        const done = document.getElementById('done__btn')
+        const body = document.getElementById(`comment__text-${id}`)
+        const done = document.getElementById(`done__btn-${id}`)
 
         if (body.classList.contains('read-only')){
             body.classList.add('read-only')
@@ -113,10 +113,10 @@ function Comments(){
         
     }
 
-    const updated = () => {
+    const updated = (id) => {
         const p = document.getElementById('prev__comment')
-        const body = document.getElementById('comment__text')
-        const done = document.getElementById('done__btn')
+        const body = document.getElementById(`comment__text-${id}`)
+        const done = document.getElementById(`done__btn-${id}`)
 
         body.classList.add('hidden')
         done.classList.add('hidden')
@@ -146,7 +146,7 @@ function Comments(){
             setReview('')
         }
 
-        updated()
+        updated(newReview.id)
 
     }
 
@@ -185,13 +185,13 @@ function Comments(){
                     </div>
                     <div className='singleComment__body'>
                         <p className='postedComment' id='prev__comment'>{review.body}</p>
-                        <textarea className='read-only hidden' onChange={updateReview}  id='comment__text'>{review.body}</textarea>
+                        <textarea className='read-only hidden' onChange={updateReview}  id={`comment__text-${review.id}`}>{review.body}</textarea>
                         
                     </div>
                     <div className='singleComment__timestamp'>
                         {review.created_at}
                         <div className='singleComment__edit-buttons'>
-                            <button id='done__btn' className='finish__comment hidden' type='submit' onClick={() => handleUpdate(review)}>Done</button>
+                            <button id={`done__btn-${review.id}`} className='finish__comment hidden' type='submit' onClick={() => handleUpdate(review)}>Done</button>
                             <button className='delete__button' onClick={() => handleDelete(review.id)}>
                                 <img className='delete__button' src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/>
                             </button>
