@@ -387,7 +387,7 @@ function UpdateProjectNew (){
                         {/* </div>
                         
                         
-                    </div> */} */}
+                    </div> */} 
 
                     <div className='project__externalLinks-container'>
                         <h2>External Resources: </h2>
