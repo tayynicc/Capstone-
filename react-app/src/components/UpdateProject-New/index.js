@@ -177,6 +177,15 @@ function UpdateProjectNew (){
         const editSuppliesBtn = document.getElementById('edit-supplies-btn')
         const supplyDisplay= document.getElementById('supply-list')
 
+        const editInst = document.getElementById('close-inst-edit')
+        const editInstBtn = document.getElementById('edit-inst-button')
+        
+        const editCost = document.getElementById('close-cost-edit')
+        const editCostBtn = document.getElementById('edit-cost-button')
+        
+        const editLinks = document.getElementById('close-links-edit')
+        const editLinksBtn = document.getElementById('edit-links-button')
+
 
         if(field === 'title'){
             editTitle.classList.add('hidden')
@@ -191,6 +200,16 @@ function UpdateProjectNew (){
             editSupplies.classList.add('hidden')
             editSuppliesBtn.classList.remove('hidden')
             supplyDisplay.innerHTML = supplies
+        }if(field === 'inst'){
+            editInst.classList.add('hidden')
+            editInstBtn.classList.remove('hidden')
+        }if(field === 'cost'){
+            editCost.classList.add('hidden')
+            editCostBtn.classList.remove('hidden')
+        }
+        if(field === 'links'){
+            editLinks.classList.add('hidden')
+            editLinksBtn.classList.remove('hidden')
         }
         
     }
@@ -314,18 +333,30 @@ function UpdateProjectNew (){
 
                     <h1 className='project__inst-label'>Instructions</h1>
 
-                    <div className='project__instructions-container'>
-                        <p>{pro.instruction}</p>
+                    <div className='instructions__outter-container'>
+                        <div className='project__instructions-container-update'>
+                            <p>{pro.instruction}</p>
 
 
-                        <input placeholder='Update Instructions Here!'></input>
-                        <button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
-                        <button><img src="https://img.icons8.com/color/48/000000/cancel--v1.png"/></button>
+                            
+                            {/* <button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button> */}
+                            {/* <button><img src="https://img.icons8.com/color/48/000000/cancel--v1.png"/></button> */}
+                        </div>
+                        <div className='instructions__edit-buttons '>
+
+                            <div className='edit__button-container inst' id='edit-inst'>
+                                <button id='done-editing' className='done__edit' onClick={(() => reflectUpdate('inst'))}>Done</button> 
+                                <button id='close-inst-edit' className='edit__cancel-btn' onClick={(() => closeEdit('inst'))}>Cancel</button>
+                            </div>
+                        </div>        
+
+                        <div className='inner__edit-input'>
+                            <textarea placeholder='Update Instructions Here!' className='instructions__input-field'></textarea>
+                        </div>
                     </div>
-
                 
 
-                    <div className='project__supplies-container'>
+                    {/* <div className='project__supplies-container-update'>
                         <div className='supply-list'>
                             <h1>Supply list</h1>
                             <ul id='supply-list'>
@@ -353,10 +384,10 @@ function UpdateProjectNew (){
                             {/* <input placeholder='Update Cost Here!'></input>
                             <button><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
                             <button><img src="https://img.icons8.com/color/48/000000/cancel--v1.png"/></button> */}
-                        </div>
+                        {/* </div>
                         
                         
-                    </div>
+                    </div> */} */}
 
                     <div className='project__externalLinks-container'>
                         <h2>External Resources: </h2>

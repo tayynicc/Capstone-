@@ -94,6 +94,7 @@ function Project(){
                     
                     <h1 className='project__inst-label'>Instructions</h1>
 
+                    
                     <div className='project__instructions-container'>
                         <p>{pro.instruction}</p>
                     </div>
