@@ -96,10 +96,10 @@
 
 .read-only{
     height: 70px;
-    margin-top:-3%;
+    margin-top:2px;
     width:100%;
     padding:10px;
-    border: 2px solid blue; 
+    border: 2px solid black; 
     /* position: absolute; */
     
 }
