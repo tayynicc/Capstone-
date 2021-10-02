@@ -82,7 +82,6 @@ function Project(){
                         <div className='save-project-tile'>
                             <button id='save-button'  onClick={() => saveProject(pro)} className='save__button' >Save This Project! <img src="https://img.icons8.com/ios-glyphs/30/000000/like--v2.png"/></button>
                             
-                            
                         </div> 
 
                         <div className='duration'>

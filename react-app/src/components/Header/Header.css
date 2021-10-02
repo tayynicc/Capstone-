@@ -1,11 +1,16 @@
 
-.header__container{
-    height: 70px;
-    background-color:white;
-    position: relative;
-    top:-10px;
-    left:-10px;
-    width: 102%;
-    border:3px solid red;
+.top__logo-div{
+    /* border: 3px solid green; */
+    margin-top:-8px;
+    height:80px;
+	background: linear-gradient(-45deg,  #E4D2B3, #B8AB93, wheat, #B19F80);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+    /* width:105%; */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:#72739f;
     
+
 }

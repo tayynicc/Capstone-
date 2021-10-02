@@ -1,11 +1,14 @@
 import './Splash.css'
 
 import Footer from '../Footer'
+import Header from '../Header'
 
 
 import { login } from '../../store/session';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link} from 'react-router-dom';
+import React from 'react';
+
 
 
 function Splash(){
@@ -24,12 +27,26 @@ function Splash(){
 
     return(
         <>
+        
         <div className='button__container'>
-            <a href='/sign-up'><button>Create an Account</button></a>
-            <a href='/login'><button>Log in</button></a>
-            <button onClick={(() => demo())}>Demo Login</button>
+           <Header /> 
+            <Link to='/sign-up'><button className='create__account-btn splsh__btns' >Create an Account</button></Link>
+            <Link to='/login'><button className='splsh__btns login'>Log in</button></Link>
+           
         </div>
+
+        <div className='viewport__bkg'>
+           <div className='splash__bkg-circle'>
+                <div className='center__content'>
+                    <h1>Let's find a new project to tackel!</h1>
+                    <button className='demo__button splash__btns' onClick={(() => demo())}>Demo Login</button>
+                </div>
+           </div> 
+        </div>
+
         <div className='splash__bkg-container'>
+
+            
             <div className='splash__bkg-left '>
                 <div className='roller__container roll'>
                     <div className='images '>
@@ -54,9 +71,9 @@ function Splash(){
             
             </div>
             
-            <div className='splash__bkg-circle'></div>
-
-
+          
+            
+            <div className='information__container-outter'>
             <div className='splash__about-container'>
                 <h1 className='splash__label'>About ReNewMe</h1>
 
@@ -74,9 +91,11 @@ function Splash(){
                 </div>
 
             </div>
+            
 
             <div className='footer__container'>
                 <Footer />
+            </div>
             </div>
         </div>
         </>
