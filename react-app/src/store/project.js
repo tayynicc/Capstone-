@@ -2,7 +2,7 @@ const LOAD_PROJECTS = 'projects/LOAD'
 const ADD_PROJECTS = 'projects/ADD'
 const EDIT_PROJECT = 'projects/EDIT'
 const REMOVE_PROJECTS = 'projects/REMOVE'
-// const SHOW_ONE = 'projects/SHOW'
+const SHOW_ONE = 'project/SHOW'
 
 
 const loadProjects = (projects) => ({
@@ -26,6 +26,11 @@ const update = (project) => ({
     project
 })
 
+const showOneProject = (project) => ({
+    type: SHOW_ONE,
+    project
+})
+
 
 
 // get all projects 
@@ -33,6 +38,18 @@ export const getProjects = () => async(dispatch) => {
     const res = await fetch(`/api/projects`);
     const projects = await res.json()
     dispatch(loadProjects(projects))
+}
+
+
+// get one project 
+export const getOneProject = (id) => async (dispatch) => {
+    const res = await fetch(`/api/projects/${id}`)
+
+    if (res.ok){
+        const project = await res.json()
+        console.log(`store`, project)
+        dispatch(showOneProject(project));
+    }
 }
 
 
@@ -121,12 +138,12 @@ export default function projectReducer(state={}, action){
                 ...state,
                 ...newProjects
             }
-        // case SHOW_ONE:
-        //     const newState = {
-        //         ...state,
-        //         [action.projects.id]: action.projects,
-        //     }
-        //     return newState;
+        case SHOW_ONE:
+            const oneProject = {
+                ...state,
+                [action.project.id]: action.project,
+            }
+            return oneProject;
         case ADD_PROJECTS:
             if(!state[action.projects.id]) {
                 return {
