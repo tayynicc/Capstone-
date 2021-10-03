@@ -97,20 +97,22 @@ export const createOneProject = (payload) => async dispatch => {
 // };
 
 // update a project 
-export const editProject = project => async dispatch => {
-    const res = await fetch(`/api/projects/${project.id}`, {
+export const editProject = (data) => async dispatch => {
+    const res = await fetch(`/api/projects/${data.id}`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(project)
+        body: JSON.stringify(data)
     })
 
-    let project
+    // let project
     if (res.ok) {
-        project = await res.json()
+        let project = await res.json()
+        console.log('store update', project)
         dispatch(update(project))
+        return project
     }
 
-    return project
+    
 }
 
 
@@ -140,8 +142,15 @@ export default function projectReducer(state={}, action){
             }
         case SHOW_ONE:
             const oneProject = {
-                ...state,
-                [action.project.id]: action.project,
+                // ...state,
+                // let id = action.project.id,
+                // [action.project.id]: action.project,
+                // [id]: {...state[id]},
+                // [action.project]
+                // ...state,
+                [action.project.id] : {
+                    ...state[action.project]
+                }
             }
             return oneProject;
         case ADD_PROJECTS:
@@ -165,7 +174,7 @@ export default function projectReducer(state={}, action){
             case EDIT_PROJECT:
                 return {
                     ...state,
-                    [action.projects.id] : action.projects
+                    [action.project.id] : action.project
                 }
         default:
             return state
