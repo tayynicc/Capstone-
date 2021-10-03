@@ -28,6 +28,30 @@ def projects():
         'updated_at' : project.updated_at
     } for project in projects]}
 
+# get one project 
+@project_routes.route('/<int:id>')
+def one_project(id):
+    one_project = Project.query.get(id)
+
+    return{
+        'id' : one_project.id,
+        'user_id' : one_project.user_id ,
+        'title' : one_project.title,
+        'instruction' : one_project.instruction,
+        'supplies' : one_project.supplies,
+        'cost' : one_project.cost, 
+        'duration' : one_project.duration,
+        'action' : one_project.action,
+        'type' : one_project.type,
+        'image_url' : one_project.image_url,
+        'live_links' : one_project.live_links,
+        'created_at' : one_project.created_at,
+        'updated_at' : one_project.updated_at
+    }
+
+
+
+
 
 # post a project
 @project_routes.route('', methods=['POST'])

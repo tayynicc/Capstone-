@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router'
 
-import { getProjects, editProject } from '../../store/project'
+import { getProjects, editProject, getOneProject } from '../../store/project'
 
 import './Update.css'
 
@@ -19,26 +19,28 @@ function UpdateProjectForm(){
     const history = useHistory();
 
     const user = useSelector(state => state.session.user)
-    const projects = useSelector(state => Object.values(state?.project))
+    const project = useSelector(state => Object.values(state.project))
 
-    const prevProject = projects?.filter((pro) => pro.id === +id)
+    // const prevProject = projects
 
-    
+    const current = project.filter((pro) => (pro.id === +id))
 
-    
+    const [ pro ] = current
 
-    console.log(`previous`, prevProject)
+    console.log(`previous`, current[0])
 
 
-    const [ title, setTitle ] = useState(prevProject[0]?.title);
-    const [ instructions, setInstructions ] = useState(prevProject[0]?.instruction);
-    const [ supplies, setSupplies ] = useState(prevProject[0]?.supplies);
-    const [ cost, setCost ] = useState(prevProject[0]?.cost);
-    const [ duration, setDuration ] = useState(prevProject[0]?.duration);
-    const [ action, setAction ] = useState(prevProject[0]?.action);
-    const [ type, setType ] = useState(prevProject[0]?.type);
-    const [ image, setImage ] = useState(prevProject[0]?.image_url);
-    const [ links, setLinks ] = useState(prevProject[0]?.live_links);
+    const [ title, setTitle ] = useState('');
+    const [ instructions, setInstructions ] = useState(pro?.instruction);
+    const [ supplies, setSupplies ] = useState(pro?.supplies);
+    const [ cost, setCost ] = useState(pro?.cost);
+    const [ duration, setDuration ] = useState(pro?.duration);
+    const [ action, setAction ] = useState(pro?.action);
+    const [ type, setType ] = useState(pro?.type);
+    const [ image, setImage ] = useState(pro?.image_url);
+    const [ links, setLinks ] = useState(pro?.live_links);
+
+    // console.log(`state`, title)
 
 
     const updateTitle = (e) => setTitle(e.target.value);
@@ -58,7 +60,8 @@ function UpdateProjectForm(){
 
         const payload = {
             user_id: +user.id,
-            title, 
+            id: +id,
+            title,
             instruction:instructions,
             supplies,
             cost,
@@ -71,26 +74,49 @@ function UpdateProjectForm(){
             updated_at: new Date()
         };
 
+        console.log(`loaad`,payload)
         
 
         const project = await dispatch(editProject(payload))
 
-        console.log(project)
+        // console.log(project)
             if (project) {
                 history.push(`/projects/${project.id}`)
             }
     };
 
-    
+    // setTimeout(function(){ 
+            
+            console.log(`set timeout `); 
+        // }, 50000);
+        ;
     useEffect(() => {
-        dispatch(getProjects());
-    }, [dispatch])
+        dispatch(getProjects()) 
+       
+        // dispatch(getOneProject(+id))
+    }, [dispatch, id])
+
+    useEffect(() => {
+        setTitle(current[0]?.title)
+        setInstructions(current[0]?.instruction)
+        setSupplies(current[0]?.supplies)
+        setCost(current[0]?.cost)
+        setDuration(current[0]?.duration)
+        setAction(current[0]?.action)
+        setType(current[0]?.type)
+        setImage(current[0]?.image_url)
+        setLinks(current[0]?.live_links)
+    }, [current[0]])
+
+    console.log(`current title`,title)
 
     const splitSupplies = (str) => {
         let items = str.split(',')
         return items
 
     }
+
+    console.log('title', title)
 
     return (
         <div className='update__page-container'>
@@ -143,7 +169,7 @@ function UpdateProjectForm(){
             </div>
 
 
-            <div className='previous__project-container'>
+            {/* <div className='previous__project-container'>
                 {prevProject.map((pro) => (
                     <>
                          <h1>{title}</h1>
@@ -170,7 +196,7 @@ function UpdateProjectForm(){
                     <div className='project__externalLinks-container'></div>
                     </>
                 ))}
-            </div>
+            </div> */}
         </div>
 
     )

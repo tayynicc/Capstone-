@@ -67,25 +67,40 @@ function Account(){
     }, [dispatch])
 
     return (
-        <>
+        <div className='bkg__container'>
             <SlideMenu />
 
             <div className='top__logo-div'>
                 <h1 className='logo'>ReNew Me</h1>
            </div>
 
-            <div className='UI__container-outter'>
+            {/* <div className='UI__container-outter'> */}
                 <div className='UI__default-pfp'></div>
                 <div className='user__information-container'>
                     <div className='user__information-content'>
+                        <div className='smallscreen__userinfo-container'>
+                            <div className='smallerscreen__pfp'>
 
-                        <div className='info__field-username '>
-                           <h2>{user.username}</h2> 
+                            </div>
+
+                            <div className='info__field-username name'>
+                                <h3>Welcome {`${user.first_name} ${user.last_name} !`}</h3>
+                            </div>
+
+                            <div className='info__field-username '>
+                            <h3>{user.username}</h3> 
+                            </div>
+
+                            
+
+
+
+
+
                         </div>
 
-                        <div className='info__field-username '>
-                            <h3>{`${user.first_name} ${user.last_name}`}</h3>
-                        </div>
+
+
 
                         
                         
@@ -94,12 +109,12 @@ function Account(){
                 </div>
 
             
-            </div>
+            {/* </div> */}
             
-            <div className='container__labels'>
+            {/* <div className='container__labels'>
                 <h2 className='rotated__label'>My Projects</h2>
                 <h2 className='rotated__label'>My Saved Projects</h2>
-            </div>
+            </div> */}
 
             <div className='users__projects-container-account'>
             
@@ -111,9 +126,10 @@ function Account(){
                             </div>
                             <div className='tile-title-account'>
                                 <p>{project.title}</p>
+                            <div className='project__buttons'>
                                 <a href={`/update/${project.id}`}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></a>
-                                <button className='project__delete-btn' onClick={() => handleDelete(project.id)}><img src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/></button>
-
+                                <button className='project__delete-btn' onClick={() => handleDelete(project.id)}><img className='deleteImage' src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/></button>
+                            </div>
                                 
                             </div>
                             {/* <button type='submit' onClick={() => click()}>Click me </button> */}
@@ -138,8 +154,8 @@ function Account(){
                 )).reverse()}
 
             </div>
-            <Footer />
-        </>
+            {/* <Footer /> */}
+        </div>
         
     )
 }

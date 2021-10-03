@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { useHistory } from 'react-router-dom'
 
-import { getProjects, editProject } from '../../store/project'
+import { getProjects, editProject, getOneProject } from '../../store/project'
 
 import Header from '../Header'
 import Footer from '../Footer'
@@ -22,28 +22,34 @@ function UpdateProjectNew (){
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const projects = useSelector((state) => Object.values(state.project)) 
+    const project = useSelector((state) => Object.values(state.project)) 
     const user = useSelector((state) => state.session.user)
 
-    const currentproject = projects.filter((project) => project.id === +id)
+    // const oneProject = useSelector((state) => (state.one_project))
 
-    const [ stateProject ] = currentproject
+    console.log(`component check`, project)
 
-    console.log(`current`,stateProject?.title)
+    const current = project.filter((project => project.id === +id))
+
+    // const [ current ] = project
+
+    console.log(`current`, current)
 
     // const supplyArr = Object.values(stateProject?.supplies)
 
 
     const [ title, setTitle ] = useState('');
-    const [ instructions, setInstructions ] = useState(stateProject?.instruction);
+    const [ instructions, setInstructions ] = useState("");
     const [ supplies, setSupplies ] = useState('');
-    const [ cost, setCost ] = useState(stateProject?.cost);
-    const [ duration, setDuration ] = useState(stateProject?.duration);
-    const [ action, setAction ] = useState(stateProject?.action);
-    const [ type, setType ] = useState(stateProject?.type);
-    const [ image, setImage ] = useState(stateProject?.image);
-    const [ links, setLinks ] = useState(stateProject?.links);
+    const [ cost, setCost ] = useState(0);
+    const [ duration, setDuration ] = useState(0);
+    const [ action, setAction ] = useState(current?.action);
+    const [ type, setType ] = useState('Cleaning');
+    const [ image, setImage ] = useState("");
+    const [ links, setLinks ] = useState('');
     const [errors, setErrors] = useState({});
+
+    console.log(`state check`, title)
 
     const updateLinks = (e) => setLinks(e.target.value);
 
@@ -133,22 +139,22 @@ function UpdateProjectNew (){
 
 
     const splitSuppliesEdit = (str) => {
-        console.log(`supplies intake`,str)
-        let items = str.split(',')
-        console.log(`returned`, items)
-        // reflectUpdate('supplies')
-        // console.log(`state`, supplies)
-        return items
+        // console.log(`supplies intake`,str)
+        // let items = str.split(',')
+        // console.log(`returned`, items)
+        // // reflectUpdate('supplies')
+        // // console.log(`state`, supplies)
+        return str
 
     }
 
 
-    const project = projects.filter((singleProject) => singleProject.id === +id)
+    // const project = projects.filter((singleProject) => singleProject.id === +id)
 
-
+    
 
     useEffect(() => {
-        // dispatch(getOneProject(id));
+    //    dispatch(getOneProject(+id));
         dispatch(getProjects())
     }, [dispatch, id])
 
@@ -362,6 +368,7 @@ function UpdateProjectNew (){
 
         const payload = {
             user_id: +user.id,
+            id: +id,
             title, 
             instruction:instructions,
             supplies,
@@ -379,21 +386,33 @@ function UpdateProjectNew (){
 
         const project = await dispatch(editProject(payload))
 
-        console.log(project)
-            // if (project) {
-            //     history.push(`/projects/${project.id}`)
-            // }
+        console.log(`project in payload`,payload)
+            if (project) {
+                history.push(`/projects/${project.id}`)
+            }
     };
 
-    
+    useEffect(() => {
+        setTitle(current[0]?.title)
+        setInstructions(current[0]?.instruction)
+        setSupplies(current[0]?.supplies)
+        setCost(current[0]?.cost)
+        setDuration(current[0]?.duration)
+        setAction(current[0]?.action)
+        setType(current[0]?.type)
+        setImage(current[0]?.image_url)
+        setLinks(current[0]?.live_links)
+    }, [current[0]])
 
-    return (
+    console.log(`current title`,title)
+
+   return (
         <body className='project-body'>
             {/* <Header />  */}
             <SlideMenu />
 
             <button onClick={handleSubmit} >Submit Edits</button>
-            {project.map((pro) => (
+            {current.map((pro) => (
                 <>
                     <div className='project__title-container'>
                         <h1 id='title-display' >{pro.title}</h1>
@@ -512,10 +531,10 @@ function UpdateProjectNew (){
                             </div>
 
                             <ul className='supply__list-update-edit hidden' id='supply-list-updated'>
-                            {splitSuppliesEdit(supplies).map((itm) => (
+                            {/* {splitSuppliesEdit(supplies).map((itm) => (
                                 <li>{itm}</li> 
-                            ))} 
-                            </ul>
+                            ))} */}
+                            </ul> 
 
                             <button className='edit__supplies-btn btns' id='edit-supplies-btn' onClick={(() => showEdit('supplies'))}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
                             
@@ -568,6 +587,7 @@ function UpdateProjectNew (){
             <Footer />
             
         </body>
+    
     )
 }
 
