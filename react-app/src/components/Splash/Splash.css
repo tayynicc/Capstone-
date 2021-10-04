@@ -189,9 +189,10 @@
 }
 
 .information__container-outter{
-    border:3px solid purple;
+    /* border:3px solid purple; */
     position:absolute;
     bottom:0;
+    left:-50px;
     top:969px;
     height:100vh;
     display:flex;
@@ -322,7 +323,7 @@
 
 @media all and (max-height: 1600px){
     .splash__bkg-container{
-        border: 3px solid blue;
+        /* border: 3px solid blue; */
         width:100vw;
         position:absolute;
         left:0;
@@ -336,11 +337,11 @@
     }
 
     .splash__bkg-left {
-        border:3px solid green;
+        /* border:3px solid green; */
         height:100vh;
         position: absolute; 
         /* top: 0; */
-        left:10px;
+        left:0;
         /* height: 2000px; */
         /* border: 5px solid black; */
         width:100vw;
@@ -349,14 +350,14 @@
     }
 
     .images{
-        border: 3px solid purple; 
-        width:100vw;
+        /* border: 3px solid purple;  */
+        width:110vw;
         
         height:100vh;
         position: absolute; 
         /* top: 0; */
-        left:110px;
-        right:0;
+        left:0;
+        right:-20px;
         transform: skew(-10deg);
         /* overflow: hidden; */
         /* margin-top:2000px; */
