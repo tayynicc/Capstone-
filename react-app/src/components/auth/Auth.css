@@ -22,6 +22,14 @@
 	}
 }
 
+a{
+    text-decoration: none;
+
+}
+
+.can{
+    color:white;
+}
 
 .login__form-outer{
 	border: 3px solid #72739f;;

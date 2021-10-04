@@ -227,7 +227,7 @@ const SignUpForm = () => {
             </div>
             <div className='signup__button'>
               <button className='signup__buttn' type='submit'>Sign Up</button>
-              <button  className='signup__buttn'>Cancel</button>
+              <button className='signup__buttn'><a className='can' href='/'>Cancel</a></button>
             </div>
            
         </form>
