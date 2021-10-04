@@ -35,14 +35,14 @@ function Splash(){
            
         </div>
 
-        <div className='viewport__bkg'>
+        {/* <div className='viewport__bkg'>
            <div className='splash__bkg-circle'>
                 <div className='center__content'>
                     <h1>Let's find a new project to tackel!</h1>
                     <button className='demo__button splash__btns' onClick={(() => demo())}>Demo Login</button>
                 </div>
            </div> 
-        </div>
+        </div> */}
 
         <div className='splash__bkg-container'>
 

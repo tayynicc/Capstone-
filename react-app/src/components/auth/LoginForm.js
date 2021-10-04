@@ -61,45 +61,52 @@ const LoginForm = () => {
   console.log(`login errors`, errors)
   return (
     <>
-    <div className='form__header-contianer'>
-        <h1>Welcome Back</h1>
+
+    <div className='images__outter-container'>
+
     </div>
-    <div className='login__form-outer'>
-      
-      <form className='form__login' onSubmit={onLogin}>
-        <div className='login__form-err'>
-          {currentErrors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+
+    <div className='form__outter-container'>
+     
+      <div className='login__form-outer -signup'>
+         <div className='form__header-contianer'>
+            <h1>Welcome Back</h1>
         </div>
-        <div className='form__label-input'>
-          <label className='login__label' htmlFor='email'>Email</label>
-          <input
-            name='email'
-            type='text'
-            placeholder='Email'
-            className='login__input'
-            value={email}
-            onChange={updateEmail}
-          />
+        <form className='form__login' onSubmit={onLogin}>
+          <div className='login__form-err'>
+            {currentErrors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div className='form__label-input'>
+            <label className='login__label' htmlFor='email'>Email</label>
+            <input
+              name='email'
+              type='text'
+              placeholder='Email'
+              className='login__input'
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div className='form__label-input'>
+            <label className='login__label' htmlFor='password'>Password</label>
+            <input
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              className='login__input'
+              onChange={updatePassword}
+            />
+            <button className='login__button' type='submit'>Login</button>
+          </div>
+        </form>
+        <div className='redirect__container'>
+          <p>Don't have an account? Sign up <a href='/sign-up'>Here!</a></p>
         </div>
-        <div className='form__label-input'>
-          <label className='login__label' htmlFor='password'>Password</label>
-          <input
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            className='login__input'
-            onChange={updatePassword}
-          />
-          <button className='login__button' type='submit'>Login</button>
-        </div>
-      </form>
-      <div className='redirect__container'>
-        <p>Don't have an account? Sign up <a href='/sign-up'>Here!</a></p>
-      </div>
-   </div> 
+    </div> 
+  </div>
 
    </>
   );
