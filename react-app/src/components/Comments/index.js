@@ -1,4 +1,5 @@
 import './Comments.css'
+import EditComment from './editComment'
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
@@ -16,7 +17,7 @@ function Comments(){
     // console.log(sessionUser)
     const [users, setUsers] = useState([]);
     const [ review, setReview ] = useState('');
-    // const [ newReview, setNewReview ] = useState('')
+    const [ newReview, setNewReview ] = useState('')
     const [ errors, setErrors ] = useState('')
 
     
@@ -32,13 +33,13 @@ function Comments(){
     }; 
 
     const updateNewReview = (e) => {
-        setReview(e.target.value)
+        setNewReview(e.target.value)
         // const input = document.getElementById('review-input')
         // input.innerText = ''
         if(e.target.value.length <= 0 ){
             setErrors("Input area has no content")
         }
-        if (review.length > 0){
+        if (e.target.value.length > 0){
             setErrors('')
         }
     }; 
@@ -139,33 +140,39 @@ function Comments(){
         body.classList.add('hidden')
         done.classList.add('hidden')
         pen.classList.remove('hidden')
+        body.innerHTML = '';
+
+        // setReview(newReview)
 
         
 
     }
 
-    const handleUpdate = async (newReview) => {
+    const handleUpdate = async (updatedReview) => {
 
         
 
         const payload = {
-            id:newReview.id,
-            project_id: newReview.project_id,
-            user_id: newReview.user_id,
-            body: review,
-            created_at: newReview.created_at,
+            id:updatedReview.id,
+            project_id: updatedReview.project_id,
+            user_id: updatedReview.user_id,
+            body: newReview,
+            created_at: updatedReview.created_at,
             updated_at: new Date()
             
         }
 
-        if(review.length !== 0){
+        console.log(`!!`,payload)
+
+        if(newReview.length !== 0){
+            // console.log(dispatch)
             await dispatch(editReview(payload))
             // const input = document.getElementById('review-input')
             // input.innerHTML = ''
-            setReview('')
+            setNewReview('')
         }
 
-        updated(newReview.id)
+        updated(updatedReview.id)
 
     }
 
@@ -175,7 +182,7 @@ function Comments(){
         dispatch(getReviews())
     }, [dispatch])
 
-
+    // console.log(`new`, newReview)
 
 
     return (
@@ -200,15 +207,15 @@ function Comments(){
 
         </div>
 
-        <div className='comments__container'>
-            {projectReviews?.map((review) => (
+         <div className='comments__container'>
+         {projectReviews?.map((review) => (
                 <div className='single__comment'>
                     <div className='singleComment__username'>
                         <h3>{getUsername(review.user_id)}</h3>
                     </div>
                     <div className='singleComment__body'>
                         <p className='postedComment' id='prev__comment'>{review.body}</p>
-                        <textarea className='read-only hidden' onChange={updateNewReview}  id={`comment__text-${review.id}`}></textarea>
+                        <textarea className='read-only hidden' placeholder='edit your comment!' onChange={updateNewReview} id={`comment__text-${review.id}`}></textarea>
                         
                     </div>
                     <div className='singleComment__timestamp'>
@@ -227,7 +234,7 @@ function Comments(){
                 </div> 
             )).reverse()}
             
-
+            {/* < EditComment /> */}
         </div>
        </>
     )
