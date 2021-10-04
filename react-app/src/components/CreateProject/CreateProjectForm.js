@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
+
 import { createOneProject } from '../../store/project'
 
-
+import Header from '../Header'
+import SlideMenu from '../SlideMenu'
 import './CreateProject.css'
 
 
@@ -181,58 +183,90 @@ function CreateProjectForm(){
 
     return (
         <>
-            <h1>Create a New Project</h1>
-             <ul> 
-                {currentErrors.map((err) => (
-                    <li>{err}</li>
-                ))}
-            
-            </ul> 
+            {/* <h1>Create a New Project</h1> */}
+            <SlideMenu />
+            <Header />
+
+            <div className='page__container'>
+            <div className='create__errors'>
+                <ul> 
+                    {currentErrors.map((err) => (
+                        <li>{err}</li>
+                    ))}
+                
+                </ul> 
+            </div> 
+            <div className='form__container'>
+           
             <form >
-                <label>Title</label>
-                <input value={title} onChange={updateTitle} placeholder='Title' required></input>
+                <div className ='form__left'>
+                    <div className='form__label-input'>
+                        <label className='create__form-label'>Title</label>
+                        <input className='create__input' value={title} onChange={updateTitle} placeholder='Title' required={true}></input>
+                    </div>
 
-                <label>Instructions</label>
-                <textarea value={instructions} onChange={updateInstructions} placeholder='Instructions'></textarea>
+                    <div className='form__label-input'>
+                        <label className='create__form-label'>Instructions</label>
+                        <textarea className='create__input' value={instructions} onChange={updateInstructions} placeholder='Instructions' required={true}></textarea>
+                    </div>
 
-                <label>Supplies</label>
-                <textarea value={supplies} onChange={updateSupplies} placeholder='Supplies'></textarea>
+                    <div className='form__label-input'>
+                        <label className='create__form-label'>Supplies</label>
+                        <textarea className='create__input' value={supplies} onChange={updateSupplies} placeholder='Supplies' required={true}></textarea>
+                    </div>
 
-                <label>Cost</label>
-                <input value={cost} onChange={updateCost}  min='0' max='1000' type='number' placeholder='Cost, must be numerical value'></input>
+                    <div className='form__label-input'>
+                        <label className='create__form-label'> Cost</label>
+                        <input className='create__input' value={cost} onChange={updateCost}  min='0' max='1000' type='number' placeholder='Cost, must be numerical value' required={true}></input>
+                    </div>
+                </div>
 
-                <label>Duration</label>
-                <input placeholder='ex: 30 min or 1 hour' min='0' max='59' type='number' value={duration} onChange={updateDuration}></input>
+                <div className='form__right'>
+                    <div className='form__label-input'>
+                        <label className='create__form-label' >Duration</label>
+                        <input className='create__input' placeholder='ex: 30 min or 1 hour' min='0' max='59' type='number' value={duration} onChange={updateDuration} required={true}></input>
+                    </div>
 
-                <label>Action</label>
-                <select placeholder='What are we getting into?' onChange={updateAction}>
-                    <option value='DIY' >DIY</option>
-                    <option value='Tidy up' >Tidy Up</option>
-                    <option value='Deep Clean' >Deep Clean</option>
-                    <option value='Complete Overhaul' >Complete Overhaul</option>
-                    <option value='Decorate' >Decorate</option>
-                </select>
+                    <div className='form__label-input'>
+                        <label className='create__form-label'>Action</label>
+                        <select className='create__input' placeholder='What are we getting into?' onChange={updateAction} required={true}>
+                            <option value='DIY' >DIY</option>
+                            <option value='Tidy up' >Tidy Up</option>
+                            <option value='Deep Clean' >Deep Clean</option>
+                            <option value='Complete Overhaul' >Complete Overhaul</option>
+                            <option value='Decorate' >Decorate</option>
+                        </select>
+                    </div>
 
-                <label>Type</label>
-                <select onChange={updateType}>
-                    <option value='Cleaning'> Cleaning </option>
-                    <option value='Orginization'> Orginization </option>
-                    <option value='Decor'> Decor </option>
-                </select>
+                    <div className='form__label-input'>
+                    <label className='create__form-label'>Type</label>
+                        <select className='create__input' onChange={updateType} required={true}>
+                            <option value='Cleaning'> Cleaning </option>
+                            <option value='Orginization'> Orginization </option>
+                            <option value='Decor'> Decor </option>
+                        </select>
+                    </div>
 
-                <label>Image Url</label>
-                <input type='url' placeholder='Image Url' value={image} onChange={updateImage}></input>
+                    <div className='form__label-input'>
+                        <label className='create__form-label' >Image Url</label>
+                        <input className='login__input' type='url' placeholder='Image Url' value={image} onChange={updateImage} required={true}></input>
+                    </div>
 
-                <label>Live Links</label>
-                <input value={links} onChange={updateLinks}></input>
-
-                <button type='submit' onClick={handleSubmit} >Submit</button>
+                    <div >
+                        <label className='create__form-label' >Live Links</label>
+                        <input className='login__input' value={links} onChange={updateLinks} required={true}></input>
+                    </div>
+                </div>
+                <button className='create__project-btn' type='submit' onClick={handleSubmit} >Submit</button>
             </form>
 
-            <div className='image__preview'>
-                <img alt='Insert Image' className='create__image'src={image}></img>
+            
             </div>
-
+            
+            <div className='image__preview'>
+                <img alt='Insert Image' className='create__image' src={image}></img>
+            </div>
+            </div>
         </>
 
     )

@@ -1,12 +1,108 @@
 .image__preview{
-    border: 3px solid red;
-    height: 300px;
-    width: 300px; 
+    border: 3px solid black;
+    height: 600px;
+    width: 700px; 
+    position: absolute;
+    left: 60%;
+    top:20%;
+    background-color: white;
+    border-radius: 76% 24% 38% 62% / 53% 18% 82% 47% ;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    overflow:hidden;
+    background-size:100%;
 }
 
 
 .create__image{
-    height: 300px;
-    width: 300px;
+    height: 100%;
+    width: 100%;
    
+}
+
+
+.form__container{
+    border: 3px solid black;
+    /* height:80%; */
+    width:40%;
+    position: absolute;
+    top:10%;
+    left: 10%;
+    /* top:20%; */
+    background-color: aliceblue;
+    /* display: flex; */
+    /* justify-content: flex-start; */
+    /* flex-direction: ; */
+    /* border-radius:0 200px  0 200px ; */
+    border-radius:20% 80% 46% 54% / 22% 49% 51% 78% ;
+    height:90%;
+    /* z-index:2; */
+}
+
+.page__container{
+    /* border: 3px solid green; */
+    height: 100vh;
+    background-image: url('create_bkg.png');
+    /* filter: blur(2px); */
+
+}
+
+.form__left{
+    /* border: 3px solid blue; */
+    width: fit-content;
+    position: relative;
+    top:-30px;
+    padding-left:60px;
+    padding-top:30px;
+
+}
+
+.form__right{
+    /* border: 3px solid green; */
+    width: fit-content;
+    position:relative;
+    left:390px;
+    top:-200px;
+    padding-right:60px;
+    /* top:20px; */
+}
+
+.create__input{
+	padding:5px;
+	margin-bottom:5px;
+}
+
+.create__form-label{
+    /* border: 3px solid red; */
+    display: flex;
+    justify-content: center;
+    font-size:larger;
+    font-weight: bold;
+    margin-top:-10px;
+}
+
+.create__project-btn{
+    position:relative;
+    left:300px;
+    top:-110px;
+    padding:10px;
+	font-size:17px;
+	border-radius:30px;
+	font-weight:bold;
+	background-color:rgb(30, 30, 54);
+	color:white;
+	width:30%;
+	/* margin-top:3%; */
+}
+
+.create__errors{
+    color: red; 
+    border: 3px solid green;
+    width: 15%;
+    position: relative;
+    top:40%;
+    z-index:2;
+    left: 13%;
+
 }

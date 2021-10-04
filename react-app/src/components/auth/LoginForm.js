@@ -68,7 +68,7 @@ const LoginForm = () => {
 
     <div className='form__outter-container'>
      
-      <div className='login__form-outer'>
+      <div className='login__form-outer -signup'>
          <div className='form__header-contianer'>
             <h1>Welcome Back</h1>
         </div>
