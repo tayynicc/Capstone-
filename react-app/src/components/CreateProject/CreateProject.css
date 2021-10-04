@@ -98,7 +98,7 @@
 
 .create__errors{
     color: red; 
-    border: 3px solid green;
+    /* border: 3px solid green; */
     width: 15%;
     position: relative;
     top:40%;

@@ -39,8 +39,8 @@ function CreateProjectForm(){
         setTitle(e.target.value); 
         let tempErrors = {...errors}
 
-        console.log(`title`,e.target.value.length)
-        if(!e.target.value.length){
+        // console.log(`title`,e.target.value.length)
+        if(!e.target.value.length || title === ''){
           tempErrors.title = 'Title must be longer than 5 characters.'
           setErrors(tempErrors)
         } else if(e.target.value.length >= 5) {
@@ -76,7 +76,7 @@ function CreateProjectForm(){
             setErrors(tempErrors)
         }
         if(!splitSupplies.includes(',')){
-            tempErrors.suppliesFormat = 'Items must be seperated by a comma.'
+            tempErrors.suppliesFormat = 'Items must be seperated by a comma. If only one item place comma after item: item,'
             setErrors(tempErrors)
         }else if(splitSupplies.includes(',')){
             delete tempErrors.suppliesFormat
@@ -169,16 +169,42 @@ function CreateProjectForm(){
             updated_at: new Date()
         };
 
+        console.log(`load`,payload)
+        console.log(`err`, errors)
      
-        if(!Object.keys(errors).length){
-          const project = await dispatch(createOneProject(payload))
-            if (project) {
-                history.push(`/projects/${project.id}`)
-            } 
+        if(title === '' || instructions === '' || supplies === '' || cost === 0 || duration === 0 || action === '' || image === '' || links === ''){
+            // let tempErrors = {...errors}
+            // tempErrors.validData = 'Empty field detected. Please fill out all fields before submission'
+            // setErrors(tempErrors)
+            // if (title !== '' && duration !== 0 ){
+            //     delete tempErrors.validData
+            //     setErrors(tempErrors)
+            //     if(!Object.keys(errors).length){
+            //     const project = await dispatch(createOneProject(payload))
+            //         if (project) {
+            //             history.push(`/projects/${project.id}`)
+            //         } 
+            // }
+            // }
+
+            window.alert('Empty field detected. Please fill out all fields before submission')
+            
+            // console.log('here',title, instructions, supplies, cost, supplies, cost, duration, action, image, links )
+        } else if (title !== '' && duration !== 0){
+            let tempErrors = {...errors}
+            if(!Object.keys(errors).length){
+                const project = await dispatch(createOneProject(payload))
+                    if (project) {
+                        history.push(`/projects/${project.id}`)
+                    } 
+            }
+        
         }
         
         
     };
+
+    // console.log(`new item title`,title)
 
 
     return (
@@ -202,22 +228,22 @@ function CreateProjectForm(){
                 <div className ='form__left'>
                     <div className='form__label-input'>
                         <label className='create__form-label'>Title</label>
-                        <input className='create__input' value={title} onChange={updateTitle} placeholder='Title' required={true}></input>
+                        <input className='create__input' value={title} onChange={updateTitle} placeholder='Title' type='text'required={true} ></input>
                     </div>
 
                     <div className='form__label-input'>
                         <label className='create__form-label'>Instructions</label>
-                        <textarea className='create__input' value={instructions} onChange={updateInstructions} placeholder='Instructions' required={true}></textarea>
+                        <textarea className='create__input' value={instructions} onChange={updateInstructions} placeholder='Instructions' type='text' required></textarea>
                     </div>
 
                     <div className='form__label-input'>
                         <label className='create__form-label'>Supplies</label>
-                        <textarea className='create__input' value={supplies} onChange={updateSupplies} placeholder='Supplies' required={true}></textarea>
+                        <textarea className='create__input' value={supplies} onChange={updateSupplies} placeholder='Supplies' required></textarea>
                     </div>
 
                     <div className='form__label-input'>
                         <label className='create__form-label'> Cost</label>
-                        <input className='create__input' value={cost} onChange={updateCost}  min='0' max='1000' type='number' placeholder='Cost, must be numerical value' required={true}></input>
+                        <input className='create__input' value={cost} onChange={updateCost}  min='0' max='1000' type='number' placeholder='Cost, must be numerical value' required></input>
                     </div>
                 </div>
 
