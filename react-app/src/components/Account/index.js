@@ -118,7 +118,7 @@ function Account(){
 
             <div className='users__projects-container-account'>
             
-            
+            <h1>My Projects</h1>
             {usersProjects?.map((project) => (
                         <div className='tile__containers-account'>
                             <div>
