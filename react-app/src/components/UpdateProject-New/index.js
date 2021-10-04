@@ -54,32 +54,52 @@ function UpdateProjectNew (){
     const updateLinks = (e) => setLinks(e.target.value);
 
 
+    const updateImage = (e) => {
+        setImage(e.target.value);
+        let tempErrors = {...errors}
+        if(!e.target.value.length){
+            tempErrors.image = 'Please provide Image url'
+            setErrors(tempErrors)
+        }else if(e.target.value.length >= 5) {
+            delete tempErrors.image
+            setErrors(tempErrors)
+        }if(!e.target.value.includes('/')) {
+            tempErrors.imageURL = 'Invalid Image url'
+            setErrors(tempErrors)
+        }else if (e.target.value.includes('/')){
+            delete tempErrors.imageURL 
+            setErrors(tempErrors)
+        }
+    }
+
+
     const updateTitle = (e) => {
-        console.log()
+        console.log(`title`, e.target.value.length)
         setTitle(e.target.value); 
          let tempErrors = {...errors}
-        if(!title.length ){
+        if(e.target.value.length < 1){
           tempErrors.title = 'Title must be longer than 5 characters.'
           setErrors(tempErrors)
-        } else if(title.length > 5) {
+        } else if(e.target.value.length >= 5) {
             delete tempErrors.title
             setErrors(tempErrors)
         }
+        console.log(`err`, errors)
     }
 
     const updateDuration = (e) => {
         setDuration(e.target.value); 
          let tempErrors = {...errors}
-        if(!duration.length || duration === 0){
+        if(!e.target.value.length || e.target.value === 0){
           tempErrors.duration = 'Must provide Duration'
           setErrors(tempErrors)
-        }else if(duration > 59) {
+        }else if(e.target.value > 59) {
             tempErrors.durationHours = 'If project excedes 60 minutes please enter an hour value'
             setErrors(tempErrors)
-        }if (duration.length){
+        }if (e.target.value.length){
             delete tempErrors.duration
             setErrors(tempErrors)
-        }else if (duration < 59){
+        }else if (e.target.value < 59){
             delete tempErrors.durationHours
             setErrors(tempErrors)
         }
@@ -92,17 +112,17 @@ function UpdateProjectNew (){
         const splitSupplies = supplies.split('')
         let tempErrors = {...errors}
 
-        if(supplies.length < 5){
+        if(e.target.value.length < 5){
           tempErrors.suppliesLength = 'Supply list must contain one item.'
           setErrors(tempErrors)
-        }else if(supplies.length >= 5){
+        }else if(e.target.value.length >= 5){
             delete tempErrors.suppliesLength
             setErrors(tempErrors)
         }
-        if(!splitSupplies.includes(',')){
+        if(!e.target.value.includes(',')){
             tempErrors.suppliesFormat = 'Items must be seperated by a comma.'
             setErrors(tempErrors)
-        }else if(splitSupplies.includes(',')){
+        }else if(e.target.value.includes(',')){
             delete tempErrors.suppliesFormat
             setErrors(tempErrors)
         }
@@ -332,33 +352,49 @@ function UpdateProjectNew (){
         const editLinksToggleBtn = document.getElementById('links-btns')
         const linksDisplay = document.getElementById('links-display')
 
+        const editCostBtn = document.getElementById('edit-cost-btn')
+        const editCost = document.getElementById('edit-cost-field')
+        const costDisplay = document.getElementById('cost-display')
+
         if(field === 'title'){
+            checkTitle(title)
             titleDisplay.innerHTML = title
             editTitle.classList.add('hidden')
             editTitleBtn.classList.remove('hidden')
         }if(field === 'duration'){
+            checkDuration(duration)
             durationDisplay.innerHTML = duration
             editDuration.classList.add('hidden')
             editDurationBtn.classList.remove('hidden')
         }if(field === 'image'){
+            checkImage(image)
             // imageDisplay.innerHTML = image
             editImage.classList.add('hidden')
             editImageBtn.classList.remove('hidden')
         }if(field === 'supplies'){
-            // supplyDisplay.innerHTML = supplies
+            checkSupplies(supplies)
+            supplyDisplay.innerHTML = supplies
             editSupplies.classList.add('hidden')
             editSuppliesBtn.classList.remove('hidden')
             updatedDisplay.classList.remove('hidden')
         }if(field === 'inst'){
+            checkInstructions(instructions)
             instDisplay.innerHTML = instructions
             editInstBtn.classList.remove('hidden')
             editInstDisplay .classList.add('hidden')
             editInst.classList.add('hidden')
         }if(field === 'links'){
+            checkLinks(links)
             linksDisplay.innerHTML = links
             editLinksBtn.classList.remove('hidden')
             editLinksToggleBtn.classList.add('hidden')
             editLinks.classList.add('hidden')
+        }if(field === 'cost'){
+            checkCost(cost)
+            costDisplay.innerHTML = `$ ${cost}`
+            editCostBtn.classList.remove('hidden')
+            // editLinksToggleBtn.classList.add('hidden')
+            editCost.classList.add('hidden')
         }
         
     }
@@ -404,25 +440,85 @@ function UpdateProjectNew (){
         setLinks(current[0]?.live_links)
     }, [current[0]])
 
-    console.log(`current title`,title)
+    // console.log(`current title`,title)
+
+    const currentErrors = Object.values(errors)
+
+    const checkTitle = (e) => {
+        
+        if(e === title){
+            window.alert('Title was not changed.')
+        }
+    }
+
+    const checkDuration = (e) => {
+        if(e === duration){
+            window.alert('Duration was not changed.')
+        }
+    }
+
+    const checkImage = (e) => {
+        if(e === image){
+            // window.alert('Image was not changed.')
+        }
+    }
+
+    const checkInstructions = (e) => {
+        if(e === instructions){
+            window.alert('Instructions were not changed.')
+        }
+    }
+
+    const checkSupplies = (e) => {
+        if(e === supplies){
+            window.alert('Supplies not changed.')
+        }
+    }
+
+    const checkCost = (e) => {
+        if(e === cost){
+            window.alert('Cost was not changed.')
+        }
+    }
+
+    const checkLinks = (e) => {
+        if(e === links){
+            window.alert('Live links were not changed.')
+        }
+    }
+
+
+
+
 
    return (
         <body className='project-body'>
             {/* <Header />  */}
             <SlideMenu />
+            
+           <div className='update__errors-container'>
+             <ul>
+                {currentErrors.map((err) => (
+                    <li>{err}</li>
+                ))}
+            </ul>
+           </div>
 
-            <button onClick={handleSubmit} >Submit Edits</button>
+
+            <button className='update__item' onClick={handleSubmit} >Submit Edits</button>
+
             {current.map((pro) => (
                 <>
                     <div className='project__title-container'>
                         <h1 id='title-display' >{pro.title}</h1>
                         <div className='edit__title-field hidden' id='edit-title'>
                             
-                            <input  className='edit__title-input' placeholder='update title here' values={title} onChange={updateTitle}></input>
-                            
+                            <form onSubmit={checkTitle}>
+                                <input  className='edit__title-input' placeholder='update title here' value={title} onChange={updateTitle} required></input>
+                            </form>
                             <div className='edit__button-container'>
                                 <button id='cancel-edit-btn' className='edit__cancel-btn' onClick={(() => closeEdit('title'))}>Cancel</button>
-                                <button id='done-editing' onClick={(() => reflectUpdate('title'))}>Done</button>
+                                <button id='done-editing' className='done__edit' onClick={(() => reflectUpdate('title'))} type='submit'>Done</button>
                             </div>
                             
                             
@@ -440,33 +536,36 @@ function UpdateProjectNew (){
                             <img className ='product__image' src={pro.image_url}></img>
                             
                         </div>  
+                            
+                            <img className='update__image-preview' src={image}></img>
 
-                        <div className='edit__image-container hidden'     id='edit-image-container'>
-                            <input placeholder='Edit Image Url here' ></input>
+                        <div className='edit__image-container hidden' id='edit-image-container'>
+                            <form>
+                                <input placeholder='Edit Image Url here' type='url'  onChange={updateImage} ></input>
+                            </form>
                             <button id='cancel-edit-btn' className='edit__cancel-btn' onClick={(() => closeEdit('image'))}>Cancel</button>
-                            <button  id='done-editing' onClick={(() => reflectUpdate('image'))}>Done</button>
+                            <button  id='done-editing' className='done__edit' onClick={(() => reflectUpdate('image'))}>Done</button>
                             
                         </div>
                         <button className='edit__imag-btn btns' id='edit-image-btn' onClick={(() => showEdit('image'))}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
                         
 
-
+{/* 
                         <div className='save-project-tile'>
                             <button id='save-button'  onClick={() => saveProject(pro)} className='save__button' >Save This Project! <img src="https://img.icons8.com/ios-glyphs/30/000000/like--v2.png"/></button>
-                            
-                            
-                        </div>
+                        </div> */}
 
 
-                        <div className='duration'>
+                        <div className='duration-update'>
                            <h2>Estimated Time to Complete: </h2>
-                            <h4 id='duration-display'>{pro.duration} Minutes</h4> 
+                            <h4 id='duration-display'>{pro.duration}</h4> 
                             <div className='edit__duration-field hidden' id='edit-duraiton'>
-                                <input className='' placeholder={duration} values={duration} onChange={updateDuration}></input>
-
+                            <form >
+                                <input className='' placeholder={duration} value={duration} onChange={updateDuration}></input>
+                            </form>
                                 <div className='edit__button-container time'>
                                    <button id='cancel-edit-btn' className='edit__cancel-btn' onClick={(() => closeEdit('duration'))}>Cancel</button>
-                                    <button id='done-editing' onClick={(() => reflectUpdate('duration'))}>Done</button> 
+                                    <button id='done-editing' className='done__edit' type='submit' onClick={(() => reflectUpdate('duration'))}>Done</button> 
                                 </div>
                                 
                                 
@@ -508,7 +607,7 @@ function UpdateProjectNew (){
                         </div>        
 
                         <div className='inner__edit-input'>
-                        <textarea placeholder={instructions} className='instructions__input-field hidden' id='edit-inst-container' values={instructions} onChange={updateInstructions}></textarea>
+                            <textarea placeholder={instructions} className='instructions__input-field hidden' id='edit-inst-container' value={instructions} onChange={updateInstructions}></textarea>
                         </div>
                     </div>
                 
@@ -522,7 +621,7 @@ function UpdateProjectNew (){
                             ))} 
                             </ul>
                             <div id='edit-supplies' className='edit__supplyList-field hidden'>
-                              <textarea  className='edit__supplyList-input' placeholder={supplies} values={supplies} onChange={updateSupplies}></textarea>
+                              <textarea  className='edit__supplyList-input' value={supplies} onChange={updateSupplies}></textarea>
 
                                 <div className='edit__button-container'>
                                     <button id='cancel-edit-btn' className='edit__cancel-btn' onClick={(() => closeEdit('supplies'))}>Cancel</button>
@@ -542,7 +641,7 @@ function UpdateProjectNew (){
                          
                         <div className='cost-container-update'>
                             <h1>Estimated Cost: </h1>
-                            <h3>$ {pro.cost}</h3>  
+                            <h3 id='cost-display'>$ {pro.cost}</h3>  
 
                             <button className='edit__cost-btn btns' id='edit-cost-btn' onClick={(() => showEdit('cost'))}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button> 
 
@@ -570,7 +669,7 @@ function UpdateProjectNew (){
                         <button className='edit__links-btn btns' id='edit-links-btn' onClick={(() => showEdit('links'))}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></button>
 
 
-                        <input id='edit-links-field' className='edit-links-input-field hidden' values={links} onChange={updateLinks} placeholder={links} type='url'></input>
+                        <input id='edit-links-field' className='edit-links-input-field hidden' value={links} onChange={updateLinks} placeholder={links} type='url'></input>
 
                         <div className='edit__button-container links hidden' id='links-btns'>
                                 <button id='done-editing' className='done__edit' onClick={(() => reflectUpdate('links'))}>Done</button> 

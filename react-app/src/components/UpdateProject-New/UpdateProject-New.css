@@ -1,5 +1,5 @@
 .edit__title-field{
-    border: 3px solid red;
+    /* border: 3px solid red; */
     position: absolute;
     display:flex;
     flex-direction: column;
@@ -28,11 +28,11 @@
 }
 
 .edit__duration-field{
-    border: 3px solid purple;
+    /* border: 3px solid purple; */
     display: flex;
     flex-direction: column;
     position:absolute;
-    top:58%
+    top:61%
 
 }
 
@@ -61,26 +61,34 @@
 }
 
 
+.update__image-preview{
+    /* border:3px solid red; */
+    position:absolute;
+    width:50%;
+    height:65%;
+    z-index:2;
 
+}
 
 .edit__image-container{
-    border: 3px solid green;
+    /* border: 3px solid green; */
     position:absolute;
-    bottom:-7%;
+    bottom:-9%;
+    height: 5%;
     width:20%;
-    left:35%;
+    left:45%;
     display:flex;
     justify-content: space-between;
 }
 
 .edit__imag-btn{
     position:absolute; 
-    bottom:-8%;
+    bottom:-2%;
     left:58%;
 }
 
 .edit__supplyList-field{
-    border:3px solid purple;
+    border:3px solid black;
     position:absolute;
     top:15%;
     left:15%
@@ -102,7 +110,7 @@
 
 
 .instructions__outter-container{
-    border: 3px solid red;
+    /* border: 3px solid red; */
     height:fit-content;
     display:flex;
     justify-content:center;
@@ -110,7 +118,7 @@
 
 
 .project__instructions-container-update{
-    border: 3px solid purple;
+    /* border: 3px solid purple; */
     border-right:3px solid grey;
     border-left:3px solid grey;
     height: fit-content;
@@ -132,12 +140,12 @@
 
 
 .project__supplies-container-update{
-    border: 3px solid purple;
+    /* border: 3px solid purple; */
     height: 400px;
-    width: 15%;
+    width: 20%;
     position:absolute;
-    top:115%;
-    left:9%;
+    top:120%;
+    left:7%;
     background-color:white;
     padding-top:-5px;
 
@@ -146,7 +154,8 @@
 
 
 .instructions__input-field{
-    border: 3px solid blue;
+    border: 3px solid grey;
+    border-radius: 10px;
     width:51%;
     position:absolute;
     top:135%;
@@ -210,7 +219,7 @@
 
 .supply-list-update{
     border-bottom: 3px solid grey;
-    border:3px solid red;
+    /* border:3px solid red; */
     height:fit-content;
     min-height:60%;
 
@@ -219,6 +228,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.duration-update{
+    display:flex;
+    flex-direction: column;
+    align-items: center;  
+    border:3px solid grey;
+    height:13%;
+    /* justify-content: center; */
+    margin:5px;
+    /* border: 3px solid green; */
+    position: absolute; 
+    left:100px;
+    top:150px;
+    background-color: white;
+    border-radius:30px;
+    padding:10px;
+    /* width:5%; */
+    line-height:100%;
+
+
 }
 
 .supply__list-label{
@@ -233,7 +263,7 @@
 }
 
 .cost-container-update{
-    border: 3px solid orange;
+    /* border: 3px solid orange; */
 
     display: flex;
     flex-direction: column;
@@ -250,11 +280,11 @@
 }
 
 .edit__cost-container{
-    border: 3px solid yellow;
+    /* border: 3px solid yellow; */
     display:flex;
     flex-direction: column;
     position:absolute;
-    bottom:2%
+    bottom:4%
 }
 
 .updateCost-btns{
@@ -265,4 +295,29 @@
 }
 .hidden{
     display: none;
+}
+
+
+.update__errors-container{
+    position:absolute;
+    right: 10px;
+    /* border: 3px solid green; */
+    color:red;
+    background-color: white;
+
+
+
+}
+
+.update__item{
+    /* margin-left: 30px; */
+    position:absolute;
+    left: 10%;
+    top:3%;
+    padding:10px;
+	font-size:17px;
+	border-radius:30px;
+	font-weight:bold;
+	background-color:rgb(30, 30, 54);
+	color:white;
 }

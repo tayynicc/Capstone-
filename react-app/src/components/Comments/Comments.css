@@ -99,7 +99,7 @@
     margin-top:-3%;
     width:100%;
     padding:10px;
-    border: 2px solid blue; 
+    border: 2px solid grey; 
     /* position: absolute; */
     
 }
@@ -151,5 +151,15 @@
     justify-content: center;
     color: red;
     font-weight: bold;
+
+}
+
+.finish__comment{
+    padding:5px;
+    border-radius: 30px;
+    background: green;
+    color: white;
+    font-weight: bold;
+    border: 3px solid green;
 
 }
