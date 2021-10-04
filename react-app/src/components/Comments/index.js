@@ -12,7 +12,8 @@ function Comments(){
     const { id } = useParams()
     const dispatch = useDispatch()
 
-    
+    // const sessionUser = useSelector((state) => state.session.user)
+    // console.log(sessionUser)
     const [users, setUsers] = useState([]);
     const [ review, setReview ] = useState('');
     const [ errors, setErrors ] = useState('')
@@ -43,6 +44,10 @@ function Comments(){
     const reviews = useSelector((state) => Object.values(state.review)) 
 
     const sessionUser = useSelector((state) => state.session).user
+
+    console.log(`!!`, sessionUser)
+
+    
     
 
     const projectReviews = reviews.filter((review) => review.project_id === +id)
@@ -192,12 +197,12 @@ function Comments(){
                         {review.created_at}
                         <div className='singleComment__edit-buttons'>
                             <button id={`done__btn-${review.id}`} className='finish__comment hidden' type='submit' onClick={() => handleUpdate(review)}>Done</button>
-                            <button className='delete__button' onClick={() => handleDelete(review.id)}>
+                            {sessionUser.id === review.user_id && <button className='delete__button' onClick={() => handleDelete(review.id)}>
                                 <img className='delete__button' src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/>
-                            </button>
-                            <button onClick={() => updateComment(review.id)} className='edit__button' >
+                            </button>}
+                            {sessionUser.id === review.user_id  && <button onClick={() => updateComment(review.id)} className='edit__button' >
                                 <img className='edit__button' src="https://img.icons8.com/ios-filled/50/000000/edit--v1.png"/>
-                            </button>     
+                            </button>   }  
                         </div>
                     </div>
 
