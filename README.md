@@ -18,7 +18,7 @@ Here users will be able to see the details about the projects they want to compl
 
 ![project](https://capstone-renewme.s3.us-west-1.amazonaws.com/Screenshot+(162).png)
 ![project](https://capstone-renewme.s3.us-west-1.amazonaws.com/Screenshot+(163).png)
-![project](https://capstone-renewme.s3.us-west-1.amazonaws.com/Screenshot+(163).png)
+
 
 Account Page
 Here users can find their posted projejects and controls that allows them to edit or delete their proejcts as well as a list of their saved projects. 
