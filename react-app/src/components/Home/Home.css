@@ -1,11 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap');
 
+
+.home__background{
+    background-color: aliceblue;
+    /* background: linear-gradient(-45deg, purple aliceblue #E4D2B3,  wheat); */
+}
 .first__outter-container{
     border: 3px solid grey;
     height: 500px;
     display:flex;
     flex-direction: row;
-    margin-left:100px;
+    margin-left:10%;
     margin-right:100px;
     background-color:lightgrey;
     align-items: center;
@@ -19,7 +24,7 @@
     height: 500px;
     display:flex;
     flex-direction: row;
-    margin-left:100px;
+    margin-left:10%;
     margin-right:100px;
     align-items: center;
     border-radius:0 0 30px 30px ;
@@ -32,7 +37,7 @@
     height: 500px;
     display:flex;
     flex-direction: row;
-    margin-left:100px;
+    margin-left:10%;
     margin-right:100px;
     align-items: center;
     border-radius:0 0 30px 30px ;
@@ -43,7 +48,7 @@
 .container-labels{
     padding-left:30px;
     border-bottom: 3px solid grey;
-    margin-left:100px;
+    margin-left:10%;
     margin-right:100px;
     margin-top: 100px;
     display:flex;
@@ -93,20 +98,6 @@
     flex-direction: row;
 }
 
-
-.top__logo-div{
-    /* border: 3px solid green; */
-    margin-top:-8px;
-    height:80px;
-	background: linear-gradient(-45deg,  #E4D2B3, #B8AB93, wheat, #B19F80);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-    width:105%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-
-}
 
 
 @keyframes gradient {

@@ -12,15 +12,29 @@ function Comments(){
     const { id } = useParams()
     const dispatch = useDispatch()
 
-    
+    // const sessionUser = useSelector((state) => state.session.user)
+    // console.log(sessionUser)
     const [users, setUsers] = useState([]);
     const [ review, setReview ] = useState('');
+    // const [ newReview, setNewReview ] = useState('')
     const [ errors, setErrors ] = useState('')
 
     
 
     const updateReview = (e) => {
         setReview(e.target.value)
+        if(e.target.value.length <= 0 ){
+            setErrors("Input area has no content")
+        }
+        if (review.length > 0){
+            setErrors('')
+        }
+    }; 
+
+    const updateNewReview = (e) => {
+        setReview(e.target.value)
+        // const input = document.getElementById('review-input')
+        // input.innerText = ''
         if(e.target.value.length <= 0 ){
             setErrors("Input area has no content")
         }
@@ -43,6 +57,10 @@ function Comments(){
     const reviews = useSelector((state) => Object.values(state.review)) 
 
     const sessionUser = useSelector((state) => state.session).user
+
+
+
+    
     
 
     const projectReviews = reviews.filter((review) => review.project_id === +id)
@@ -61,7 +79,6 @@ function Comments(){
     
     
     const handleSubmit = async (e) => {
-        console.log(`posting comment`, sessionUser.id)
         e.preventDefault();
 
         if(review.length <= 0 ){
@@ -87,40 +104,41 @@ function Comments(){
     }
 
     const handleDelete = (id) => {
-        console.log(`deleting`)
+    
         dispatch(deleteReview(Number(id)))
     }
 
     const updateComment = (id) => {
         
-        console.log(`button click`)
-
-        const p = document.getElementById('prev__comment')
+        const pen = document.getElementById(`edit-${id}`)
         const body = document.getElementById(`comment__text-${id}`)
         const done = document.getElementById(`done__btn-${id}`)
+        // const input = document.getElementById('review-input')
 
-        if (body.classList.contains('read-only')){
+        if (body.classList.contains('hidden')){
             body.classList.add('read-only')
             body.classList.remove('hidden')
             done.classList.remove('hidden')
-            p.classList.add('hidden')
+            pen.classList.add('hidden')
+            // input.innerHTML = ''
         }
         else  {
             body.classList.add('read-only')
             done.classList.add('hidden')
-            p.classList.remove('hidden')
+            pen.classList.remove('hidden')
+            // input.innerHTML = ''
         }
         
     }
 
     const updated = (id) => {
-        const p = document.getElementById('prev__comment')
         const body = document.getElementById(`comment__text-${id}`)
         const done = document.getElementById(`done__btn-${id}`)
+        const pen = document.getElementById(`edit-${id}`)
 
         body.classList.add('hidden')
         done.classList.add('hidden')
-        p.classList.remove('hidden')
+        pen.classList.remove('hidden')
 
         
 
@@ -139,11 +157,12 @@ function Comments(){
             updated_at: new Date()
             
         }
-        console.log(`review`, review)
 
         if(review.length !== 0){
             await dispatch(editReview(payload))
-            // setReview('')
+            // const input = document.getElementById('review-input')
+            // input.innerHTML = ''
+            setReview('')
         }
 
         updated(newReview.id)
@@ -155,6 +174,10 @@ function Comments(){
  
         dispatch(getReviews())
     }, [dispatch])
+
+
+
+
     return (
        <>
         <div className='comments__header'>
@@ -165,7 +188,7 @@ function Comments(){
             <li className='comment__error-msg'>{errors}</li>
             
             <div className='comment__input-innerContainer'>
-              <textarea value={review} onChange={updateReview} placeholder='Share Your Thoughts!' className='comment-field'></textarea>  
+              <textarea  value={review} onChange={updateReview} placeholder='Share Your Thoughts!' className='comment-field' required></textarea>  
             </div>
             
             <div className='comment__input-submitButton'>
@@ -185,19 +208,19 @@ function Comments(){
                     </div>
                     <div className='singleComment__body'>
                         <p className='postedComment' id='prev__comment'>{review.body}</p>
-                        <textarea className='read-only hidden' onChange={updateReview}  id={`comment__text-${review.id}`}>{review.body}</textarea>
+                        <textarea className='read-only hidden' onChange={updateNewReview}  id={`comment__text-${review.id}`}></textarea>
                         
                     </div>
                     <div className='singleComment__timestamp'>
                         {review.created_at}
                         <div className='singleComment__edit-buttons'>
                             <button id={`done__btn-${review.id}`} className='finish__comment hidden' type='submit' onClick={() => handleUpdate(review)}>Done</button>
-                            <button className='delete__button' onClick={() => handleDelete(review.id)}>
+                            {sessionUser.id === review.user_id && <button className='delete__button' onClick={() => handleDelete(review.id)}>
                                 <img className='delete__button' src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/>
-                            </button>
-                            <button onClick={() => updateComment(review.id)} className='edit__button' >
+                            </button>}
+                            {sessionUser.id === review.user_id  && <button id={`edit-${review.id}`}onClick={() => updateComment(review.id)} className='edit__button' >
                                 <img className='edit__button' src="https://img.icons8.com/ios-filled/50/000000/edit--v1.png"/>
-                            </button>     
+                            </button>   }  
                         </div>
                     </div>
 

@@ -72,7 +72,7 @@ function App() {
         <Route path ='/test/:id'>
             {/* <NavBar /> */}
             <UpdateProjectForm />
-            <SlideMenu />
+            {/* <SlideMenu /> */}
             
             
         </Route>

@@ -43,7 +43,8 @@ function SlideMenu(){
             <li><a href="#" className="menu-button">Menu</a></li>
             <li><a href="/create-project">New Project</a></li>
             <li><a href="/account">Saved Projects</a></li>
-            <li><a href="#"><button onClick={onLogout}>Logout</button></a></li>
+            <li><a href="/account">My Projects</a></li>
+            <li><a href="#" ><button className='logout__button-menu' onClick={onLogout}>Logout</button></a></li>
         </ul>
     </>
     )

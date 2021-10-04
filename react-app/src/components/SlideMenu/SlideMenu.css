@@ -138,3 +138,14 @@
         height:3.5em;
     }
 }
+
+.logout__button-menu{
+  /* border: 3px solid blue; */
+  font-size: 20px;
+  /* font-weight:lighter; */
+  background-color: transparent;
+  border: none;
+  color: #72739f; 
+  letter-spacing: 2px;
+  /* line-height:5 */
+}

@@ -1,16 +1,32 @@
 .project__image-innerContainer{
     /* border: 3px solid blue; */
-    height:min-content;
-    width: max-content;
-    padding:50px;
+    
+    /* padding:50px; */
     /* position:absolute; */
     background-color: aliceblue;
     display:flex;
     justify-content: center;
     align-items: center;
 
+    height:fit-content;
+    width: fit-content;
+    height:80%;
+    width:60%;
+    /* min-height:700px; */
+    /* min-width:800px; */
+    
     
 }
+
+.product__image{
+    /* border: 3px solid green; */
+    width:60%;
+    height:80%;
+
+}
+
+
+
 
 .project__image-outterContainer{
     border: 3px solid orange;
@@ -45,7 +61,7 @@
     border-left:3px solid grey;
     height: fit-content;
     /* width:60%; */
-    /* margin-left: 25%; */
+    margin-left: 25%;
     width:50%;
     margin-top: 100px;
     font-size: larger;
@@ -60,7 +76,7 @@
 
 
 .project__durationCost-container{
-    /* border: 3px solid green; */
+    /* border: 3px solid black; */
     height: 400px;
     width: 18%;
     position:absolute;
@@ -74,7 +90,7 @@
     display:flex;
     flex-direction: column;
     align-items: center;  
-    /* border-bottom:3px solid grey; */
+    border:3px solid grey;
     height:10%;
     /* justify-content: center; */
     margin:5px;
@@ -97,10 +113,10 @@
 
 .project__supplies-container{
     /* border: 3px solid green; */
-    height: 400px;
+    height: 360px;
     width: 18%;
     position:absolute;
-    top:113%;
+    top:115%;
     right:30px;
     background-color:white;
     padding-top:-5px;
@@ -136,7 +152,8 @@
     font-size:large;
     display:flex;
     justify-content: space-around;
-    /* width:49%; */
+    width:69%;
+    margin-left: 7%;
     align-items: center;
     /* margin-left:20%; */
 }
@@ -199,4 +216,46 @@
     background-color: white;
     border-radius: 30px;
     /* overflow: hidden; */
+}
+
+
+@media all and (max-width: 1400px){
+
+    .project__supplies-container{
+        height: fit-content;
+        width: 60%;
+        /* border: 3px solid purple; */
+    /* position:absolute; */
+    /* top:115%; */
+    /* right:30px; */
+        background-color:white;
+        /* padding-top:-5px; */
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 15%;
+
+    }
+
+    .project__inst-label{
+        margin-top:220px;
+    }
+
+    .project__instructions-container{
+        /* border: 3px solid yellow; */
+        border-right:3px solid grey;
+        border-left:3px solid grey;
+        height: fit-content;
+        /* width:60%; */
+        margin-left: 25%;
+        width:50%;
+        margin-top: 50px;
+        font-size: larger;
+        line-height:200%;
+        padding-top:10px;
+        padding-left:20px;
+        padding-right:20px;
+        /* border-radius:30px; */
+        background-color:white;
+    }
 }

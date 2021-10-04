@@ -35,7 +35,7 @@ function Home(){
     }, [dispatch])
 
     return(
-        <div>
+        <div className='home__background'>
            <SlideMenu />
 
            <div className='top__logo-div'>
