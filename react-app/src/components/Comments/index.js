@@ -208,7 +208,7 @@ function Comments(){
                     </div>
                     <div className='singleComment__body'>
                         <p className='postedComment' id='prev__comment'>{review.body}</p>
-                        <textarea className='read-only hidden' onChange={updateNewReview}  id={`comment__text-${review.id}`}>{review.body}</textarea>
+                        <textarea className='read-only hidden' onChange={updateNewReview}  id={`comment__text-${review.id}`}></textarea>
                         
                     </div>
                     <div className='singleComment__timestamp'>

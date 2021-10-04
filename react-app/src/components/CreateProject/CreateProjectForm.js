@@ -31,7 +31,7 @@ function CreateProjectForm(){
 
     const updateAction = (e) => setAction(e.target.value);
     const updateType = (e) => setType(e.target.value);
-    const updateImage = (e) => setImage(e.target.value);
+    // const updateImage = (e) => setImage(e.target.value);
     const updateLinks = (e) => setLinks(e.target.value);
 
     
@@ -119,6 +119,24 @@ function CreateProjectForm(){
             setErrors(tempErrors)
         }
 
+    }
+
+      const updateImage = (e) => {
+        setImage(e.target.value);
+        let tempErrors = {...errors}
+        if(!e.target.value.length){
+            tempErrors.image = 'Please provide Image url'
+            setErrors(tempErrors)
+        }else if(e.target.value.length >= 5) {
+            delete tempErrors.image
+            setErrors(tempErrors)
+        }if(!e.target.value.includes('/')) {
+            tempErrors.imageURL = 'Invalid Image url'
+            setErrors(tempErrors)
+        }else if (e.target.value.includes('/')){
+            delete tempErrors.imageURL 
+            setErrors(tempErrors)
+        }
     }
     
     // const updateImage = (e) => {

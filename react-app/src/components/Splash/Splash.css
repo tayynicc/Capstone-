@@ -21,8 +21,10 @@
 	}
 }
 .splash__bkg-container{
-    height: 2000px;
-    width:100%
+    /* border: 3px solid green; */
+    height: 970px;
+    width:100%;
+    overflow:hidden;
     /* z-index:1; */
 
 }
