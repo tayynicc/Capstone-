@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 
-import { getReviews, createOneReview, deleteReview, editReview} from '../../store/review'
+import reviewReducer, { getReviews, createOneReview, deleteReview, editReview} from '../../store/review'
 
 
 function Comments(){
@@ -13,8 +13,6 @@ function Comments(){
     const { id } = useParams()
     const dispatch = useDispatch()
 
-    // const sessionUser = useSelector((state) => state.session.user)
-    // console.log(sessionUser)
     const [users, setUsers] = useState([]);
     const [ review, setReview ] = useState('');
     const [ newReview, setNewReview ] = useState('')
@@ -28,7 +26,8 @@ function Comments(){
             setErrors("Input area has no content")
         }
         if (review.length > 0){
-            setErrors('')
+            setErrors('');
+            // setReview('');
         }
     }; 
 
@@ -101,6 +100,7 @@ function Comments(){
         if(review.length !== 0){
             await dispatch(createOneReview(payload))
             setReview('')
+            setNewReview('');
         }
     }
 
@@ -165,11 +165,12 @@ function Comments(){
         console.log(`!!`,payload)
 
         if(newReview.length !== 0){
-            // console.log(dispatch)
+       
             await dispatch(editReview(payload))
-            // const input = document.getElementById('review-input')
-            // input.innerHTML = ''
+           
+            setReview('')
             setNewReview('')
+
         }
 
         updated(updatedReview.id)
@@ -182,7 +183,8 @@ function Comments(){
         dispatch(getReviews())
     }, [dispatch])
 
-    // console.log(`new`, newReview)
+    console.log(`new`, newReview.body)
+    console.log('review', review)
 
 
     return (
@@ -195,7 +197,7 @@ function Comments(){
             <li className='comment__error-msg'>{errors}</li>
             
             <div className='comment__input-innerContainer'>
-              <textarea  value={review} onChange={updateReview} placeholder='Share Your Thoughts!' className='comment-field' required></textarea>  
+              <textarea value={review}  onChange={updateReview} placeholder='Share Your Thoughts!' className='comment-field' required></textarea>  
             </div>
             
             <div className='comment__input-submitButton'>
@@ -215,7 +217,7 @@ function Comments(){
                     </div>
                     <div className='singleComment__body'>
                         <p className='postedComment' id='prev__comment'>{review.body}</p>
-                        <textarea className='read-only hidden' placeholder='edit your comment!' onChange={updateNewReview} id={`comment__text-${review.id}`}></textarea>
+                        <textarea className='read-only hidden' placeholder='edit your comment!' onChange={updateNewReview} id={`comment__text-${review.id}`}>{review.body}</textarea>
                         
                     </div>
                     <div className='singleComment__timestamp'>
