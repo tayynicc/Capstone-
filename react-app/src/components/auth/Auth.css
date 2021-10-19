@@ -29,12 +29,13 @@ a{
 
 .can{
     color:white;
+    width:40%
 }
 
 .login__form-outer{
 	border: 3px solid #72739f;;
 	width:350px;
-	height:500px;
+	height:600px;
 	display:flex;
 	flex-direction: column;
 	justify-content: center;
@@ -183,7 +184,21 @@ a{
 	
 }
 
+
 .auth_errs{
 	color: red; 
 	font-weight:bold;
+}
+
+
+.login-cancel{
+    color:white;
+    /* border: 3px solid red; */
+    
+}
+
+
+.login__button-container{
+    display:flex;
+    flex-direction: column;
 }

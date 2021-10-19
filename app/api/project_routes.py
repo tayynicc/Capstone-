@@ -107,6 +107,8 @@ def edit_project(id):
 def delete_projects(id):
     project = Project.query.get(id)
 
+    # print("hereeeeee", project)
+
     db.session.delete(project)
     db.session.commit()
 

@@ -11,7 +11,7 @@ class Saved_Project(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, ForeignKey('users.id'), nullable=False)
-    project_id = db.Column(db.Integer, ForeignKey('projects.id'), nullable=False)
+    project_id = db.Column(db.Integer, ForeignKey('projects.id'), nullable=False, unique=True)
 
 
     user = relationship('User', back_populates='saved')

@@ -53,6 +53,7 @@ export const addProject = (payload) => async dispatch => {
 
 // delete a project 
 export const deleteSavedProject = projectId => async dispatch => {
+    console.log(projectId)
     const res = await fetch(`/api/saved/${projectId}`, {
         method: 'DELETE'
     })
