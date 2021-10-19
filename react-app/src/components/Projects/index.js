@@ -38,28 +38,7 @@ function Project(){
 
     }
 
-    const saveProject = async (project) => {
-   
-        const payload = {
-            user_id: +user.id, 
-            project_id: id,
-         
-        }
 
-        await dispatch(addProject(payload))
-    }
-
-    const save = (id) => {
-        const button = document.getElementById('save-button') 
-        if (button.innerHTML === 'Project Saved!'){
-            button.innerHTML = 'Save This Project'
-            button.classList.remove('saved')
-        } else {
-           button.innerHTML = 'Project Saved!' 
-           button.classList.add('saved')
-        }
-        
-    }
 
 
     return (
@@ -79,10 +58,10 @@ function Project(){
                             <img className ='product__image' src={pro.image_url}></img>
                         </div>  
 
-                        <div className='save-project-tile'>
+                        {/* <div className='save-project-tile'>
                             <button id='save-button'  onClick={() => saveProject(pro)} className='save__button' >Save This Project! <img src="https://img.icons8.com/ios-glyphs/30/000000/like--v2.png"/></button>
                             
-                        </div> 
+                        </div>  */}
 
                         <div className='duration'>
                            <h2>Estimated Time to Complete: </h2>

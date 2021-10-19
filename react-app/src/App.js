@@ -7,6 +7,7 @@ import SignUpForm from './components/auth/SignUpForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import SavedProjects from './components/SavedProjects';
 import { authenticate } from './store/session';
 
 
@@ -71,8 +72,9 @@ function App() {
         </ProtectedRoute >
         <Route path ='/test/:id'>
             {/* <NavBar /> */}
-            <UpdateProjectForm />
+            {/* <UpdateProjectForm /> */}
             {/* <SlideMenu /> */}
+            <SavedProjects />
             
             
         </Route>

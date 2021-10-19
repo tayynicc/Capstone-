@@ -184,17 +184,7 @@ a{
 	
 }
 
-/* .login__buttn{
-	padding:10px;
-	font-size:17px;
-	border-radius:30px;
-	font-weight:bold;
-	background-color:rgb(30, 30, 54);
-	color:white;
-	width:30%;
-	margin-top:3%;
-	
-} */
+
 .auth_errs{
 	color: red; 
 	font-weight:bold;
