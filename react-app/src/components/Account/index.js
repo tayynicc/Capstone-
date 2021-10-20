@@ -6,6 +6,7 @@ import { getSavedProjects } from '../../store/saved_project'
 
 import SlideMenu from '../SlideMenu';
 import Footer from '../Footer';
+import EditMenu from '../EditMenu';
 
 import './Account.css'
 
@@ -126,9 +127,29 @@ function Account(){
                             </div>
                             <div className='tile-title-account'>
                                 <p>{project.title}</p>
+
+
+
+
+
                             <div className='project__buttons'>
-                                <a href={`/update/${project.id}`}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></a>
-                                <button className='project__delete-btn' onClick={() => handleDelete(project.id)}><img className='deleteImage' src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/></button>
+                                {/* <div id="container">
+                                    <nav>
+                                        <ul>
+                                            <li><a href="#"><img src="https://img.icons8.com/material-outlined/24/000000/more.png"/></a>
+                                                <ul className='optionsContainer'>
+                                                    <li><a className='editOpt Opt' href={`/update/${project.id}`}>Edit</a></li>
+                                                    <li ><a className='deleteOpt Opt' href="#"><button className='project__delete-btn' onClick={() => handleDelete(project.id)}>Delete</button></a></li>
+                                                  
+                                                </ul>        
+                                            </li>
+                                        
+                                        </ul>
+                                    </nav>
+                                </div> */}
+
+                                {/* <a href={`/update/${project.id}`}><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png"/></a>
+                                <button className='project__delete-btn' onClick={() => handleDelete(project.id)}>Delete</button> */}
                             </div>
                                 
                             </div>

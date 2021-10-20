@@ -33,7 +33,7 @@ function Comments(){
     }; 
 
     const updateNewReview = (e) => {
-        setNewReview(e.target.value)
+        setNewReview(review)
         // const input = document.getElementById('review-input')
         // input.innerText = ''
         if(e.target.value.length <= 0 ){
