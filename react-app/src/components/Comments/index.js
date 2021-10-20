@@ -183,8 +183,42 @@ function Comments(){
         dispatch(getReviews())
     }, [dispatch])
 
-    console.log(`new`, newReview.body)
-    console.log('review', review)
+
+    const time = (date) => {
+        console.log(date)
+        const items = date.split(' ');
+
+        const [day, number, month, year, time ] = items
+        const formattedDate = []
+
+        formattedDate.push(day, month, number + ',', year)
+        const res = [formattedDate.join(" "), formatTime(time)]
+
+
+        return res.join(' ')
+        
+        
+    }
+
+    const formatTime = ( time ) =>  {
+        const  splitTime = time.split(':');
+        const [ hour, minute ] = splitTime
+        
+        const t = []
+        if(hour <= 12){
+            if(hour[0] === '0'){
+                console.log(`##`, hour)
+                let digit = hour.split('');
+                t.push(digit[1], minute + ' PM')
+
+            } else {
+                t.push(hour, minute)
+            }
+        }
+
+
+        return t.join(':')
+    }
 
 
     return (
@@ -221,7 +255,7 @@ function Comments(){
                         
                     </div>
                     <div className='singleComment__timestamp'>
-                        {review.created_at}
+                        {time(review.created_at)}
                         <div className='singleComment__edit-buttons'>
                             <button id={`done__btn-${review.id}`} className='finish__comment hidden' type='submit' onClick={() => handleUpdate(review)}>Done</button>
                             {sessionUser.id === review.user_id && <button className='delete__button' onClick={() => handleDelete(review.id)}>
