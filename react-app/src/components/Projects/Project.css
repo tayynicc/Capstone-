@@ -172,25 +172,6 @@
 
 }
 
-.save__button{
-    display:flex;
-    align-items: center;
-    /* width: 40%; */
-    font-size: large;
-    height: 50px;
-    border:none;
-    border-radius:30px;
-    /* position: absolute; */
-}
-
-.save__button:hover{
-    cursor: pointer;
-}
-
-.saved{
-    background-color: red;
-}
-
 .supply-list{
     border-bottom: 3px solid grey;
     /* margin:5px; */
