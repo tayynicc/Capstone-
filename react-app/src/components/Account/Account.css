@@ -282,25 +282,25 @@ tbody {
 .label-1{
     /* border: 3px solid yellow; */
     position: relative;
-    left: 3%;
+    left: 6%;
 }
 
 .label-2{
     /* border: 3px solid yellow; */
     position: relative;
-    left: 16%;
+    left: 29%;
 }
 
 .label-3{
     /* border: 3px solid yellow; */
     position: relative;
-    left: 40%;
+    left: 57%;
 }
 
 .label-4{
     /* border: 3px solid yellow; */
     position: relative;
-    left: 60%;
+    left: 83%;
 }
 .data_row{
     border-bottom: 3px solid grey;
@@ -432,6 +432,18 @@ tbody {
     
 }
 
+.edit__usrproject-link{
+    color: green;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.delete__usrproject-link{
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    color: red;
+}
 @media all and (max-width: 1500px){
 
     /* .UI__container-outter{
