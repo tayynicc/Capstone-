@@ -85,7 +85,8 @@ function Account(){
                             </div>
 
                             <div className='info__field-username '>
-                            <h3>{user.username}</h3> 
+                            <h3 className='pfp__username-info'><p className='username__label'>Username: </p>{user.username}</h3> 
+                            <h3 className='pfp__username-info'><p className='username__label'>Email: </p>{user.email}</h3>
                             </div>
 
 

@@ -1,9 +1,15 @@
 .bkg__container{
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color:rgb(233, 223, 215);
     margin-top:-9px;
     margin-right:-9px;
     margin-bottom:-9px;
+    height: 200%;
+    position: absolute;
+    top:0; 
+    bottom: 0;
+    left: 0;
+    right:0;
 }
 
 
@@ -105,7 +111,7 @@
 .user__information-container{
     border: 3px solid grey; 
     width: 400px;
-    height: 400px;
+    height: 200px;
     border-radius:30px;
     display:flex;
     margin-bottom:20%;
@@ -114,14 +120,15 @@
     background-color: white;
     position:relative;
     left:9%;
+    top:100px;
+
     z-index:1
 
 }
 
 .UI__default-pfp{
-
-    height: 400px;
-    width:400px;
+    height: 300px;
+    width:300px;
     border-radius: 50%;
     position: relative; 
     background-image: url('userDefault-1.png');
@@ -129,13 +136,25 @@
     background-repeat: no-repeat;
     box-shadow: 0 0 5px 5px grey;
     position: relative;
-    top:10%;
-    left:9%;
+    top:50px;
+    left:12%;
     margin-right:10%;
     z-index:2;
     
 }
 
+.username__label{
+    font-size: small;
+    color: grey;
+
+}
+
+.pfp__username-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
 
 
 .user__information-content{
@@ -383,7 +402,7 @@ tbody {
     height: fit-content;
     width: 60.5%;
     position:absolute;
-    top:15%;
+    top:5%;
     right: 2%;
 }
 
@@ -433,7 +452,8 @@ tbody {
         display:flex;
         flex-direction: row;
         justify-content: space-between;
-        width:100%
+        width:100%;
+        border: 3px solid orange;
     }
 
     .name{
