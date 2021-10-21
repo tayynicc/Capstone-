@@ -99,7 +99,10 @@ const LoginForm = () => {
               className='login__input'
               onChange={updatePassword}
             />
-            <button className='login__button' type='submit'>Login</button>
+            <div className='login__button-container'>
+                <button className='login__button' type='submit'>Login</button>
+                <button className='login__button'><a className='login-cancel' href='/'>Cancel</a></button>
+            </div>
           </div>
         </form>
         <div className='redirect__container'>

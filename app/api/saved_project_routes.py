@@ -2,6 +2,9 @@ from app.models import project, saved_project
 from flask import Blueprint, request
 from ..models import Saved_Project, db
 from datetime import datetime
+from flask import json
+from werkzeug.exceptions import HTTPException
+
 
 
 
@@ -36,9 +39,14 @@ def new_saved_project():
 # Delete a project 
 @saved_routes.route('/<int:id>', methods=['DELETE'])
 def delete_project(id):
-    saved_projects = Saved_Project.query.get(id)
 
-    db.session.delete(saved_projects)
+
+    project = Saved_Project.query.filter_by(project_id= id).first()
+
+    
+
+
+    db.session.delete(project)
     db.session.commit()
 
     return {}
