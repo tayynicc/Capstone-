@@ -40,6 +40,36 @@ function Project(){
 
 
 
+    const savedSet = new Set()
+
+    const saveProject = async (project) => {
+   
+        const payload = {
+            user_id: +user.id, 
+            project_id: id,
+         
+        }
+
+
+
+        // await dispatch(addProject(payload))
+        save(project.id)
+    }
+
+    const save = (id) => {
+        const button = document.getElementById('save-button') 
+        if (button.innerHTML === 'Project Saved!'){
+            return
+        } else {
+           button.innerHTML = 'Project Saved!' 
+           button.classList.add('saved')
+        }
+        
+    }
+
+
+
+
 
     return (
         <>
