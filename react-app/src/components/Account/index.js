@@ -56,7 +56,6 @@ function Account(){
 
 
     const handleDelete = (id) => {
-        console.log(`id`, id)
         dispatch(deleteProject(+id))
     }
 
@@ -113,7 +112,7 @@ function Account(){
                             <tr>
                                 <div className='center__labels'>
                                     <div className='label-1'>
-                                        <th>Active Listing</th>
+                                        <th>Listing</th>
                                     </div>
 
                                     <div className='label-2'>
@@ -146,7 +145,7 @@ function Account(){
                                         </div>
 
                                         <div className='tags'>
-                                            <td className='table__data tags-data'>{project.action} {project.type}</td>
+                                            <td className='table__data tags-data'>{project.action}, {project.type}</td>
                                         </div>
                                         
                                         
@@ -155,7 +154,7 @@ function Account(){
                                         <td className='table__data'>{project.created_at}</td>
 
                                         <div className='editControls'>
-                                            <td className='table__data editCont'>Edit Delete</td>
+                                            <td className='table__data editCont'><a className='edit__usrproject-link' href={`/update/${project.id}`}>Edit </a> <button className='delete__usrproject-link' onClick={(() => handleDelete(project.id))}> Delete </button> </td>
                                         </div>
                                     </div>
                                 </tr>
