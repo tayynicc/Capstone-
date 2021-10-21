@@ -53,7 +53,7 @@ function Account(){
     
 
 
-
+    
 
 
     const handleDelete = (id) => {
@@ -110,8 +110,46 @@ function Account(){
 
             
             {/* </div> */}
-            
+
             <div className='container__labels'>
+                <thead className='tableTitle'>
+                    <tr>
+                        <th>My Projects</th>
+                    </tr>
+                </thead>
+                <thead className='table_columnLabel'>
+                    <tr>
+                        <th>Active Listing</th>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Created At</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {usersProjects?.map((project) => (
+                        <>
+                        <div className='data_row'>
+                            <tr >
+                                <td className='table__data'>Listing</td>
+                                <td className='table__data'>{project.title}</td>
+                                <tr className='table__data'>
+                                    <td className='table__data'>{project.action}</td>
+                                    <td className='table__data'>{project.type}</td>
+                                </tr>
+                                
+                                <td className='table__data'>{project.created_at}</td>
+                                <td className='table__data'>Edit Delete</td>
+                            </tr>
+                        </div>    
+                         
+                        </>
+                    ))}
+                    
+                </tbody>
+            </div>
+            
+            {/* <div className='container__labels'>
                 <h2 className='rotated__label'>My Projects</h2>
                 <h2 className='rotated__label'>My Saved Projects</h2>
             </div>
@@ -132,14 +170,14 @@ function Account(){
                             </div>
                                 
                             </div>
-                            {/* <button type='submit' onClick={() => click()}>Click me </button> */}
+                            // <button type='submit' onClick={() => click()}>Click me </button>
                         </div>
 
                     )).reverse()}
 
-            </div>
+            </div> */}
 
-            <div className='users__savedProjects-container'>
+            {/* <div className='users__savedProjects-container'>
                 {savedProjects.map((project) => (
                    
                     <a className='anchor' href={`/projects/${project.project_id}`}>
@@ -153,8 +191,7 @@ function Account(){
                     </div></a>
                 )).reverse()}
 
-            </div>
-            {/* <Footer /> */}
+            </div> */}
         </div>
         
     )
