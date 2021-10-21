@@ -1,14 +1,9 @@
 .bkg__container{
-    /* border: 3px solid red; */
-    /* background-image: url('background-g3f385310a_1920.jpg'); */
-    /* height:100vh; */
     overflow: hidden;
     background-color:rgb(233, 223, 215);
     margin-top:-9px;
     margin-right:-9px;
     margin-bottom:-9px;
-    /* position:absolute; */
-    /* bottom:0; */
 }
 
 
@@ -22,13 +17,10 @@
     left: 50%;
     top:10%;
     right:30%;
-    /* margin-top:1.5%; */
-    /* z-index: -2; */
     background-color:white;
     align-items: center;
     width:45.5%;
     background-color:lightgrey;
-    /* padding-bottom:15px; */
 }
 
 
@@ -40,8 +32,6 @@
     position: absolute; 
     left: 50%;
     top:57%;
-    /* margin-top:1.5%; */
-    /* background-color:white; */
     width:45.5%;
     background-color:lightgrey;
     overflow: auto;
@@ -66,7 +56,6 @@
 }
 
 .saved__table-label{
-    /* border: 3px solid hotpink; */
     height: 50px;
     width: 100%;
     display: flex;
@@ -86,7 +75,6 @@
 }
 
 .tile-title-account{
-    /* border: 3px solid blue; */
     height: 70px;
     margin-top:-3px;
     display: flex;
@@ -205,7 +193,6 @@
 }
 
 .remove_saved{
-    /* border: 3px solid orange; */
     width: 10%;
     margin-left: 10px;
     margin-top: 10px;
@@ -218,11 +205,7 @@
 }
 
 .container__labels{
-    /* border: 3px solid red; */
     width:fit-content;
-    /* position:absolute; */
-    /* top:15%; */
-    /* left:38%; */
     display:flex;
     flex-direction: column;
     justify-content: space-between;
@@ -235,7 +218,6 @@
 }
 
 .usersPd__table-label{
-    /* border: 3px solid blue; */
     width:100%;
     display: flex;
     justify-content: center;
@@ -254,7 +236,6 @@
     padding-top: 5px;
     padding-bottom: 5px;
     display: flex;
-    /* justify-content: space-evenly; */
     flex-direction: row;
     width:100%;
 
@@ -264,41 +245,29 @@ tbody {
 }
 
 
-/* .table_columnLabel{
-    border: 3px solid green;
-    width:100%;
-    display: flex;
-    justify-content: space-evenly;
-} */
 
 .center__labels{
-    /* border: 3px solid red; */
     width:410%;
     display: flex;
-    /* justify-content: space-evenly; */
 
 }
 
 .label-1{
-    /* border: 3px solid yellow; */
     position: relative;
     left: 6%;
 }
 
 .label-2{
-    /* border: 3px solid yellow; */
     position: relative;
     left: 29%;
 }
 
 .label-3{
-    /* border: 3px solid yellow; */
     position: relative;
     left: 57%;
 }
 
 .label-4{
-    /* border: 3px solid yellow; */
     position: relative;
     left: 83%;
 }
@@ -327,14 +296,8 @@ tbody {
     display:flex;
     flex-direction: row;
     align-items: center;
-    /* border: 3px solid purple; */
     width:1060px;
-    /* width:100%; */
     height: 100px;
-
-    /* justify-content: space-evenly; */
-    /* padding: 0; */
-
 }
 
 .link{
@@ -396,12 +359,7 @@ tbody {
 }
 
 .savedProjects{
-    /* border: 3px solid red;  */
-    /* height: 200px; */
     width: 100%;
-    /* position: absolute; */
-    /* top: 60%; */
-    /* right: 2%; */
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -422,14 +380,11 @@ tbody {
 
 
 .table__containers{
-    /* border: 3px solid orange; */
     height: fit-content;
     width: 60.5%;
     position:absolute;
     top:15%;
     right: 2%;
-    /* padding-bottom: 30px; */
-    
 }
 
 .edit__usrproject-link{
@@ -446,9 +401,6 @@ tbody {
 }
 @media all and (max-width: 1500px){
 
-    /* .UI__container-outter{
-        
-    } */
     .UI__default-pfp{
         display:none;
 
@@ -471,17 +423,13 @@ tbody {
     }
 
     .user__information-container{
-       /* display:none; */
        position:absolute;
         top:10%;
         width:85vw;
         height:10%;
-       
-        /* justify-content: center; */
     }
 
     .smallscreen__userinfo-container{
-        /* border:3px solid red; */
         display:flex;
         flex-direction: row;
         justify-content: space-between;
@@ -524,22 +472,13 @@ tbody {
     }
 
     .tile__containers-account{
-        /* border: 3px solid purple; */
         width: 400px;
         height:250px;
         margin-left:20px;
     }
-/* 
-    .tile-image-account{
-        height: 55px;
-        border: 3px solid red;
-        width: 400px;
-        border-radius:10px;
-
-    } */
+    
 
     .tile-title-account{
-        /* border: 3px solid yellow; */
         height: 50px;
         margin-top:-1px;
         display: flex;
@@ -556,7 +495,6 @@ tbody {
     }
 
     .project__buttons{
-        /* border: 3px solid red; */
         display:flex;
         align-items:center;
         justify-content: space-between;
@@ -564,8 +502,6 @@ tbody {
     }
 
     .project__delete-btn{
-        /* position: relative;  */
-        /* margin-right:10px; */
         background:transparent;
         border: none;
         
