@@ -166,12 +166,13 @@
 
 
 .container__labels{
-    /* border: 3px solid red; */
-    /* width:100%; */
+    border: 3px solid red;
+    width:60%;
+    /* width:100vh; */
     position:absolute;
-    top:25%;
+    top:15%;
     left:38%;
-    height:55%;
+    /* height:55%; */
     display:flex;
     flex-direction: column;
     justify-content: space-between;
@@ -181,6 +182,35 @@
 
 }
 
+tbody {
+    width: 100%;
+    border: 3px solid purple;
+}
+.tableTitle{
+    border: 3px solid blue;
+    width:100%;
+}
+
+.table_columnLabel{
+    border: 3px solid green;
+    width:100%
+}
+
+
+.data_row{
+    border: 3px solid green;
+    
+    /* display:inline-block; */
+    /* flex-direction:row; */
+    /* justify-content:space-between; */
+    /* color: red; */
+
+}
+
+.table__data{
+    border:3px solid red;
+    margin-left: 20%;
+}
 .rotated__label{
     transform: rotate(-30deg);
     color:#72739f;
