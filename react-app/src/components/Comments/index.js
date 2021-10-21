@@ -109,22 +109,25 @@ function Comments(){
         dispatch(deleteReview(Number(id)))
     }
 
-    const updateComment = (id) => {
+    const updateComment = (review) => {
+        const { id, body } = review
+        // console.log(`!!!!`, id, body)
+        setNewReview(body)
         
         const pen = document.getElementById(`edit-${id}`)
-        const body = document.getElementById(`comment__text-${id}`)
+        const contentBody = document.getElementById(`comment__text-${id}`)
         const done = document.getElementById(`done__btn-${id}`)
         // const input = document.getElementById('review-input')
 
-        if (body.classList.contains('hidden')){
-            body.classList.add('read-only')
-            body.classList.remove('hidden')
+        if (contentBody.classList.contains('hidden')){
+            contentBody.classList.add('read-only')
+            contentBody.classList.remove('hidden')
             done.classList.remove('hidden')
             pen.classList.add('hidden')
             // input.innerHTML = ''
         }
         else  {
-            body.classList.add('read-only')
+            contentBody.classList.add('read-only')
             done.classList.add('hidden')
             pen.classList.remove('hidden')
             // input.innerHTML = ''
@@ -185,7 +188,6 @@ function Comments(){
 
 
     const time = (date) => {
-        console.log(date)
         const items = date.split(' ');
 
         const [day, number, month, year, time ] = items
@@ -207,7 +209,6 @@ function Comments(){
         const t = []
         if(hour <= 12){
             if(hour[0] === '0'){
-                console.log(`##`, hour)
                 let digit = hour.split('');
                 t.push(digit[1], minute + ' PM')
 
@@ -219,6 +220,8 @@ function Comments(){
 
         return t.join(':')
     }
+
+    console.log(`$$$`, review)
 
 
     return (
@@ -244,24 +247,24 @@ function Comments(){
         </div>
 
          <div className='comments__container'>
-         {projectReviews?.map((review) => (
+         {projectReviews?.map((reviews) => (
                 <div className='single__comment'>
                     <div className='singleComment__username'>
-                        <h3>{getUsername(review.user_id)}</h3>
+                        <h3>{getUsername(reviews.user_id)}</h3>
                     </div>
                     <div className='singleComment__body'>
-                        <p className='postedComment' id='prev__comment'>{review.body}</p>
-                        <textarea className='read-only hidden' placeholder='edit your comment!' value={review.body} onChange={updateNewReview} id={`comment__text-${review.id}`}></textarea>
+                        <p className='postedComment' id='prev__comment'>{reviews.body}</p>
+                        <textarea className='read-only hidden' placeholder='edit your comment!' value={newReview} onChange={updateNewReview} id={`comment__text-${reviews.id}`}></textarea>
                         
                     </div>
                     <div className='singleComment__timestamp'>
-                        {time(review.created_at)}
+                        {time(reviews.created_at)}
                         <div className='singleComment__edit-buttons'>
-                            <button id={`done__btn-${review.id}`} className='finish__comment hidden' type='submit' onClick={() => handleUpdate(review)}>Done</button>
-                            {sessionUser.id === review.user_id && <button className='delete__button' onClick={() => handleDelete(review.id)}>
+                            <button id={`done__btn-${reviews.id}`} className='finish__comment hidden' type='submit' onClick={() => handleUpdate(reviews)}>Done</button>
+                            {sessionUser.id === reviews.user_id && <button className='delete__button' onClick={() => handleDelete(reviews.id)}>
                                 <img className='delete__button' src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/>
                             </button>}
-                            {sessionUser.id === review.user_id  && <button id={`edit-${review.id}`}onClick={() => updateComment(review.id)} className='edit__button' >
+                            {sessionUser.id === reviews.user_id  && <button id={`edit-${reviews.id}`}onClick={() => updateComment(reviews)} className='edit__button' >
                                 <img className='edit__button' src="https://img.icons8.com/ios-filled/50/000000/edit--v1.png"/>
                             </button>   }  
                         </div>
