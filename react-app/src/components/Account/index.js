@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { getProjects, deleteProject } from '../../store/project';
-import { getSavedProjects } from '../../store/saved_project'
+import { deleteSavedProject, getSavedProjects } from '../../store/saved_project'
 
 import SlideMenu from '../SlideMenu';
 import Footer from '../Footer';
@@ -17,14 +17,14 @@ function Account(){
 
     const projects = useSelector((state) => Object.values(state.project))
 
-    const savedProjects = useSelector((state) => Object.values(state.savedProject))
+    const saved = useSelector((state) => Object.values(state.savedProject))
 
 
     
     const usersProjects = projects?.filter((project) => project.user_id === user.id)
 
 
-    console.log(`user proj`, savedProjects)
+    // console.log(`user proj`, savedProjects)
 
     // const populatedSavedProjects = (userId) => {
     //     console.log(`id`, userId)
@@ -41,15 +41,36 @@ function Account(){
 
     // populatedSavedProjects(user.id)
 
-    const getProject = (id) => {
-        const project = projects.filter((project) => project.id === id)
+    // const getProject = (id) => {
+    //     const project = projects.filter((project) => project.id === id)
 
 
-        const [ proj ] = project
-        return proj
+    //     const [ proj ] = project
+    //     return proj
+    // }
+
+    function savedProjContent(){
+
+       let id = []
+       saved.forEach((save) =>{ 
+            id.push(save.project_id)
+       })
+
+       let project = []
+       projects?.forEach((pro) => {
+           for(let i = 0; i < id.length; i++){
+               let curr = id[i]
+               if(curr === pro.id){
+                   project.push(pro)
+               }
+           }
+       })
+
+       return project
     }
-
     
+
+    savedProjContent()
 
 
     
@@ -57,6 +78,10 @@ function Account(){
 
     const handleDelete = (id) => {
         dispatch(deleteProject(+id))
+    }
+
+    const removeSaved = (id) => {
+        dispatch(deleteSavedProject(id))
     }
 
     useEffect(() => {
@@ -178,10 +203,11 @@ function Account(){
                         </thead>
                     </div>
                     <tbody>
-                        {usersProjects?.map((project) => (
+                        {savedProjContent().map((project) => (
 
                         
                             <div className='data__container-saved'>
+
                                 <div className="image__container">
                                     <td>
                                         <img alt='project image' className='tile-image-account savedImg' src={project.image_url}></img>
@@ -193,7 +219,7 @@ function Account(){
                                 </div>
 
                                 <div className='remove_saved'>
-                                    <button className='project__delete-btn' onClick={() => handleDelete(project.id)}>Remove</button>
+                                    <button className='project__delete-btn' onClick={() => removeSaved(project.id)}>Remove</button>
                                 </div>
                             </div>
                         )).reverse()}
