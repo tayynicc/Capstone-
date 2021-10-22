@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { getProjects } from '../../store/project'
 import { addProject, getSavedProjects, deleteSavedProject } from '../../store/saved_project' 
 
+import './SavedProjects.css'
 
 function SavedProjects(){
     const { id } = useParams()
@@ -16,8 +17,6 @@ function SavedProjects(){
 
     const project = projects?.filter((pro) => pro?.id === +id)
 
-    // console.log(`@@`,projects)
-    console.log(`!!`, saved)
 
     
 
@@ -30,20 +29,20 @@ function SavedProjects(){
         }
 
         await dispatch(addProject(payload))
+        window.alert('Project Saved')
     }
 
     const unsaveProject = async (id) => {
-        console.log(`!!`, typeof id)
      
         await dispatch(deleteSavedProject(id))
-        window.alert('Project unsaved')
+        dispatch(getSavedProjects())
+        window.alert('Project Unsaved')
     }
  
 
     const checkSaved = (id) => {
         const res = []
       saved.forEach((pro) => {
-           console.log(pro.project_id)
             if(pro.project_id === id){
                 res.push('true')
             } else {
@@ -61,25 +60,22 @@ function SavedProjects(){
     }
 
 
+
     useEffect(() => {
         dispatch(getProjects())
         dispatch(getSavedProjects())
-        // checkSaved(id)
     }, [dispatch, id]) 
 
 
     return(
         <>
-            {checkSaved(+id) === false && <div className='save-project-tile'>
-            <button id='save-button'  onClick={() => saveProject(+id)} className='save__button' >Save This Project!</button>
-                            
-            </div> }
+            {checkSaved(+id) === false && 
+                <button id='save-button'  onClick={() => saveProject(+id)} className='save__button' >Save This Project!</button>            
+            }
 
             {checkSaved(+id) === true && 
                 <>
-                    <h1>project already saved</h1>
-                    {/* {console.log(`**`, id)} */}
-                    <button onClick={() => unsaveProject(+id) }>Unsave project</button>
+                    <button className='savedBTN' onClick={() => unsaveProject(+id) }>Unsave project</button>
                 </>
             }
         </>

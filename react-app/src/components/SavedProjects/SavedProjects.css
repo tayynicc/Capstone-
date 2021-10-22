@@ -1,0 +1,50 @@
+.savedBTN{
+    color:white;
+    background-color: red; 
+    font-size: large;
+    height: 50px;
+    border:none;
+    border-radius:30px;
+    display:flex;
+    align-items: center;
+
+}
+
+
+.save__button{
+    display:flex;
+    align-items: center;
+    width: 150px;
+    font-size: large;
+    height: 50px;
+    border:none;
+    border-radius:30px;
+    /* position: absolute;
+    top:5% */
+}
+
+.save__button:hover{
+    cursor: pointer;
+}
+
+.savedBTN:hover{
+    cursor: pointer;
+}
+
+.saved{
+    background-color: red;
+}
+
+.save-project-tile{
+    /* border: 3px solid purple; */
+    /* height:30%; */
+    width:fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top:30px; */
+    position: absolute;
+    top:120px;
+    right: 100px;
+
+}

@@ -14,9 +14,9 @@ const addSavedProject = (saved_projects) => ({
     saved_projects
 })
 
-const remove = (saved_projects) => ({
+const remove = (projectId) => ({
     type: REMOVE_PROJECTS,
-    saved_projects
+    projectId
 })
 
 
@@ -60,6 +60,7 @@ export const deleteSavedProject = projectId => async dispatch => {
 
     if (res.ok) { 
         dispatch(remove(projectId))
+        // dispatch(loadSavedProjects(projects))
     }
 }
 
@@ -91,7 +92,7 @@ export default function savedProjectReducer(state={}, action){
             }
         case REMOVE_PROJECTS:
             let newState = { ...state }
-            delete newState[action.saved_projects]
+            delete newState[action.projectId]
             return newState
         default:
             return state
