@@ -1,8 +1,4 @@
 .project__image-innerContainer{
-    /* border: 3px solid blue; */
-    
-    /* padding:50px; */
-    /* position:absolute; */
     background-color: aliceblue;
     display:flex;
     justify-content: center;
@@ -12,14 +8,11 @@
     width: fit-content;
     height:80%;
     width:60%;
-    /* min-height:700px; */
-    /* min-width:800px; */
     
     
 }
 
 .product__image{
-    /* border: 3px solid green; */
     width:60%;
     height:80%;
 
@@ -158,38 +151,7 @@
     /* margin-left:20%; */
 }
 
-.save-project-tile{
-    /* border: 3px solid purple; */
-    /* height:30%; */
-    width:fit-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* margin-top:30px; */
-    position: absolute;
-    top:120px;
-    right: 100px;
 
-}
-
-.save__button{
-    display:flex;
-    align-items: center;
-    /* width: 40%; */
-    font-size: large;
-    height: 50px;
-    border:none;
-    border-radius:30px;
-    /* position: absolute; */
-}
-
-.save__button:hover{
-    cursor: pointer;
-}
-
-.saved{
-    background-color: red;
-}
 
 .supply-list{
     border-bottom: 3px solid grey;

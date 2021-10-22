@@ -12,6 +12,7 @@ import Header from '../Header'
 import Footer from '../Footer'
 import Comments from '../Comments'
 import SlideMenu from '../SlideMenu'
+import SavedProjects from '../SavedProjects'
 
 
 function Project(){
@@ -88,10 +89,9 @@ function Project(){
                             <img className ='product__image' src={pro.image_url}></img>
                         </div>  
 
-                        {/* <div className='save-project-tile'>
-                            <button id='save-button'  onClick={() => saveProject(pro)} className='save__button' >Save This Project! <img src="https://img.icons8.com/ios-glyphs/30/000000/like--v2.png"/></button>
-                            
-                        </div>  */}
+                        <div className='save-project-tile'>
+                            <SavedProjects />
+                        </div> 
 
                         <div className='duration'>
                            <h2>Estimated Time to Complete: </h2>

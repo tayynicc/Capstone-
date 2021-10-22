@@ -40,11 +40,7 @@ def new_saved_project():
 @saved_routes.route('/<int:id>', methods=['DELETE'])
 def delete_project(id):
 
-
-    project = Saved_Project.query.filter_by(project_id= id).first()
-
-    
-
+    project = Saved_Project.query.get(id)
 
     db.session.delete(project)
     db.session.commit()
