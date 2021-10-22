@@ -117,6 +117,7 @@ function Comments(){
         const pen = document.getElementById(`edit-${id}`)
         const contentBody = document.getElementById(`comment__text-${id}`)
         const done = document.getElementById(`done__btn-${id}`)
+        const deleteBtn = document.getElementById(`delete-comment-${id}`)
         // const input = document.getElementById('review-input')
 
         if (contentBody.classList.contains('hidden')){
@@ -124,6 +125,7 @@ function Comments(){
             contentBody.classList.remove('hidden')
             done.classList.remove('hidden')
             pen.classList.add('hidden')
+            deleteBtn.classList.add('hidden')
             // input.innerHTML = ''
         }
         else  {
@@ -139,10 +141,13 @@ function Comments(){
         const body = document.getElementById(`comment__text-${id}`)
         const done = document.getElementById(`done__btn-${id}`)
         const pen = document.getElementById(`edit-${id}`)
+        const deleteBtn = document.getElementById(`delete-comment-${id}`)
+
 
         body.classList.add('hidden')
         done.classList.add('hidden')
         pen.classList.remove('hidden')
+        deleteBtn.classList.remove('hidden')
         body.innerHTML = '';
 
         // setReview(newReview)
@@ -261,7 +266,7 @@ function Comments(){
                         {time(reviews.created_at)}
                         <div className='singleComment__edit-buttons'>
                             <button id={`done__btn-${reviews.id}`} className='finish__comment hidden' type='submit' onClick={() => handleUpdate(reviews)}>Done</button>
-                            {sessionUser.id === reviews.user_id && <button className='delete__button' onClick={() => handleDelete(reviews.id)}>
+                            {sessionUser.id === reviews.user_id && <button id={`delete-comment-${reviews.id}`}className='delete__button' onClick={() => handleDelete(reviews.id)}>
                                 <img className='delete__button' src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/>
                             </button>}
                             {sessionUser.id === reviews.user_id  && <button id={`edit-${reviews.id}`}onClick={() => updateComment(reviews)} className='edit__button' >

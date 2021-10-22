@@ -62,7 +62,7 @@ function Home(){
                                 <p>{project.title}</p>
                             </div>
                         </div></a>
-                    ))}
+                    )).reverse()}
            </div>
 
 
@@ -82,7 +82,7 @@ function Home(){
                             </div>
                         </div></a>
 
-                    ))}
+                    )).reverse()}
            </div>
             
            <div className='container-labels'>
@@ -101,7 +101,7 @@ function Home(){
                             </div>
                         </div></a>
 
-                    ))}
+                    )).reverse()}
 
            </div>
 
