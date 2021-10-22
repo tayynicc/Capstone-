@@ -168,7 +168,9 @@ export default function projectReducer(state={}, action){
             }
             case REMOVE_PROJECTS:
                 let newState = { ...state }
+
                 delete newState[action.projectId]
+
                 return newState
 
             case EDIT_PROJECT:

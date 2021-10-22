@@ -17,6 +17,13 @@ function SavedProjects(){
 
     const project = projects?.filter((pro) => pro?.id === +id)
 
+    console.log(`$$$`,saved)
+
+    const currentSaved = saved?.filter((proj) => proj.project_id === +id)
+    const [ current ] = currentSaved
+
+    console.log("~~~~~~",current?.id)
+
 
     
 
@@ -33,6 +40,7 @@ function SavedProjects(){
     }
 
     const unsaveProject = async (id) => {
+        console.log(`handle delete`, id)
      
         await dispatch(deleteSavedProject(id))
         dispatch(getSavedProjects())
@@ -75,7 +83,7 @@ function SavedProjects(){
 
             {checkSaved(+id) === true && 
                 <>
-                    <button className='savedBTN' onClick={() => unsaveProject(+id) }>Unsave project</button>
+                    <button className='savedBTN' onClick={() => unsaveProject(current?.id) }>Unsave project</button>
                 </>
             }
         </>
