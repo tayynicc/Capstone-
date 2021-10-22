@@ -5,10 +5,10 @@
     margin-top:-9px;
     margin-right:-9px;
     margin-bottom:-9px;
-    /* height: 200%; */
+    height: 200%;
     position: absolute;
     top:0; 
-    bottom: -100%;
+    bottom: 0;
     left: 0;
     right:0;
 }
@@ -379,7 +379,7 @@ tbody {
 }
 
 .savedProjects{
-    width: 100%;
+    width: fit-content;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -391,7 +391,7 @@ tbody {
 
 .data__container-saved{
     border-bottom: 3px solid grey;
-    width: 1050px;
+    width: 1070px;
     display:flex;
     height: 200px;
 
