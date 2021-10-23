@@ -41,6 +41,9 @@ def new_saved_project():
 def delete_project(id):
 
     project = Saved_Project.query.get(id)
+    print('###############')
+    print(id)
+    print('###############')
 
     db.session.delete(project)
     db.session.commit()
