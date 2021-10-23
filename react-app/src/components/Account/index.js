@@ -55,14 +55,14 @@ function Account(){
        let arr = []
        saved.forEach((save) =>{ 
            let ids = {}
-           console.log(`$$$$$`, save)
+        //    console.log(`$$$$$`, save)
            ids.project_id = save.project_id
            ids.saved_id = save.id
            arr.push(ids)
             // id.push(save.project_id)
        })
 
-       console.log(`******`, arr)
+    //    console.log(`******`, arr)
 
     //    arr contains objects if projects id and saved id
 
@@ -72,22 +72,20 @@ function Account(){
            for(let i = 0; i < arr.length; i++){
 
                let curr = arr[i]
-               console.log(`!!!!!!!`, curr)
-            //    if(curr === pro.id){
-            //     //    console.log(`@@`, pro)
-            //        pro.saved_id = curr
-            //        console.log(`@@`, pro)
-
-            //        project.push(pro)
+            //    console.log(`!!!!!!!`, curr.project_id)
+               if(curr.project_id === pro.id){
+                   pro.saved_id = curr.saved_id
+                //    console.log(`&&&`,pro)
+                project.push(pro)
                }
-        //    }
+      
+               }
        })
-
        return project
     }
     
 
-    savedProjContent()
+   console.log(`@@@@`,savedProjContent()) 
 
 
     
