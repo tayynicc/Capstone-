@@ -51,19 +51,36 @@ function Account(){
 
     function savedProjContent(){
 
-       let id = []
+        // saved id is not being passed in the final project obj so delete is not working
+       let arr = []
        saved.forEach((save) =>{ 
-            id.push(save.project_id)
+           let ids = {}
+           console.log(`$$$$$`, save)
+           ids.project_id = save.project_id
+           ids.saved_id = save.id
+           arr.push(ids)
+            // id.push(save.project_id)
        })
+
+       console.log(`******`, arr)
+
+    //    arr contains objects if projects id and saved id
+
 
        let project = []
        projects?.forEach((pro) => {
-           for(let i = 0; i < id.length; i++){
-               let curr = id[i]
-               if(curr === pro.id){
-                   project.push(pro)
+           for(let i = 0; i < arr.length; i++){
+
+               let curr = arr[i]
+               console.log(`!!!!!!!`, curr)
+            //    if(curr === pro.id){
+            //     //    console.log(`@@`, pro)
+            //        pro.saved_id = curr
+            //        console.log(`@@`, pro)
+
+            //        project.push(pro)
                }
-           }
+        //    }
        })
 
        return project
@@ -81,6 +98,7 @@ function Account(){
     }
 
     const removeSaved = (id) => {
+        console.log(`$$`,id)
         dispatch(deleteSavedProject(id))
     }
 
@@ -219,7 +237,7 @@ function Account(){
                                 </div>
 
                                 <div className='remove_saved'>
-                                    <button className='project__delete-btn' onClick={() => removeSaved(project.id)}>Remove</button>
+                                    <button className='project__delete-btn' onClick={() => removeSaved(project.saved_id)}>Remove</button>
                                 </div>
                             </div>
                         )).reverse()}
