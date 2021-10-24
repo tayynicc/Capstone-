@@ -19,6 +19,8 @@ import Project from './components/Projects';
 import UpdateProjectForm from './components/UpdateProject';
 import SlideMenu from './components/SlideMenu';
 import UpdateProjectNew from './components/UpdateProject-New';
+import EditDropdown from './components/EditDropdown'
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -75,6 +77,7 @@ function App() {
             {/* <UpdateProjectForm /> */}
             {/* <SlideMenu /> */}
             <SavedProjects />
+            <EditDropdown />
             
             
         </Route>

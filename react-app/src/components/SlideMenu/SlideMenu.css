@@ -26,7 +26,6 @@
 }
 .menu li a:before {
   font-family: FontAwesome;
-  speak: none;
   text-indent: 0em;
   position: absolute;
   bottom: 0;
