@@ -65,7 +65,7 @@ function EditComment({review, projectReviews, errors, setErrors, setReview}){
             updated_at: new Date()
             
         }
-        console.log(`~~`,payload)
+        // console.log(`~~`,payload)
 
         if(review.length !== 0){
             await dispatch(editReview(payload))
@@ -154,14 +154,14 @@ function EditComment({review, projectReviews, errors, setErrors, setReview}){
                     
                     <div className='singleComment__timestamp'>
                         {review.created_at}
-                        <div className='singleComment__edit-buttons'>
-                            <button id={`done__btn-${review.id}`} className='finish__comment hidden' type='submit' onClick={() => handleUpdate(newReview)}>Done</button>
+                        <div className='singleComment__edit-buttons '>
+                            {/* <button id={`done__btn-${review.id}`} className='finish__comment hidden' type='submit' onClick={() => handleUpdate(newReview)}>Done</button>
                             {sessionUser.id === review.user_id && <button className='delete__button' onClick={() => handleDelete(review.id)}>
                                 <img className='delete__button' src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/>
                             </button>}
                             {sessionUser.id === review.user_id  && <button id={`edit-${review.id}`}onClick={() => updateComment(review.id)} className='edit__button' >
                                 <img className='edit__button' src="https://img.icons8.com/ios-filled/50/000000/edit--v1.png"/>
-                            </button>   }  
+                            </button>   }   */}
                         </div>
                     </div>
 

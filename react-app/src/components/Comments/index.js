@@ -1,5 +1,6 @@
 import './Comments.css'
 import EditComment from './editComment'
+import EditDropdown from '../EditDropdown'
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
@@ -265,13 +266,34 @@ function Comments(){
                     <div className='singleComment__timestamp'>
                         {time(reviews.created_at)}
                         <div className='singleComment__edit-buttons'>
-                            <button id={`done__btn-${reviews.id}`} className='finish__comment hidden' type='submit' onClick={() => handleUpdate(reviews)}>Done</button>
+                            
+                        <div className="dropdown">
+                            <button className="dropbtn"><img src="https://img.icons8.com/material-outlined/24/000000/more.png"/></button>
+                            <div className="dropdown-content">
+                            {sessionUser.id === reviews.user_id  && 
+                                <button id={`edit-${reviews.id}`}onClick={() => updateComment(reviews)} className='edit__button edt' >
+                                    Edit
+                                </button>
+                             } 
+                            {sessionUser.id === reviews.user_id && <button id={`delete-comment-${reviews.id}`}className='delete__button dlt' onClick={() => handleDelete(reviews.id)}>
+                                Delete
+                            </button>}
+                                
+                                
+                                {/* <a href="#">Link 3</a> */}
+                            </div>
+                            <div className='finishUpdate-container'>
+                                <button id={`done__btn-${reviews.id}`} className='finish__comment hidden' type='submit' onClick={() => handleUpdate(reviews)}>Done</button>
+                            </div>
+                        </div>
+                            {/* <EditDropdown /> */}
+                            {/* <button id={`done__btn-${reviews.id}`} className='finish__comment hidden' type='submit' onClick={() => handleUpdate(reviews)}>Done</button>
                             {sessionUser.id === reviews.user_id && <button id={`delete-comment-${reviews.id}`}className='delete__button' onClick={() => handleDelete(reviews.id)}>
                                 <img className='delete__button' src="https://img.icons8.com/fluency/48/000000/delete-sign.png"/>
                             </button>}
                             {sessionUser.id === reviews.user_id  && <button id={`edit-${reviews.id}`}onClick={() => updateComment(reviews)} className='edit__button' >
                                 <img className='edit__button' src="https://img.icons8.com/ios-filled/50/000000/edit--v1.png"/>
-                            </button>   }  
+                            </button>   }   */}
                         </div>
                     </div>
 
