@@ -7,7 +7,7 @@ import SignUpForm from './components/auth/SignUpForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import SavedProjects from './components/SavedProjects';
+// import SavedProjects from './components/SavedProjects';
 import { authenticate } from './store/session';
 
 
@@ -16,10 +16,10 @@ import Home from './components/Home'
 import Account from './components/Account'
 import CreateProject from './components/CreateProject';
 import Project from './components/Projects';
-import UpdateProjectForm from './components/UpdateProject';
-import SlideMenu from './components/SlideMenu';
+// import UpdateProjectForm from './components/UpdateProject';
+// import SlideMenu from './components/SlideMenu';
 import UpdateProjectNew from './components/UpdateProject-New';
-import EditDropdown from './components/EditDropdown'
+// import EditDropdown from './components/EditDropdown'
 
 
 function App() {
@@ -76,8 +76,8 @@ function App() {
             {/* <NavBar /> */}
             {/* <UpdateProjectForm /> */}
             {/* <SlideMenu /> */}
-            <SavedProjects />
-            <EditDropdown />
+            {/* <SavedProjects /> */}
+            {/* <EditDropdown /> */}
             
             
         </Route>

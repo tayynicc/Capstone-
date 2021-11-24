@@ -5,7 +5,7 @@ import { getProjects, deleteProject } from '../../store/project';
 import { deleteSavedProject, getSavedProjects } from '../../store/saved_project'
 
 import SlideMenu from '../SlideMenu';
-import Footer from '../Footer';
+// import Footer from '../Footer';
 
 import './Account.css'
 
@@ -226,7 +226,7 @@ function Account(){
 
                                 <div className="image__container">
                                     <td>
-                                        <img alt='project image' className='tile-image-account savedImg' src={project.image_url}></img>
+                                        <img alt='project ' className='tile-image-account savedImg' src={project.image_url}></img>
                                     </td>
                                 </div>
 

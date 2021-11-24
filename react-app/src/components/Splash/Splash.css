@@ -32,7 +32,7 @@
 .splash__bkg-left{
     /* border: 3px solid red;  */
     width:55%;
-    height:100vh;
+    height:90%;
     position: absolute; 
     top: 0;
     left:-100px;
@@ -68,7 +68,7 @@
     border: 3px solid blue; 
     width:110%;
     
-    height:100vh;
+    height:90%;
     position: absolute; 
     top: 0;
     left:-10px;
@@ -79,9 +79,9 @@
 .roller__container{
     position: absolute; 
     top: 0;
-    left:-10px;
-    height: 2000px;
-    border: 5px solid black;
+    /* left:-10px; */
+    height:90%;
+    /* border: 5px solid black; */
     width:1200px;
     transform: skew(10deg);
    
@@ -250,17 +250,13 @@
 
 
 .footer__container{
-    position: relative; 
+    position: absolute; 
     bottom:0;
-    /* top:1400px; */
-    width:110%;
-    height:55px;
-    /* margin-left:-50px; */
+    width:100%;
     background-color:darkgrey;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border:3px solid red;
 }
 
 

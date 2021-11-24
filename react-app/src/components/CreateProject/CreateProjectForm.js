@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
@@ -209,7 +209,7 @@ function CreateProjectForm(){
             
             // console.log('here',title, instructions, supplies, cost, supplies, cost, duration, action, image, links )
         } else if (title !== '' && duration !== 0){
-            let tempErrors = {...errors}
+            // let tempErrors = {...errors}
             if(!Object.keys(errors).length){
                 const project = await dispatch(createOneProject(payload))
                     if (project) {
@@ -308,7 +308,7 @@ function CreateProjectForm(){
             </div>
             
             <div className='image__preview'>
-                <img alt='Insert Image' className='create__image' src={image}></img>
+                <img alt='Insert url' className='create__image' src={image}></img>
             </div>
             </div>
         </>

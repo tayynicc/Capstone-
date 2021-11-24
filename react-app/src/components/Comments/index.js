@@ -1,12 +1,12 @@
 import './Comments.css'
-import EditComment from './editComment'
-import EditDropdown from '../EditDropdown'
+// import EditComment from './editComment'
+// import EditDropdown from '../EditDropdown'
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 
-import reviewReducer, { getReviews, createOneReview, deleteReview, editReview} from '../../store/review'
+import { getReviews, createOneReview, deleteReview, editReview} from '../../store/review'
 
 
 function Comments(){
@@ -268,7 +268,7 @@ function Comments(){
                         <div className='singleComment__edit-buttons'>
                             
                         <div className="dropdown">
-                            <button className="dropbtn"><img src="https://img.icons8.com/material-outlined/24/000000/more.png"/></button>
+                            <button className="dropbtn"><img alt='comment options'src="https://img.icons8.com/material-outlined/24/000000/more.png"/></button>
                             <div className="dropdown-content">
                             {sessionUser.id === reviews.user_id  && 
                                 <button id={`edit-${reviews.id}`}onClick={() => updateComment(reviews)} className='edit__button edt' >

@@ -60,7 +60,7 @@ function Splash(){
             </div>
             
             
-            <div className='splash__bkg-right'>
+            {/* <div className='splash__bkg-right'>
                 <div className='roller__container-right roll-reverse'>
                     <div className='images-right'>
                         <div className='images__container img4'></div>
@@ -69,34 +69,34 @@ function Splash(){
                     </div>
                 </div>
             
-            </div>
+            </div> */}
             
           
             
-            <div className='information__container-outter'>
-            <div className='splash__about-container'>
+            {/* <div className='information__container-outter'> */}
+            {/* <div className='splash__about-container'>
                 <h1 className='splash__label'>About ReNewMe</h1>
 
                 <div className='splash__contnent-container'>
                     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
                 </div>
 
-            </div>
+            </div> */}
 
-            <div className='splash__highlights-container'>
+            {/* <div className='splash__highlights-container'>
                 <h1 className='splash__label-highlights'>Highlights</h1>
                 
                 <div className='splash__contnent-container'>
                     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
                 </div>
 
-            </div>
+            </div> */}
             
 
             <div className='footer__container'>
                 <Footer />
             </div>
-            </div>
+            {/* </div> */}
         </div>
         </>
     )
